@@ -12,6 +12,14 @@ namespace CheesecakeCardBuilder.Config {
 
         [JsonIgnore]
         private GlobalConfig globalConfig;
+        public readonly String topStatsFont = "Segoe Script";
+        public readonly float topStatsFontSize = 20f;
+        public readonly String statsFont = "Vijaya";
+        public readonly float statsFontSize = 20f;
+        public readonly String descriptionFont = "Segoe Script";
+        public readonly float descriptionFontSize = 8f;
+        public readonly String nameFont = "Segoe Script";
+        public readonly float nameFontSize = 10f;
 
         public ProjectConfig(GlobalConfig globalConfig) {
             setGlobalConfig(globalConfig);

@@ -10,7 +10,9 @@ using System.Windows.Forms;
 
 namespace CheesecakeCardBuilder.Unit {
     public partial class DefaultUnitDescription : UserControl, UnitDescription {
-        public DefaultUnitDescription() {
+        public List<CardUpdater> cardUpdaters = new List<CardUpdater>();
+        public DefaultUnitDescription(CardUpdater updater) {
+            addUpdater(updater);
             InitializeComponent();
         }
 
@@ -19,6 +21,14 @@ namespace CheesecakeCardBuilder.Unit {
             get {
                 return whenBox.Text + " " + targetBox.Text + " " + actionBox.Text;
             }
+        }
+
+        public void addUpdater(CardUpdater updater) {
+            cardUpdaters.Add(updater);
+        }
+
+        private void actionBox_KeyUp(object sender, KeyEventArgs e) {
+            cardUpdaters.ForEach(updater => updater.updateCardDescription());
         }
     }
 }

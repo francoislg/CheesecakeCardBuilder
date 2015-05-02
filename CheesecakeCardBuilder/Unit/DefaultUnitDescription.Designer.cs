@@ -46,6 +46,7 @@
             this.whenBox.Name = "whenBox";
             this.whenBox.Size = new System.Drawing.Size(350, 20);
             this.whenBox.TabIndex = 1;
+            this.whenBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.actionBox_KeyUp);
             // 
             // targetBox
             // 
@@ -53,6 +54,7 @@
             this.targetBox.Name = "targetBox";
             this.targetBox.Size = new System.Drawing.Size(350, 20);
             this.targetBox.TabIndex = 3;
+            this.targetBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.actionBox_KeyUp);
             // 
             // label2
             // 
@@ -69,6 +71,7 @@
             this.actionBox.Name = "actionBox";
             this.actionBox.Size = new System.Drawing.Size(350, 20);
             this.actionBox.TabIndex = 5;
+            this.actionBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.actionBox_KeyUp);
             // 
             // label3
             // 
