@@ -8,5 +8,6 @@ namespace CheesecakeCardBuilder.Unit {
     public interface UnitDescription {
         String name { get; }
         String description { get; }
+        void addUpdater(CardUpdater updater);
     }
 }

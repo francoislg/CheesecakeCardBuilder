@@ -37,6 +37,12 @@
             this.hpTextbox = new System.Windows.Forms.TextBox();
             this.descriptionComboBox = new System.Windows.Forms.ComboBox();
             this.descriptionPanel = new System.Windows.Forms.Panel();
+            this.previewPicture = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionPanel2 = new System.Windows.Forms.Panel();
+            this.descriptionComboBox2 = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // atkTextBox
@@ -44,7 +50,8 @@
             this.atkTextBox.Location = new System.Drawing.Point(50, 45);
             this.atkTextBox.Name = "atkTextBox";
             this.atkTextBox.Size = new System.Drawing.Size(28, 20);
-            this.atkTextBox.TabIndex = 0;
+            this.atkTextBox.TabIndex = 2;
+            this.atkTextBox.TextChanged += new System.EventHandler(this.event_UpdatePicture);
             // 
             // label1
             // 
@@ -69,7 +76,8 @@
             this.defTextBox.Location = new System.Drawing.Point(50, 71);
             this.defTextBox.Name = "defTextBox";
             this.defTextBox.Size = new System.Drawing.Size(28, 20);
-            this.defTextBox.TabIndex = 2;
+            this.defTextBox.TabIndex = 4;
+            this.defTextBox.TextChanged += new System.EventHandler(this.event_UpdatePicture);
             // 
             // label3
             // 
@@ -85,7 +93,8 @@
             this.accTextBox.Location = new System.Drawing.Point(127, 71);
             this.accTextBox.Name = "accTextBox";
             this.accTextBox.Size = new System.Drawing.Size(28, 20);
-            this.accTextBox.TabIndex = 4;
+            this.accTextBox.TabIndex = 5;
+            this.accTextBox.TextChanged += new System.EventHandler(this.event_UpdatePicture);
             // 
             // label4
             // 
@@ -101,14 +110,16 @@
             this.spdTextbox.Location = new System.Drawing.Point(127, 45);
             this.spdTextbox.Name = "spdTextbox";
             this.spdTextbox.Size = new System.Drawing.Size(28, 20);
-            this.spdTextbox.TabIndex = 7;
+            this.spdTextbox.TabIndex = 3;
+            this.spdTextbox.TextChanged += new System.EventHandler(this.event_UpdatePicture);
             // 
             // resTextbox
             // 
             this.resTextbox.Location = new System.Drawing.Point(127, 12);
             this.resTextbox.Name = "resTextbox";
             this.resTextbox.Size = new System.Drawing.Size(28, 20);
-            this.resTextbox.TabIndex = 11;
+            this.resTextbox.TabIndex = 1;
+            this.resTextbox.TextChanged += new System.EventHandler(this.event_UpdatePicture);
             // 
             // label5
             // 
@@ -133,7 +144,8 @@
             this.hpTextbox.Location = new System.Drawing.Point(50, 12);
             this.hpTextbox.Name = "hpTextbox";
             this.hpTextbox.Size = new System.Drawing.Size(28, 20);
-            this.hpTextbox.TabIndex = 8;
+            this.hpTextbox.TabIndex = 0;
+            this.hpTextbox.TextChanged += new System.EventHandler(this.event_UpdatePicture);
             // 
             // descriptionComboBox
             // 
@@ -141,21 +153,73 @@
             this.descriptionComboBox.Location = new System.Drawing.Point(12, 97);
             this.descriptionComboBox.Name = "descriptionComboBox";
             this.descriptionComboBox.Size = new System.Drawing.Size(143, 21);
-            this.descriptionComboBox.TabIndex = 12;
+            this.descriptionComboBox.TabIndex = 7;
             this.descriptionComboBox.SelectedIndexChanged += new System.EventHandler(this.descriptionComboBox_SelectedIndexChanged);
             // 
             // descriptionPanel
             // 
             this.descriptionPanel.Location = new System.Drawing.Point(12, 125);
             this.descriptionPanel.Name = "descriptionPanel";
-            this.descriptionPanel.Size = new System.Drawing.Size(592, 91);
+            this.descriptionPanel.Size = new System.Drawing.Size(400, 80);
             this.descriptionPanel.TabIndex = 13;
+            // 
+            // previewPicture
+            // 
+            this.previewPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.previewPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.previewPicture.InitialImage = null;
+            this.previewPicture.Location = new System.Drawing.Point(428, 11);
+            this.previewPicture.Name = "previewPicture";
+            this.previewPicture.Size = new System.Drawing.Size(263, 363);
+            this.previewPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.previewPicture.TabIndex = 14;
+            this.previewPicture.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(174, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Name";
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Location = new System.Drawing.Point(177, 31);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(235, 20);
+            this.nameTextBox.TabIndex = 6;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.event_UpdatePicture);
+            // 
+            // descriptionPanel2
+            // 
+            this.descriptionPanel2.Location = new System.Drawing.Point(12, 239);
+            this.descriptionPanel2.Name = "descriptionPanel2";
+            this.descriptionPanel2.Size = new System.Drawing.Size(400, 80);
+            this.descriptionPanel2.TabIndex = 17;
+            // 
+            // descriptionComboBox2
+            // 
+            this.descriptionComboBox2.FormattingEnabled = true;
+            this.descriptionComboBox2.Location = new System.Drawing.Point(12, 211);
+            this.descriptionComboBox2.Name = "descriptionComboBox2";
+            this.descriptionComboBox2.Size = new System.Drawing.Size(143, 21);
+            this.descriptionComboBox2.TabIndex = 16;
+            this.descriptionComboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // UnitBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 228);
+            this.ClientSize = new System.Drawing.Size(703, 385);
+            this.Controls.Add(this.descriptionPanel2);
+            this.Controls.Add(this.descriptionComboBox2);
+            this.Controls.Add(this.nameTextBox);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.previewPicture);
             this.Controls.Add(this.descriptionPanel);
             this.Controls.Add(this.descriptionComboBox);
             this.Controls.Add(this.resTextbox);
@@ -170,8 +234,10 @@
             this.Controls.Add(this.defTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.atkTextBox);
+            this.MinimumSize = new System.Drawing.Size(719, 424);
             this.Name = "UnitBuilder";
             this.Text = "Unit Builder";
+            ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,6 +259,11 @@
         private System.Windows.Forms.TextBox hpTextbox;
         private System.Windows.Forms.ComboBox descriptionComboBox;
         private System.Windows.Forms.Panel descriptionPanel;
+        private System.Windows.Forms.PictureBox previewPicture;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Panel descriptionPanel2;
+        private System.Windows.Forms.ComboBox descriptionComboBox2;
     }
 }
 
