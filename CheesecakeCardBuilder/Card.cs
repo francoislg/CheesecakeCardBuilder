@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder {
-    class Card {
+    public class Card {
     }
 }
