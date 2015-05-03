@@ -9,22 +9,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CheesecakeCardBuilder.Unit {
-    public partial class DefaultUnitDescription : UserControl, UnitDescription {
+    public partial class KeywordUnitDescription : UserControl, UnitDescription {
         public List<CardUpdater> cardUpdaters = new List<CardUpdater>();
-        public DefaultUnitDescription(CardUpdater updater) {
+        public KeywordUnitDescription(CardUpdater updater) {
             addUpdater(updater);
             InitializeComponent();
+            keywordComboBox.DataSource = Enum.GetValues(typeof(Keyword));
         }
 
         public UnitDescriptionType type {
             get {
-                return UnitDescriptionType.Default;
+                return UnitDescriptionType.Keyword;
             }
         }
-        public String name { get { return "Default"; } }
+        public String name { get { return "Keyword"; } }
         public String description {
             get {
-                return whenBox.Text + " " + targetBox.Text + " " + actionBox.Text;
+                if (keywordComboBox.SelectedItem == null) {
+                    return "";
+                }
+                Keyword keyword = (Keyword)keywordComboBox.SelectedItem;
+                return keyword.ToString();
             }
         }
 

@@ -47,6 +47,8 @@ namespace CheesecakeCardBuilder {
         private void addDescriptions() {
             descriptionComboBox.Items.Add(new TypeDescriptions() { unitDescription = new DefaultUnitDescription(this) });
             descriptionComboBox2.Items.Add(new TypeDescriptions() { unitDescription = new DefaultUnitDescription(this) });
+            descriptionComboBox.Items.Add(new TypeDescriptions() { unitDescription = new KeywordUnitDescription(this) });
+            descriptionComboBox2.Items.Add(new TypeDescriptions() { unitDescription = new KeywordUnitDescription(this) });
         }
 
         public void updateCardDescription() {
