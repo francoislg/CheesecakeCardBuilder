@@ -48,11 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
+    <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
+    <Compile Include="Renderer\CardParts\NameRenderer.cs" />
+    <Compile Include="Renderer\CardParts\ResStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\HpStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\AccStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\SpdStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\DefStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\AtkStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\CardPartRenderer.cs" />
     <Compile Include="CardUpdater.cs" />
     <Compile Include="Config\ProjectConfig.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Config\ConfigLoader.cs" />
     <Compile Include="Config\GlobalConfig.cs" />
+    <Compile Include="Renderer\FontService.cs" />
+    <Compile Include="Renderer\CardParts\DefaultStatRenderer.cs" />
     <Compile Include="Unit\UnitBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,7 +80,7 @@
       <DependentUpon>DefaultUnitDescription.cs</DependentUpon>
     </Compile>
     <Compile Include="Unit\UnitCard.cs" />
-    <Compile Include="Unit\UnitCardRenderer.cs" />
+    <Compile Include="Renderer\UnitCardRenderer.cs" />
     <Compile Include="Unit\UnitDescription.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Unit\Renderer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

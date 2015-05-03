@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace CheesecakeCardBuilder {
     using Config;
     using Unit;
+    using Renderer;
 
     public partial class UnitBuilder : Form, CardUpdater {
         private class TypeDescriptions {
