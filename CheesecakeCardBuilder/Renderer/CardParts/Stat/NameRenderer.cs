@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Renderer.CardParts {
+namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using System;
     using System.Drawing;
     using Config;
@@ -18,7 +18,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             : base(config, DEFAULTPOSITION) {
             this.card = card;
             this.font = new Font(config.nameFont, config.nameFontSize, FontStyle.Regular);
-            this.brush = FontService.getGradiantBrush(font, 30);
+            this.brush = FontService.getDefaultBrush();
         }
 
         protected override void update(Graphics graphics) {

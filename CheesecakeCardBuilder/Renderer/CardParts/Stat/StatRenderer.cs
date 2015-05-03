@@ -1,5 +1,5 @@
 ﻿
-namespace CheesecakeCardBuilder.Renderer {
+namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using System;
     using System.Drawing;
     using Renderer.CardParts;

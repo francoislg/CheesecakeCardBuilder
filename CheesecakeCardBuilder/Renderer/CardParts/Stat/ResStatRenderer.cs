@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Renderer.CardParts {
+namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using System;
     using System.Drawing;
     using Config;
     using Unit;
 
-    public class AtkStatRenderer : StatRenderer {
-        private static readonly Point DEFAULTPOSITION = new Point(70, 670);
+    public class ResStatRenderer : StatRenderer {
+        private static readonly Point DEFAULTPOSITION = new Point(655, 95);
         private UnitCard card;
 
-        public AtkStatRenderer(ProjectConfig config, UnitCard card)
+        public ResStatRenderer(ProjectConfig config, UnitCard card)
             : base(config, DEFAULTPOSITION) {
             this.card = card;
-            this.font = new Font(config.statsFont, config.statsFontSize, FontStyle.Regular);
+            this.font = new Font(config.topStatsFont, config.topStatsFontSize, FontStyle.Regular);
             this.brush = FontService.getGradiantBrush(font, 0);
         }
 
         protected override void update(Graphics graphics) {
-            this.toDraw = card.atk;
+            this.toDraw = card.res;
         }
     }
 }

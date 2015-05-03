@@ -50,22 +50,22 @@
   <ItemGroup>
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
-    <Compile Include="Renderer\CardParts\NameRenderer.cs" />
-    <Compile Include="Renderer\CardParts\ResStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\HpStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\AccStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\SpdStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\DefStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\AtkStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\NameRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\ResStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\HpStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\AccStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\SpdStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\DefStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\AtkStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\CardPartRenderer.cs" />
     <Compile Include="CardUpdater.cs" />
     <Compile Include="Config\ProjectConfig.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Config\ConfigLoader.cs" />
     <Compile Include="Config\GlobalConfig.cs" />
-    <Compile Include="Renderer\CardParts\StatRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\CardPartRendererFactory.cs" />
     <Compile Include="Renderer\FontService.cs" />
-    <Compile Include="Renderer\CardParts\StatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\StatRenderer.cs" />
     <Compile Include="Unit\UnitBuilder.cs">
       <SubType>Form</SubType>
     </Compile>

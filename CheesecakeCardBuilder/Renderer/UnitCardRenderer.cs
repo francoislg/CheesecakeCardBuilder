@@ -19,15 +19,15 @@ namespace CheesecakeCardBuilder.Renderer {
         public UnitCardRenderer(UnitCard unitCard, ProjectConfig config) {
             this.unitCard = unitCard;
             this.template = new Bitmap(config.getUnitPath());
-            StatRendererFactory statRendererFactory = new StatRendererFactory(config, unitCard);
-            renderers.Add(statRendererFactory.create(StatTypes.Atk));
-            renderers.Add(statRendererFactory.create(StatTypes.Def));
-            renderers.Add(statRendererFactory.create(StatTypes.Spd));
-            renderers.Add(statRendererFactory.create(StatTypes.Acc));
-            renderers.Add(statRendererFactory.create(StatTypes.Hp));
-            renderers.Add(statRendererFactory.create(StatTypes.Res));
-            renderers.Add(statRendererFactory.create(StatTypes.Name));
-            renderers.Add(statRendererFactory.create(StatTypes.Description));
+            CardPartRendererFactory statRendererFactory = new CardPartRendererFactory(config, unitCard);
+            renderers.Add(statRendererFactory.create(PartType.Atk));
+            renderers.Add(statRendererFactory.create(PartType.Def));
+            renderers.Add(statRendererFactory.create(PartType.Spd));
+            renderers.Add(statRendererFactory.create(PartType.Acc));
+            renderers.Add(statRendererFactory.create(PartType.Hp));
+            renderers.Add(statRendererFactory.create(PartType.Res));
+            renderers.Add(statRendererFactory.create(PartType.Name));
+            renderers.Add(statRendererFactory.create(PartType.Description));
         }
 
         public Image generate() {

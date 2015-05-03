@@ -3,37 +3,39 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using Unit;
     using Config;
     using System;
+    using CardParts;
+    using CardParts.Stat;
 
-    public enum StatTypes {
+    public enum PartType {
         Atk, Def, Spd, Acc, Hp, Res, Name, Description
     }
 
-    public class StatRendererFactory {
+    public class CardPartRendererFactory {
         private ProjectConfig config;
         private UnitCard unitCard;
 
-        public StatRendererFactory(ProjectConfig config, UnitCard unitCard){
+        public CardPartRendererFactory(ProjectConfig config, UnitCard unitCard){
             this.config = config;
             this.unitCard = unitCard;
         }
 
-        public CardPartRenderer create(StatTypes type) {
+        public CardPartRenderer create(PartType type) {
             switch (type) {
-                case StatTypes.Atk:
+                case PartType.Atk:
                     return new AtkStatRenderer(config, unitCard);
-                case StatTypes.Def:
+                case PartType.Def:
                     return new DefStatRenderer(config, unitCard);
-                case StatTypes.Spd:
+                case PartType.Spd:
                     return new SpdStatRenderer(config, unitCard);
-                case StatTypes.Acc:
+                case PartType.Acc:
                     return new AccStatRenderer(config, unitCard);
-                case StatTypes.Hp:
+                case PartType.Hp:
                     return new HPStatRenderer(config, unitCard);
-                case StatTypes.Res:
+                case PartType.Res:
                     return new ResStatRenderer(config, unitCard);
-                case StatTypes.Name:
+                case PartType.Name:
                     return new NameRenderer(config, unitCard);
-                case StatTypes.Description:
+                case PartType.Description:
                     return new DescriptionsRenderer(config, unitCard);
                 default:
                     throw new NotSupportedException();
