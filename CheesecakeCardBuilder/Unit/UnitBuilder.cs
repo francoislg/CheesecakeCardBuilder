@@ -79,6 +79,7 @@ namespace CheesecakeCardBuilder {
             descriptionPanel.Controls.Add(typeDescription.userControl);
             card.descriptions.Add(typeDescription.unitDescription);
             lastUnitDescription = typeDescription.unitDescription;
+            updateCard();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
@@ -90,6 +91,7 @@ namespace CheesecakeCardBuilder {
             descriptionPanel2.Controls.Add(typeDescription.userControl);
             card.descriptions.Add(typeDescription.unitDescription);
             lastUnitDescription2 = typeDescription.unitDescription;
+            updateCard();
         }
     }
 }

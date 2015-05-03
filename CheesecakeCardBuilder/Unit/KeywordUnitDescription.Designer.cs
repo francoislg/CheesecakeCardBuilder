@@ -43,6 +43,7 @@
             this.keywordComboBox.Name = "keywordComboBox";
             this.keywordComboBox.Size = new System.Drawing.Size(393, 21);
             this.keywordComboBox.TabIndex = 1;
+            this.keywordComboBox.SelectedIndexChanged += new System.EventHandler(this.keywordComboBox_SelectedIndexChanged);
             // 
             // KeywordUnitDescription
             // 

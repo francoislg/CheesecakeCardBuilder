@@ -37,7 +37,11 @@ namespace CheesecakeCardBuilder.Unit {
             cardUpdaters.Add(updater);
         }
 
-        private void actionBox_KeyUp(object sender, KeyEventArgs e) {
+        private void keywordComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            update();
+        }
+
+        private void update() {
             cardUpdaters.ForEach(updater => updater.updateCardDescription());
         }
     }
