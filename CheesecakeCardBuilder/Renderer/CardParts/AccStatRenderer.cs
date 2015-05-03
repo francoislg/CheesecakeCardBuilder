@@ -10,7 +10,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using Config;
     using Unit;
 
-    public class AccStatRenderer : DefaultStatRenderer {
+    public class AccStatRenderer : StatRenderer {
         private static readonly Point DEFAULTPOSITION = new Point(715, 960);
         private UnitCard card;
 

@@ -2,7 +2,7 @@
 using System.Drawing;
 
 namespace CheesecakeCardBuilder.Renderer.CardParts {
-    interface CardPartRenderer {
+    public interface CardPartRenderer {
         void draw(Graphics graphics);
     }
 }

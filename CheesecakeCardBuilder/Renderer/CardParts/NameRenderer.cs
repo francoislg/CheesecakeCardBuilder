@@ -10,7 +10,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using Config;
     using Unit;
 
-    public class NameRenderer : DefaultStatRenderer {
+    public class NameRenderer : StatRenderer {
         private static readonly Rectangle DEFAULTPOSITION = new Rectangle(170, 452, 450, 200);
         private UnitCard card;
 

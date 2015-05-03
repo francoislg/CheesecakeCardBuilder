@@ -14,32 +14,26 @@ namespace CheesecakeCardBuilder.Renderer {
     public class UnitCardRenderer {
         private UnitCard unitCard;
         private Image template;
-        private readonly CardPartRenderer atkStat, defStat, spdStat, accStat, hpStat, resStat, nameRenderer, descriptionsRenderer;
+        private readonly List<CardPartRenderer> renderers = new List<CardPartRenderer>();
 
         public UnitCardRenderer(UnitCard unitCard, ProjectConfig config) {
             this.unitCard = unitCard;
             this.template = new Bitmap(config.getUnitPath());
-            this.atkStat = new AtkStatRenderer(config, unitCard);
-            this.defStat = new DefStatRenderer(config, unitCard);
-            this.spdStat = new SpdStatRenderer(config, unitCard);
-            this.accStat = new AccStatRenderer(config, unitCard);
-            this.hpStat = new HPStatRenderer(config, unitCard);
-            this.resStat = new ResStatRenderer(config, unitCard);
-            this.nameRenderer = new NameRenderer(config, unitCard);
-            this.descriptionsRenderer = new DescriptionsRenderer(config, unitCard);
+            StatRendererFactory statRendererFactory = new StatRendererFactory(config, unitCard);
+            renderers.Add(statRendererFactory.create(StatTypes.Atk));
+            renderers.Add(statRendererFactory.create(StatTypes.Def));
+            renderers.Add(statRendererFactory.create(StatTypes.Spd));
+            renderers.Add(statRendererFactory.create(StatTypes.Acc));
+            renderers.Add(statRendererFactory.create(StatTypes.Hp));
+            renderers.Add(statRendererFactory.create(StatTypes.Res));
+            renderers.Add(statRendererFactory.create(StatTypes.Name));
+            renderers.Add(statRendererFactory.create(StatTypes.Description));
         }
 
         public Image generate() {
             Image image = (Image)template.Clone();
             using (Graphics graphics = Graphics.FromImage(image)) {
-                hpStat.draw(graphics);
-                resStat.draw(graphics);
-                atkStat.draw(graphics);
-                defStat.draw(graphics);
-                spdStat.draw(graphics);
-                accStat.draw(graphics);
-                nameRenderer.draw(graphics);
-                descriptionsRenderer.draw(graphics);
+                renderers.ForEach(renderer => renderer.draw(graphics));
             }
             return image;
         }

@@ -5,7 +5,7 @@ namespace CheesecakeCardBuilder.Renderer {
     using Renderer.CardParts;
     using Config;
 
-    public abstract class DefaultStatRenderer : CardPartRenderer, IDisposable {
+    public abstract class StatRenderer : CardPartRenderer, IDisposable {
         protected ProjectConfig config;
         protected Point position;
         protected Nullable<Rectangle> rectangle = null;
@@ -14,13 +14,13 @@ namespace CheesecakeCardBuilder.Renderer {
         protected Font font = FontService.getDefaultFont();
         protected String toDraw;
 
-        public DefaultStatRenderer(ProjectConfig config, Point position) {
+        public StatRenderer(ProjectConfig config, Point position) {
             this.config = config;
             this.position = position;
             this.toDraw = "0";
         }
 
-        public DefaultStatRenderer(ProjectConfig config, Rectangle rectangle) : this(config, rectangle.Location) {
+        public StatRenderer(ProjectConfig config, Rectangle rectangle) : this(config, rectangle.Location) {
             this.rectangle = rectangle;
         }
 
