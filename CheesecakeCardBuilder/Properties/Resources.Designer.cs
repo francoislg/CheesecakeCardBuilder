@@ -59,5 +59,15 @@ namespace CheesecakeCardBuilder.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] vijaya {
+            get {
+                object obj = ResourceManager.GetObject("vijaya", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

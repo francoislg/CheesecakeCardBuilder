@@ -5,23 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Config {
+    using CheesecakeCardBuilder.Properties;
     using Newtonsoft.Json;
+    using System.Drawing;
+    using System.Drawing.Text;
+    using System.Runtime.InteropServices;
 
     public class ProjectConfig {
         private readonly String carteUnit = "cartes/unit.png";
 
         [JsonIgnore]
         private GlobalConfig globalConfig;
-        public readonly String topStatsFont = "Segoe Script";
-        public readonly float topStatsFontSize = 20f;
-        public readonly String statsFont = "Vijaya";
-        public readonly float statsFontSize = 20f;
-        public readonly String descriptionFont = "Segoe Script";
-        public readonly float descriptionFontSize = 8f;
-        public readonly String nameFont = "Segoe Script";
-        public readonly float nameFontSize = 10f;
+        public readonly Font topStatsFont, statsFont, descriptionFont, keywordFont, nameFont;
+        public readonly List<String> keywords = new List<String>() { "Long-Range", "Ranged", "Waller", "Flying" };
 
         public ProjectConfig(GlobalConfig globalConfig) {
+            topStatsFont = new Font("Segoe Script", 10f, FontStyle.Regular);
+            statsFont = new Font("Vijaya", 20f, FontStyle.Regular);
+            descriptionFont = new Font("Vijaya", 11f, FontStyle.Regular);
+            nameFont = new Font("Segoe Script", 10f, FontStyle.Regular);
+            keywordFont = new Font("Segoe Script", 9.5f, FontStyle.Regular);
             setGlobalConfig(globalConfig);
         }
 

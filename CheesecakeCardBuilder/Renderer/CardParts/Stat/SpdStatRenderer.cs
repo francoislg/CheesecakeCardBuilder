@@ -17,7 +17,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         public SpdStatRenderer(ProjectConfig config, UnitCard card)
             : base(config, DEFAULTPOSITION) {
             this.card = card;
-            this.font = new Font(config.statsFont, config.statsFontSize, FontStyle.Regular);
+            this.font = config.statsFont;
             this.brush = FontService.getGradiantBrush(font, 0);
         }
 

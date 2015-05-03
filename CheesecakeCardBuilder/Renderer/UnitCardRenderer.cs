@@ -33,6 +33,10 @@ namespace CheesecakeCardBuilder.Renderer {
         public Image generate() {
             Image image = (Image)template.Clone();
             using (Graphics graphics = Graphics.FromImage(image)) {
+                graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                graphics.InterpolationMode = InterpolationMode.High;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 renderers.ForEach(renderer => renderer.draw(graphics));
             }
             return image;

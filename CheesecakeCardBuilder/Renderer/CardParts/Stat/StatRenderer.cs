@@ -4,6 +4,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using System.Drawing;
     using Renderer.CardParts;
     using Config;
+    using System.Drawing.Drawing2D;
 
     public abstract class StatRenderer : CardPartRenderer, IDisposable {
         protected ProjectConfig config;
@@ -29,16 +30,25 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         public virtual void draw(Graphics graphics) {
             update(graphics);
             if (rectangle.HasValue) {
+                drawOutline(graphics, rectangle.Value.Location);
                 graphics.DrawString(toDraw, font, brush, rectangle.Value, format);
             } else {
+                drawOutline(graphics, position);
                 graphics.DrawString(toDraw, font, brush, position, format);
+            }
+        }
+
+        private void drawOutline(Graphics graphics, Point position) {
+            GraphicsPath p = new GraphicsPath();
+            if (toDraw != null) {
+                p.AddString(toDraw, font.FontFamily, 0, graphics.DpiY * font.SizeInPoints / 72, position, format);
+                graphics.DrawPath(new Pen(Color.Gray, 2.5f), p);
             }
         }
 
         public void Dispose() {
             brush.Dispose();
             format.Dispose();
-            font.Dispose();
         }
     }
 }

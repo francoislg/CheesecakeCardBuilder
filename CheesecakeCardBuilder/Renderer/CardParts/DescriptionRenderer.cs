@@ -22,7 +22,14 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             this.config = config;
             this.description = description;
             this.position = position;
-            this.font = new Font(config.descriptionFont, config.descriptionFontSize, FontStyle.Regular);
+            switch (description.type) {
+                case UnitDescriptionType.Keyword:
+                    this.font = config.keywordFont;
+                    break;
+                default:
+                    this.font = config.descriptionFont;
+                    break;
+            }
             this.format = new StringFormat();
             this.brush = FontService.getDefaultBrush();
         }
@@ -39,7 +46,6 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
 
         public void Dispose() {
             brush.Dispose();
-            font.Dispose();
         }
     }
 }

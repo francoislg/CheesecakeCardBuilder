@@ -17,7 +17,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         public HPStatRenderer(ProjectConfig config, UnitCard card)
             : base(config, DEFAULTPOSITION) {
             this.card = card;
-            this.font = new Font(config.topStatsFont, config.topStatsFontSize, FontStyle.Regular);
+            this.font = config.statsFont;
             this.brush = new SolidBrush(Color.Green);
         }
 

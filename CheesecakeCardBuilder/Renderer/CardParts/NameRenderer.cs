@@ -21,7 +21,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
         public NameRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            this.font = new Font(config.nameFont, config.nameFontSize, FontStyle.Regular);
+            this.font = config.nameFont;
             this.brush = FontService.getDefaultBrush();
             this.format = new StringFormat();
             this.format.Alignment = StringAlignment.Center;

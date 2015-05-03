@@ -72,7 +72,6 @@
     <Compile Include="Renderer\CardParts\CardPartRendererFactory.cs" />
     <Compile Include="Renderer\FontService.cs" />
     <Compile Include="Renderer\CardParts\Stat\StatRenderer.cs" />
-    <Compile Include="Unit\Keyword.cs" />
     <Compile Include="Unit\KeywordUnitDescription.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,6 +116,9 @@
       <DependentUpon>DefaultUnitDescription.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\vijaya.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -125,7 +127,7 @@
     <Folder Include="Unit\Renderer\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icon.ico" />
+    <EmbeddedResource Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="formatedIcon.ico" />
