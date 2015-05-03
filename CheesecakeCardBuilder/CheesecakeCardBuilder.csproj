@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\NameRenderer.cs" />
+    <Compile Include="Renderer\CardParts\NameRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\ResStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\HpStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\AccStatRenderer.cs" />
