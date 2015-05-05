@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace CheesecakeCardBuilder.Renderer {
     using Config;
     using Unit;
     using Renderer.CardParts;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Drawing;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Drawing.Imaging;
+    using System.Drawing.Text;
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
+
     public class UnitCardRenderer {
         private UnitCard unitCard;
         private Image template;
@@ -31,15 +34,15 @@ namespace CheesecakeCardBuilder.Renderer {
         }
 
         public Image generate() {
-            Image image = (Image)template.Clone();
-            using (Graphics graphics = Graphics.FromImage(image)) {
-                graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            Image card = new Bitmap(template);
+            using (Graphics graphics = Graphics.FromImage(card)) {
+                graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
                 graphics.InterpolationMode = InterpolationMode.High;
                 graphics.CompositingQuality = CompositingQuality.HighQuality;
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 renderers.ForEach(renderer => renderer.draw(graphics));
             }
-            return image;
+            return card;
         }
     }
 }

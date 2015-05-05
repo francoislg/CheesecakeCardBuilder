@@ -18,7 +18,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
             : base(config, DEFAULTPOSITION) {
             this.card = card;
             this.font = config.statsFont;
-            this.brush = FontService.getGradiantBrush(font, 30);
+            this.brush = FontService.getGradiantBrush(font, 13);
         }
 
         protected override void update(Graphics graphics) {
