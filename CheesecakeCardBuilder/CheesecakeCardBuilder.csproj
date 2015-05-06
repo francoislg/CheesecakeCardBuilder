@@ -56,7 +56,9 @@
   <ItemGroup>
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
+    <Compile Include="Renderer\Text\FuzzyTextRenderer.cs" />
     <Compile Include="Renderer\CardParts\NameRenderer.cs" />
+    <Compile Include="Renderer\Text\OutlineTextRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\ResStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\HpStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\AccStatRenderer.cs" />
@@ -70,9 +72,11 @@
     <Compile Include="Config\ConfigLoader.cs" />
     <Compile Include="Config\GlobalConfig.cs" />
     <Compile Include="Renderer\CardParts\CardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\CardTextRenderer.cs" />
     <Compile Include="Renderer\FontService.cs" />
-    <Compile Include="Renderer\CardParts\Stat\StatRenderer.cs" />
     <Compile Include="Renderer\FuzzyRenderer.cs" />
+    <Compile Include="Renderer\TextRenderer.cs" />
+    <Compile Include="Renderer\Text\TextEffectRenderer.cs" />
     <Compile Include="Unit\KeywordUnitDescription.cs">
       <SubType>UserControl</SubType>
     </Compile>

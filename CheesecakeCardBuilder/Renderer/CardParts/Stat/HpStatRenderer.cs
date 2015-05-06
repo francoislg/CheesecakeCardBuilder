@@ -10,19 +10,20 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using Config;
     using Unit;
 
-    public class HPStatRenderer : StatRenderer {
+    public class HPStatRenderer : CardPartRenderer {
         private static readonly Point DEFAULTPOSITION = new Point(125, 95);
+        private ProjectConfig config;
         private UnitCard card;
+        private CardTextRenderer renderer;
 
-        public HPStatRenderer(ProjectConfig config, UnitCard card)
-            : base(config, DEFAULTPOSITION) {
+        public HPStatRenderer(ProjectConfig config, UnitCard card) {
+            this.config = config;
             this.card = card;
-            this.font = config.statsFont;
-            this.brush = new SolidBrush(Color.Green);
+            this.renderer = new CardTextRenderer() { brush = new SolidBrush(Color.Green), font = config.statsFont, position = DEFAULTPOSITION };
         }
 
-        protected override void update(Graphics graphics) {
-            this.toDraw = card.hp;
+        public void draw(Graphics graphics) {
+            renderer.draw(graphics, card.hp);
         }
     }
 }
