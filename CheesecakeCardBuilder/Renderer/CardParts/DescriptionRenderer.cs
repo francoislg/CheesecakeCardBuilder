@@ -9,6 +9,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using System.Drawing;
     using Config;
     using Unit;
+    using CheesecakeCardBuilder.Renderer.Text;
 
     public class DescriptionRenderer {
         private ProjectConfig config;
@@ -17,6 +18,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
         private Font font;
         private StringFormat format;
         private Brush brush;
+        private TextEffectRenderer fuzzyTextRenderer;
 
         public DescriptionRenderer(ProjectConfig config, UnitDescription description, Rectangle position) {
             this.config = config;
@@ -32,6 +34,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             }
             this.format = new StringFormat();
             this.brush = FontService.getDefaultBrush();
+            this.fuzzyTextRenderer = new FuzzyBoxedTextRenderer(font, new Rectangle(position.X + 2, position.Y + 2, position.Width, position.Height), format);
         }
 
         public SizeF getSizeOfDescription(Graphics graphics) {
@@ -41,6 +44,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
 
         public void draw(Graphics graphics){
             String text = description.description;
+            fuzzyTextRenderer.draw(graphics, text);
             graphics.DrawString(text, font, brush, position);
         }
 

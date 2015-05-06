@@ -12,19 +12,23 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using Text;
 
     public class AccStatRenderer : CardPartRenderer {
-        private static readonly Point DEFAULTPOSITION = new Point(715, 960);
+        private static readonly Point POSITION = new Point(715, 975);
+        private static readonly Point ICONPOSITION = new Point(POSITION.X - 50, POSITION.Y - 135);
         private ProjectConfig config;
         private UnitCard card;
         private CardTextRenderer renderer;
+        private IconRenderer iconRenderer;
 
         public AccStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 13), font = config.statsFont, position = DEFAULTPOSITION };
+            this.iconRenderer = new IconRenderer(new Bitmap(config.iconAccFile), ICONPOSITION);
+            this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 10), font = config.statsFont, position = POSITION };
             this.renderer.addDefaultEffects();
         }
 
         public void draw(Graphics graphics) {
+            iconRenderer.draw(graphics);
             renderer.draw(graphics, card.acc);
         }
     }

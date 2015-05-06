@@ -11,19 +11,23 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using Unit;
 
     public class SpdStatRenderer : CardPartRenderer {
-        private static readonly Point DEFAULTPOSITION = new Point(715, 670);
+        private static readonly Point POSITION = new Point(715, 700);
+        private static readonly Point ICONPOSITION = new Point(POSITION.X - 60 - 10, POSITION.Y - 135);
         private ProjectConfig config;
         private UnitCard card;
         private CardTextRenderer renderer;
+        private IconRenderer iconRenderer;
 
         public SpdStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 0), font = config.statsFont, position = DEFAULTPOSITION };
+            this.iconRenderer = new IconRenderer(new Bitmap(config.iconSpdFile), ICONPOSITION);
+            this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 0), font = config.statsFont, position = POSITION };
             this.renderer.addDefaultEffects();
         }
 
         public void draw(Graphics graphics) {
+            iconRenderer.draw(graphics);
             renderer.draw(graphics, card.spd);
         }
     }

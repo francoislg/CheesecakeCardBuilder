@@ -57,6 +57,7 @@
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\IconRenderer.cs" />
+    <Compile Include="Renderer\Text\FuzzyBoxedTextRenderer.cs" />
     <Compile Include="Renderer\Text\FuzzyTextRenderer.cs" />
     <Compile Include="Renderer\CardParts\NameRenderer.cs" />
     <Compile Include="Renderer\Text\OutlineTextRenderer.cs" />

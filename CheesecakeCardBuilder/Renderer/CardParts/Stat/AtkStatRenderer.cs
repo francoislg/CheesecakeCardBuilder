@@ -12,23 +12,24 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using System.Drawing.Drawing2D;
 
     public class AtkStatRenderer : CardPartRenderer {
-        private static readonly Point DEFAULTPOSITION = new Point(70, 750);
+        private static readonly Point POSITION = new Point(70, 700);
+        private static readonly Point ICONPOSITION = new Point(POSITION.X - 60, POSITION.Y - 135);
         private ProjectConfig config;
         private UnitCard card;
         private CardTextRenderer renderer;
-        private Image icon;
+        private IconRenderer iconRenderer;
 
         public AtkStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            this.icon = new Bitmap(config.iconAtkFile);
-            this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 13), font = config.statsFont, position = DEFAULTPOSITION };
+            this.iconRenderer = new IconRenderer(new Bitmap(config.iconAtkFile), ICONPOSITION);
+            this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 0), font = config.statsFont, position = POSITION };
             this.renderer.addDefaultEffects();
         }
 
         public void draw(Graphics graphics) {
+            iconRenderer.draw(graphics);
             renderer.draw(graphics, card.atk);
-            graphics.DrawImage(icon, DEFAULTPOSITION.X - 60, DEFAULTPOSITION.Y - 150, icon.Size.Width, icon.Size.Height);
         }
     }
 }

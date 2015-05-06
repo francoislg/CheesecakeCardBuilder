@@ -35,6 +35,7 @@ namespace CheesecakeCardBuilder.Renderer {
             for (int thickness = width; thickness >= opaqueWidth; thickness--) {
                 Color colorWithAlpha = Color.FromArgb((int)alpha, color);
                 using (Pen pen = new Pen(colorWithAlpha, thickness)) {
+                    pen.LineJoin = LineJoin.Round;
                     pen.EndCap = LineCap.Round;
                     pen.StartCap = LineCap.Round;
                     graphics.DrawPath(pen, graphicsPath);
