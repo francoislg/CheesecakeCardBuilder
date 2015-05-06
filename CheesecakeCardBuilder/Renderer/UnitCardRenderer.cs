@@ -33,16 +33,22 @@ namespace CheesecakeCardBuilder.Renderer {
             renderers.Add(statRendererFactory.create(PartType.Description));
         }
 
-        public Image generate() {
-            Image card = new Bitmap(template);
-            using (Graphics graphics = Graphics.FromImage(card)) {
-                graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-                graphics.InterpolationMode = InterpolationMode.High;
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                renderers.ForEach(renderer => renderer.draw(graphics));
+        public async Task<Image> generate() {
+            return await Task.Run<Image>(() => drawOnCard(template));
+        }
+
+        private Image drawOnCard(Image template) {
+            lock (template) {
+                Image card = new Bitmap(template);
+                using (Graphics graphics = Graphics.FromImage(card)) {
+                    graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+                    graphics.InterpolationMode = InterpolationMode.High;
+                    graphics.CompositingQuality = CompositingQuality.HighQuality;
+                    graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    renderers.ForEach(renderer => renderer.draw(graphics));
+                }
+                return card;
             }
-            return card;
         }
     }
 }

@@ -66,8 +66,8 @@ namespace CheesecakeCardBuilder {
             updateCard();
         }
 
-        private void updateCard() {
-            previewPicture.Image = unitCardRenderer.generate();
+        private async void updateCard() {
+            previewPicture.Image = await unitCardRenderer.generate();
         }
 
         private void descriptionComboBox_SelectedIndexChanged(object sender, EventArgs e) {
