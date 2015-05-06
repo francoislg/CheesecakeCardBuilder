@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Renderer.CardParts {
     using Text;
-    public class CardTextRenderer : TextRenderer {
+    public class CardBoxedTextRenderer : TextRenderer {
         public Brush brush { get; set; }
         public Font font { get; set; }
         public StringFormat format { get; set; }
-        public Point position { get; set; }
+        public Rectangle box { get; set; }
 
         private List<TextEffectRenderer> effects = new List<TextEffectRenderer>();
 
-        public CardTextRenderer() {
+        public CardBoxedTextRenderer() {
             this.brush = FontService.getDefaultBrush();
             this.font = FontService.getDefaultFont();
             this.format = FontService.getDefaultFormat();
         }
 
         public void addDefaultEffects() {
-            effects.Add(new OutlineTextRenderer(font, position, format, new Pen(Color.Black, 2.5f)));
-            effects.Add(new FuzzyTextRenderer(font, new Point(position.X + 2, position.Y + 2), format));
+            effects.Add(new OutlineBoxedTextRenderer(font, box, format, new Pen(Color.Black, 2.5f)));
+            effects.Add(new FuzzyBoxedTextRenderer(font, new Rectangle(box.X + 2, box.Y + 2, box.Width, box.Height), format));
         }
 
         public void addEffect(TextEffectRenderer effectRenderer) {
@@ -33,7 +33,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
 
         public void draw(Graphics graphics, String text) {
             effects.ForEach(renderer => renderer.draw(graphics, text));
-            graphics.DrawString(text, font, brush, position, format);
+            graphics.DrawString(text, font, brush, box, format);
         }
     }
 }

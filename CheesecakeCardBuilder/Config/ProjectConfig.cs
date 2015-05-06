@@ -69,7 +69,7 @@ namespace CheesecakeCardBuilder.Config {
             topStatsFont = new Font("Segoe Script", pointsToEm(14f), FontStyle.Regular);
             statsFont = new Font("Vijaya", pointsToEm(20f), FontStyle.Regular);
             descriptionFont = new Font("Vijaya", pointsToEm(11f), FontStyle.Regular);
-            nameFont = new Font("Segoe Script", pointsToEm(10f), FontStyle.Regular);
+            nameFont = new Font("Vijaya", pointsToEm(13f), FontStyle.Regular);
             keywordFont = new Font("Segoe Script", pointsToEm(9.5f), FontStyle.Regular);
             setGlobalConfig(globalConfig);
         }
