@@ -15,11 +15,13 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         protected Font font = FontService.getDefaultFont();
         protected String toDraw;
         protected Pen outlinePen = new Pen(Color.Gray, 2.5f);
+        protected FuzzyRenderer fuzzyRenderer;
 
         public StatRenderer(ProjectConfig config, Point position) {
             this.config = config;
             this.position = position;
             this.toDraw = "0";
+            this.fuzzyRenderer = new FuzzyRenderer(Color.Black, 200, 20, 2);
         }
 
         public StatRenderer(ProjectConfig config, Rectangle rectangle) : this(config, rectangle.Location) {
@@ -43,39 +45,19 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
 
         private void drawOutline(Graphics graphics, Point position) {
             if (!String.IsNullOrEmpty(toDraw)) {
-                GraphicsPath p = new GraphicsPath();
-                p.AddString(toDraw, font.FontFamily, 0, graphics.DpiY * font.SizeInPoints / 72, position, format);
-                graphics.DrawPath(outlinePen, p);
-                p.Dispose();
+                GraphicsPath graphicsPath = new GraphicsPath();
+                graphicsPath.AddString(toDraw, font.FontFamily, 0, graphics.DpiY * font.SizeInPoints / 72, position, format);
+                graphics.DrawPath(outlinePen, graphicsPath);
+                graphicsPath.Dispose();
             }
         }
 
         private void drawShadow(Graphics graphics, Point originalPosition) {
             if (!String.IsNullOrEmpty(toDraw)) {
-                GraphicsPath p = new GraphicsPath();
-                p.AddString(toDraw, font.FontFamily, 0, graphics.DpiY * font.SizeInPoints / 72, new Point(position.X + 2, position.Y + 2), format);
-                DrawPathWithFuzzyLine(p, graphics, Color.Black, 200, 20, 2);
-                p.Dispose();
-            }
-        }
-
-        // THANKS http://csharphelper.com/blog/2011/10/draw-fuzzy-lines-to-make-shadows-in-c/
-        private void DrawPathWithFuzzyLine(GraphicsPath path, Graphics gr, Color base_color, int max_opacity, int width, int opaque_width) {
-            int num_steps = width - opaque_width + 1;
-            float delta = (float)max_opacity / num_steps / num_steps;
-            float alpha = delta;
-            for (int thickness = width; thickness >= opaque_width; thickness--) {
-                Color color = Color.FromArgb(
-                (int)alpha,
-                base_color.R,
-                base_color.G,
-                base_color.B);
-                using (Pen pen = new Pen(color, thickness)) {
-                    pen.EndCap = LineCap.Round;
-                    pen.StartCap = LineCap.Round;
-                    gr.DrawPath(pen, path);
-                }
-                alpha += delta;
+                GraphicsPath graphicsPath = new GraphicsPath();
+                graphicsPath.AddString(toDraw, font.FontFamily, 0, graphics.DpiY * font.SizeInPoints / 72, new Point(position.X + 2, position.Y + 2), format);
+                fuzzyRenderer.draw(graphics, graphicsPath);
+                graphicsPath.Dispose();
             }
         }
 
