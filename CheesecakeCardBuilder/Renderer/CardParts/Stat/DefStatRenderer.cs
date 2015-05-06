@@ -20,6 +20,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
             this.config = config;
             this.card = card;
             this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 13), font = config.statsFont, position = DEFAULTPOSITION };
+            this.renderer.addDefaultEffects();
         }
 
         public void draw(Graphics graphics) {

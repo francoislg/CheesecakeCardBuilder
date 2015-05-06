@@ -21,8 +21,9 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         public AtkStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            this.icon = new Bitmap(config.iconAtkPath);
+            this.icon = new Bitmap(config.iconAtkFile);
             this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 13), font = config.statsFont, position = DEFAULTPOSITION };
+            this.renderer.addDefaultEffects();
         }
 
         public void draw(Graphics graphics) {

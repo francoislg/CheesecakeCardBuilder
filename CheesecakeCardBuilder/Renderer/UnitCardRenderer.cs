@@ -21,7 +21,7 @@ namespace CheesecakeCardBuilder.Renderer {
 
         public UnitCardRenderer(UnitCard unitCard, ProjectConfig config) {
             this.unitCard = unitCard;
-            this.template = new Bitmap(config.unitPath);
+            this.template = new Bitmap(config.unitFile);
             CardPartRendererFactory statRendererFactory = new CardPartRendererFactory(config, unitCard);
             renderers.Add(statRendererFactory.create(PartType.Atk));
             renderers.Add(statRendererFactory.create(PartType.Def));

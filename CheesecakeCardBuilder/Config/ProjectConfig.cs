@@ -13,19 +13,50 @@ namespace CheesecakeCardBuilder.Config {
 
     public class ProjectConfig {
 
-        public String unitPath {
+        public String iconsPath {
             get {
-                return globalConfig.projectPath + "/cartes/unit.png";
+                return globalConfig.projectPath + "/icones";
             }
         }
-        public String iconAtkPath {
+        public String cardsPath {
             get {
-                return globalConfig.projectPath + "/icones/atk.png";
+                return globalConfig.projectPath + "/cartes";
             }
         }
-        public String iconDefPath {
+
+        public String unitFile {
             get {
-                return globalConfig.projectPath + "/icones/def.png";
+                return cardsPath + "/unit.png";
+            }
+        }
+        public String iconAtkFile {
+            get {
+                return iconsPath + "/atk.png";
+            }
+        }
+        public String iconDefFile {
+            get {
+                return iconsPath + "/def.png";
+            }
+        }
+        public String iconAccFile {
+            get {
+                return iconsPath + "/acc.png";
+            }
+        }
+        public String iconSpdFile {
+            get {
+                return iconsPath + "/spd.png";
+            }
+        }
+        public String iconHPFile {
+            get {
+                return iconsPath + "/hp.png";
+            }
+        }
+        public String iconResFile {
+            get {
+                return iconsPath + "/res.png";
             }
         }
 
