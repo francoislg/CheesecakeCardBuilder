@@ -42,9 +42,13 @@ namespace CheesecakeCardBuilder.Config {
         }
 
         private void writeFirstConfigInProjectFolder(String projectConfigPath) {
-            String fondCarte = getFilePath("Sélectionnez votre fond de carte principal", ".png");
             createSubFolders();
-            File.Copy(fondCarte, projectConfig.getUnitPath(), true);
+            String fondCarte = getFilePath("Sélectionnez votre fond de carte principal", ".png");
+            File.Copy(fondCarte, projectConfig.unitPath, true);
+            String iconeAtk = getFilePath("Sélectionnez votre icone d'attaque", ".png");
+            File.Copy(iconeAtk, projectConfig.iconAtkPath, true);
+            String iconeDef = getFilePath("Sélectionnez votre icone de défense", ".png");
+            File.Copy(iconeDef, projectConfig.iconDefPath, true);
             writeToFile<ProjectConfig>(projectConfigPath, projectConfig);
         }
 

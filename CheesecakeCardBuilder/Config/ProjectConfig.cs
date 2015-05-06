@@ -12,7 +12,22 @@ namespace CheesecakeCardBuilder.Config {
     using System.Runtime.InteropServices;
 
     public class ProjectConfig {
-        private readonly String carteUnit = "cartes/unit.png";
+
+        public String unitPath {
+            get {
+                return globalConfig.projectPath + "/cartes/unit.png";
+            }
+        }
+        public String iconAtkPath {
+            get {
+                return globalConfig.projectPath + "/icones/atk.png";
+            }
+        }
+        public String iconDefPath {
+            get {
+                return globalConfig.projectPath + "/icones/def.png";
+            }
+        }
 
         [JsonIgnore]
         private GlobalConfig globalConfig;
@@ -30,10 +45,6 @@ namespace CheesecakeCardBuilder.Config {
 
         public void setGlobalConfig(GlobalConfig globalConfig) {
             this.globalConfig = globalConfig;
-        }
-
-        public String getUnitPath() {
-            return globalConfig.projectPath + "/" + carteUnit;
         }
 
         private float pointsToEm(float points) {
