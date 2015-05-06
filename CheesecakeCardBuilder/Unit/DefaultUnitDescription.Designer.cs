@@ -61,9 +61,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(4, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Target";
+            this.label2.Text = "Action";
             // 
             // actionBox
             // 
@@ -78,9 +78,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(4, 56);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Action";
+            this.label3.Text = "Target";
             // 
             // DefaultUnitDescription
             // 

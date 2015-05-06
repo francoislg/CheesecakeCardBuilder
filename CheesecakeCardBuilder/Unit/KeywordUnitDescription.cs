@@ -24,9 +24,10 @@ namespace CheesecakeCardBuilder.Unit {
             }
         }
         public String name { get { return "Keyword"; } }
+        private Object selectedItem;
         public String description {
             get {
-                return keywordComboBox.SelectedItem.ToString();
+                return selectedItem.ToString();
             }
         }
 
@@ -35,6 +36,7 @@ namespace CheesecakeCardBuilder.Unit {
         }
 
         private void keywordComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            selectedItem = keywordComboBox.SelectedItem;
             update();
         }
 

@@ -63,7 +63,7 @@ namespace CheesecakeCardBuilder.Config {
         [JsonIgnore]
         private GlobalConfig globalConfig;
         public readonly Font topStatsFont, statsFont, descriptionFont, keywordFont, nameFont;
-        public readonly List<String> keywords = new List<String>() { "Long-Range", "Ranged", "Waller", "Flying" };
+        public readonly List<String> keywords = new List<string>();
 
         public ProjectConfig(GlobalConfig globalConfig) {
             topStatsFont = new Font("Segoe Script", pointsToEm(14f), FontStyle.Regular);
