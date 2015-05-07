@@ -60,6 +60,7 @@
     <Compile Include="Renderer\CardParts\ImageRenderer.cs" />
     <Compile Include="Renderer\CardParts\CardBoxedTextRenderer.cs" />
     <Compile Include="Renderer\BrushChangerByType.cs" />
+    <Compile Include="Renderer\CardParts\TypeRenderer.cs" />
     <Compile Include="Renderer\Text\FuzzyBoxedTextRenderer.cs" />
     <Compile Include="Renderer\Text\FuzzyTextRenderer.cs" />
     <Compile Include="Renderer\CardParts\NameRenderer.cs" />

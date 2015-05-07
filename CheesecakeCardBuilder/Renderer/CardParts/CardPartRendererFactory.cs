@@ -7,7 +7,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using CardParts.Stat;
 
     public enum PartType {
-        Atk, Def, Spd, Acc, Hp, Res, Name, Description, Background
+        Atk, Def, Spd, Acc, Hp, Res, Name, Description, Background, Type
     }
 
     public class CardPartRendererFactory {
@@ -39,6 +39,8 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
                     return new DescriptionsRenderer(config, unitCard);
                 case PartType.Background:
                     return new BackgroundRenderer(config, unitCard);
+                case PartType.Type:
+                    return new TypeRenderer(config, unitCard);
                 default:
                     throw new NotSupportedException();
             }
