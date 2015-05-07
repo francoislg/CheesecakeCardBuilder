@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Unit {
     public enum UnitType {
-        Standard, Advanced, Expert, Master
+        Standard, Advanced, Expert, Elite, Master
     }
 }

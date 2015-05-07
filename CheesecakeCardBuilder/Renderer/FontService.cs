@@ -1,6 +1,7 @@
 ﻿
 namespace CheesecakeCardBuilder.Renderer {
     using CheesecakeCardBuilder.Unit;
+    using Renderer.Text;
     using System;
     using System.Drawing;
     using System.Drawing.Drawing2D;
@@ -24,6 +25,16 @@ namespace CheesecakeCardBuilder.Renderer {
             LinearGradientBrush linearGradient = new LinearGradientBrush(new Rectangle(0, offset, 20, (int)font.GetHeight() / 2), Color.White, Color.White, 90f);
             linearGradient.InterpolationColors = getInterpolationGradientColors(color);
             return linearGradient;
+        }
+
+        public static BrushChangerByType getDefaultGradientBrushChangerByType(Font font, UnitCard card, TextRenderer renderer) {
+            BrushChangerByType brushChanger = new BrushChangerByType(card, renderer);
+            brushChanger.Add(UnitType.Standard, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 180, 180, 180)));
+            brushChanger.Add(UnitType.Advanced, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 53, 255, 255)));
+            brushChanger.Add(UnitType.Expert, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 154, 254, 155)));
+            brushChanger.Add(UnitType.Elite, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 252, 153, 49)));
+            brushChanger.Add(UnitType.Master, FontService.getGradiantBrush(font, 0, Color.Red));
+            return brushChanger;
         }
 
         public static ColorBlend getInterpolationGradientColors(Color color) {

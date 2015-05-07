@@ -55,13 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Renderer\CardParts\BackgroundRenderer.cs" />
-    <Compile Include="Renderer\CardParts\CardBoxedTextByTypeGradientRenderer.cs" />
-    <Compile Include="Renderer\CardParts\CardTextByTypeRenderer.cs" />
-    <Compile Include="Renderer\CardParts\CardTextByTypeGradientRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
     <Compile Include="Renderer\CardParts\ImageRenderer.cs" />
     <Compile Include="Renderer\CardParts\CardBoxedTextRenderer.cs" />
+    <Compile Include="Renderer\BrushChangerByType.cs" />
     <Compile Include="Renderer\Text\FuzzyBoxedTextRenderer.cs" />
     <Compile Include="Renderer\Text\FuzzyTextRenderer.cs" />
     <Compile Include="Renderer\CardParts\NameRenderer.cs" />
@@ -85,6 +83,7 @@
     <Compile Include="Renderer\FuzzyRenderer.cs" />
     <Compile Include="Renderer\TextRenderer.cs" />
     <Compile Include="Renderer\Text\TextEffectRenderer.cs" />
+    <Compile Include="Renderer\ByTypeHandler.cs" />
     <Compile Include="Unit\KeywordUnitDescription.cs">
       <SubType>UserControl</SubType>
     </Compile>

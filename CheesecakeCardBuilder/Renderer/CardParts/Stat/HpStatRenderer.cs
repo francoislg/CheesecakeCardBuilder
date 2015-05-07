@@ -17,16 +17,22 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private UnitCard card;
         private CardTextRenderer renderer;
         private ImageRenderer iconRenderer;
+        private BrushChangerByType brushChanger;
 
         public HPStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
+            Font font = config.topStatsFont;
+            Brush defaultBrush = new SolidBrush(Color.FromArgb(255, 99, 255, 99));
             this.iconRenderer = new ImageRenderer(new Bitmap(config.iconHPFile), ICONPOSITION);
-            this.renderer = new CardTextRenderer() { brush = new SolidBrush(Color.FromArgb(255, 99, 255, 99)), font = config.topStatsFont, position = POSITION };
+            this.renderer = new CardTextRenderer() { brush = defaultBrush, font = font, position = POSITION };
             this.renderer.addDefaultEffects();
+            this.brushChanger = new BrushChangerByType(card, renderer, defaultBrush);
+            this.brushChanger.Add(UnitType.Master, new SolidBrush(Color.Red));
         }
 
         public void draw(Graphics graphics) {
+            brushChanger.update();
             iconRenderer.draw(graphics);
             renderer.draw(graphics, card.hp);
         }

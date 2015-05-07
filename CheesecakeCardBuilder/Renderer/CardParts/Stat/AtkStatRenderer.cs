@@ -18,16 +18,20 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private UnitCard card;
         private CardTextRenderer renderer;
         private ImageRenderer iconRenderer;
+        private BrushChangerByType brushChanger;
 
         public AtkStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
+            Font font = config.statsFont;
             this.iconRenderer = new ImageRenderer(new Bitmap(config.iconAtkFile), ICONPOSITION);
-            this.renderer = new CardTextByTypeGradientRenderer(card) { brush = FontService.getGradiantBrush(config.statsFont, 0), font = config.statsFont, position = POSITION };
+            this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 0), font = font, position = POSITION };
             this.renderer.addDefaultEffects();
+            this.brushChanger = FontService.getDefaultGradientBrushChangerByType(font, card, renderer);
         }
 
         public void draw(Graphics graphics) {
+            brushChanger.update();
             iconRenderer.draw(graphics);
             renderer.draw(graphics, card.atk);
         }

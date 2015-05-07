@@ -22,6 +22,10 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             this.format = FontService.getDefaultFormat();
         }
 
+        public void changeBrush(Brush brush) {
+            this.brush = brush;
+        }
+
         public void addDefaultEffects() {
             effects.Add(new OutlineTextRenderer(font, position, format, new Pen(Color.Black, 2.5f)));
             effects.Add(new FuzzyTextRenderer(font, new Point(position.X + 2, position.Y + 2), format));
