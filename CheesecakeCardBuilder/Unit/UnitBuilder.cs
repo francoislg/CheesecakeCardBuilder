@@ -18,7 +18,7 @@ namespace CheesecakeCardBuilder {
         private class TypeDescriptions {
             public UserControl userControl {
                 get {
-                    return (UserControl)unitDescription;
+                    return (UserControl)unitDescriptionControl;
                 }
             }
             public String text {
@@ -26,14 +26,19 @@ namespace CheesecakeCardBuilder {
                     return unitDescription.name;
                 }
             }
-            public UnitDescription unitDescription { get; set;}
+            public UnitDescription unitDescription {
+                get {
+                    return unitDescriptionControl.description;
+                }
+            }
+            public UnitDescriptionControl unitDescriptionControl { get; set; }
         }
 
         private UnitCard card;
         private UnitCardRenderer unitCardRenderer;
         private ProjectConfig config;
-        private UnitDescription lastUnitDescription;
-        private UnitDescription lastUnitDescription2;
+        private TypeDescriptions lastUnitDescription;
+        private TypeDescriptions lastUnitDescription2;
         private CardRepository repository;
 
         public UnitBuilder(ProjectConfig config) {
@@ -49,10 +54,10 @@ namespace CheesecakeCardBuilder {
         }
 
         private void addDescriptions() {
-            descriptionComboBox.Items.Add(new TypeDescriptions() { unitDescription = new DefaultUnitDescription(this) });
-            descriptionComboBox2.Items.Add(new TypeDescriptions() { unitDescription = new DefaultUnitDescription(this) });
-            descriptionComboBox.Items.Add(new TypeDescriptions() { unitDescription = new KeywordUnitDescription(config, this) });
-            descriptionComboBox2.Items.Add(new TypeDescriptions() { unitDescription = new KeywordUnitDescription(config, this) });
+            descriptionComboBox.Items.Add(new TypeDescriptions() { unitDescriptionControl = new DefaultUnitDescriptionControl(this) });
+            descriptionComboBox2.Items.Add(new TypeDescriptions() { unitDescriptionControl = new DefaultUnitDescriptionControl(this) });
+            descriptionComboBox.Items.Add(new TypeDescriptions() { unitDescriptionControl = new KeywordUnitDescriptionControl(config, this) });
+            descriptionComboBox2.Items.Add(new TypeDescriptions() { unitDescriptionControl = new KeywordUnitDescriptionControl(config, this) });
         }
 
         public void updateCardDescription() {
@@ -76,25 +81,25 @@ namespace CheesecakeCardBuilder {
 
         private void descriptionComboBox_SelectedIndexChanged(object sender, EventArgs e) {
             if (lastUnitDescription != null) {
-                card.descriptions.Remove(lastUnitDescription);
+                card.descriptions.Remove(lastUnitDescription.unitDescription);
             }
             TypeDescriptions typeDescription = (TypeDescriptions)descriptionComboBox.SelectedItem;
             descriptionPanel.Controls.Clear();
             descriptionPanel.Controls.Add(typeDescription.userControl);
             card.descriptions.Add(typeDescription.unitDescription);
-            lastUnitDescription = typeDescription.unitDescription;
+            lastUnitDescription = typeDescription;
             updateCard();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             if (lastUnitDescription2 != null) {
-                card.descriptions.Remove(lastUnitDescription2);
+                card.descriptions.Remove(lastUnitDescription2.unitDescription);
             }
             TypeDescriptions typeDescription = (TypeDescriptions)descriptionComboBox2.SelectedItem;
             descriptionPanel2.Controls.Clear();
             descriptionPanel2.Controls.Add(typeDescription.userControl);
             card.descriptions.Add(typeDescription.unitDescription);
-            lastUnitDescription2 = typeDescription.unitDescription;
+            lastUnitDescription2 = typeDescription;
             updateCard();
         }
 
@@ -138,16 +143,24 @@ namespace CheesecakeCardBuilder {
 
         private void loadButton_Click(object sender, EventArgs e) {
             CardLoader cardLoader = new CardLoader(repository);
-            if (cardLoader.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                this.card = cardLoader.selectedCard;
-                this.unitCardRenderer = new UnitCardRenderer(card, config);
-                nameTextBox.Text = card.name;
-                accTextBox.Text = card.acc;
-                atkTextBox.Text = card.atk;
-                defTextBox.Text = card.def;
-                spdTextbox.Text = card.spd;
+            cardLoader.ShowDialog();
+            if (cardLoader.hasSelected) {
+                UnitCard newCard = cardLoader.selectedCard;
+                this.unitCardRenderer = new UnitCardRenderer(newCard, config);
+                nameTextBox.Text = newCard.name;
+                resTextbox.Text = newCard.res;
+                accTextBox.Text = newCard.acc;
+                atkTextBox.Text = newCard.atk;
+                defTextBox.Text = newCard.def;
+                spdTextbox.Text = newCard.spd;
+                typeComboBox.SelectedItem = newCard.unitType;
+                if (newCard.descriptions.Count >= 1) {
+                    descriptionComboBox.SelectedValue = newCard.descriptions[0].type;
+                    lastUnitDescription.unitDescription.description = newCard.descriptions[0].description;
+                }
+                this.card = newCard;
                 updateCard();
-            };
+            }
         }
     }
 }

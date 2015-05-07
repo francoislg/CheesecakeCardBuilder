@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CheesecakeCardBuilder.Unit {
-    public interface UnitDescription {
-        UnitDescriptionType type { get; }
+    public interface UnitDescriptionControl {
         String name { get; }
-        String[] description { get; set; }
+        UnitDescription description { get; }
+        void addUpdater(CardUpdater updater);
     }
 }

@@ -14,6 +14,12 @@ namespace CheesecakeCardBuilder.Unit {
 
     public partial class CardLoader : Form {
         private CardRepository repository;
+        private bool flagSelected = false;
+        public bool hasSelected {
+            get {
+                return flagSelected;
+            }
+        }
         public UnitCard selectedCard {
             get{
                 return (UnitCard)cardsListBox.SelectedItem;
@@ -32,6 +38,7 @@ namespace CheesecakeCardBuilder.Unit {
         }
 
         private void cardsListBox_MouseDoubleClick(object sender, MouseEventArgs e) {
+            flagSelected = true;
             this.Close();
         }
     }

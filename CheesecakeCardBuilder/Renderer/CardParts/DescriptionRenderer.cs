@@ -34,16 +34,16 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             }
             this.format = new StringFormat();
             this.brush = FontService.getDefaultBrush();
-            this.fuzzyTextRenderer = new FuzzyBoxedTextRenderer(font, new Rectangle(position.X + 2, position.Y + 2, position.Width, position.Height), format);
+            this.fuzzyTextRenderer = new FuzzyBoxedTextRenderer(font, new Rectangle(position.X + 2, position.Y + 2, position.Width - 2, position.Height - 2), format);
         }
 
         public SizeF getSizeOfDescription(Graphics graphics) {
-            String text = description.description;
+            String text = String.Join(" ", description.description);
             return graphics.MeasureString(text, font, position.Size, format);
         }
 
         public void draw(Graphics graphics){
-            String text = description.description;
+            String text = String.Join(" ", description.description);
             fuzzyTextRenderer.draw(graphics, text);
             graphics.DrawString(text, font, brush, position);
         }

@@ -1,39 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CheesecakeCardBuilder.Unit {
-    public partial class DefaultUnitDescription : UserControl, UnitDescription {
-        public List<CardUpdater> cardUpdaters = new List<CardUpdater>();
-        public DefaultUnitDescription(CardUpdater updater) {
-            addUpdater(updater);
-            InitializeComponent();
-        }
-
+    public class DefaultUnitDescription : UnitDescription {
         public UnitDescriptionType type {
             get {
                 return UnitDescriptionType.Default;
             }
         }
+        private String when;
+        private String target;
+        private String action;
+
         public String name { get { return "Default"; } }
-        public String description {
+        public String[] description {
             get {
-                return whenBox.Text + " " + targetBox.Text + " " + actionBox.Text;
+                return new String[] { when + ",", target, action };
             }
-        }
-
-        public void addUpdater(CardUpdater updater) {
-            cardUpdaters.Add(updater);
-        }
-
-        private void actionBox_KeyUp(object sender, KeyEventArgs e) {
-            cardUpdaters.ForEach(updater => updater.updateCardDescription());
+            set {
+                when = value[0];
+                target = value[1];
+                action = value[2];
+            }
         }
     }
 }

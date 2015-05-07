@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Unit {
+    using LiteDB;
     using System.Drawing;
     public class UnitCard {
+        [BsonId]
         public String name { get; set; }
         public String hp { get; set; }
         public String res { get; set; }

@@ -66,6 +66,7 @@
     <Compile Include="Renderer\CardParts\CardBoxedTextRenderer.cs" />
     <Compile Include="Renderer\BrushChangerByType.cs" />
     <Compile Include="Renderer\CardParts\TypeRenderer.cs" />
+    <Compile Include="Unit\DefaultUnitDescription.cs" />
     <Compile Include="Renderer\Text\FuzzyBoxedTextRenderer.cs" />
     <Compile Include="Renderer\Text\FuzzyTextRenderer.cs" />
     <Compile Include="Renderer\CardParts\NameRenderer.cs" />
@@ -95,11 +96,12 @@
     <Compile Include="Unit\CardLoader.Designer.cs">
       <DependentUpon>CardLoader.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unit\KeywordUnitDescription.cs">
+    <Compile Include="Unit\KeywordUnitDescription.cs" />
+    <Compile Include="Unit\KeywordUnitDescriptionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Unit\KeywordUnitDescription.Designer.cs">
-      <DependentUpon>KeywordUnitDescription.cs</DependentUpon>
+    <Compile Include="Unit\KeywordUnitDescriptionControl.Designer.cs">
+      <DependentUpon>KeywordUnitDescriptionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Unit\UnitBuilder.cs">
       <SubType>Form</SubType>
@@ -109,15 +111,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Unit\DefaultUnitDescription.cs">
+    <Compile Include="Unit\DefaultUnitDescriptionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Unit\DefaultUnitDescription.Designer.cs">
-      <DependentUpon>DefaultUnitDescription.cs</DependentUpon>
+    <Compile Include="Unit\DefaultUnitDescriptionControl.Designer.cs">
+      <DependentUpon>DefaultUnitDescriptionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Unit\UnitCard.cs" />
     <Compile Include="Renderer\UnitCardRenderer.cs" />
     <Compile Include="Unit\UnitDescription.cs" />
+    <Compile Include="Unit\UnitDescriptionControl.cs" />
     <Compile Include="Unit\UnitDescriptionTypes.cs" />
     <Compile Include="Unit\UnitType.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -133,14 +136,14 @@
     <EmbeddedResource Include="Unit\CardLoader.resx">
       <DependentUpon>CardLoader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Unit\KeywordUnitDescription.resx">
-      <DependentUpon>KeywordUnitDescription.cs</DependentUpon>
+    <EmbeddedResource Include="Unit\KeywordUnitDescriptionControl.resx">
+      <DependentUpon>KeywordUnitDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Unit\UnitBuilder.resx">
       <DependentUpon>UnitBuilder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Unit\DefaultUnitDescription.resx">
-      <DependentUpon>DefaultUnitDescription.cs</DependentUpon>
+    <EmbeddedResource Include="Unit\DefaultUnitDescriptionControl.resx">
+      <DependentUpon>DefaultUnitDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <EmbeddedResource Include="Resources\vijaya.ttf">
