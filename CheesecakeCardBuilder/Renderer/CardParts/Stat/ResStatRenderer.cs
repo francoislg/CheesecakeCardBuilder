@@ -22,7 +22,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
             this.config = config;
             this.card = card;
             this.iconRenderer = new ImageRenderer(new Bitmap(config.iconResFile), ICONPOSITION);
-            this.renderer = new CardTextRenderer() { brush = new SolidBrush(Color.Black), font = config.topStatsFont, position = POSITION };
+            this.renderer = new CardTextByTypeRenderer(card) { brush = new SolidBrush(Color.Black), font = config.topStatsFont, position = POSITION };
             this.renderer.addDefaultEffects();
         }
 

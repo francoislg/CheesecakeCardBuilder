@@ -104,5 +104,11 @@ namespace CheesecakeCardBuilder {
             typeComboBox.SelectedItem = unit.type;
             // Insert other here
         }
+
+        private void exportButton_Click(object sender, EventArgs e) {
+            if (exportSaveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                previewPicture.Image.Save(exportSaveFileDialog.FileName);
+            };
+        }
     }
 }

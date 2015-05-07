@@ -31,7 +31,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             effects.Add(effectRenderer);
         }
 
-        public void draw(Graphics graphics, String text) {
+        public virtual void draw(Graphics graphics, String text) {
             effects.ForEach(renderer => renderer.draw(graphics, text));
             graphics.DrawString(text, font, brush, box, format);
         }

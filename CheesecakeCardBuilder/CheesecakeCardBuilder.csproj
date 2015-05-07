@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Renderer\CardParts\BackgroundRenderer.cs" />
+    <Compile Include="Renderer\CardParts\CardBoxedTextByTypeGradientRenderer.cs" />
+    <Compile Include="Renderer\CardParts\CardTextByTypeRenderer.cs" />
+    <Compile Include="Renderer\CardParts\CardTextByTypeGradientRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
     <Compile Include="Renderer\CardParts\ImageRenderer.cs" />

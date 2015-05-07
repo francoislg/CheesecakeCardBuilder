@@ -45,6 +45,8 @@
             this.descriptionComboBox2 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.typeComboBox = new System.Windows.Forms.ComboBox();
+            this.exportButton = new System.Windows.Forms.Button();
+            this.exportSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -231,11 +233,22 @@
             this.typeComboBox.TabIndex = 19;
             this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
             // 
+            // exportButton
+            // 
+            this.exportButton.Location = new System.Drawing.Point(337, 350);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(75, 23);
+            this.exportButton.TabIndex = 20;
+            this.exportButton.Text = "Export";
+            this.exportButton.UseVisualStyleBackColor = true;
+            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
+            // 
             // UnitBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(703, 385);
+            this.Controls.Add(this.exportButton);
             this.Controls.Add(this.typeComboBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.descriptionPanel2);
@@ -290,6 +303,8 @@
         private System.Windows.Forms.ComboBox descriptionComboBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox typeComboBox;
+        private System.Windows.Forms.Button exportButton;
+        private System.Windows.Forms.SaveFileDialog exportSaveFileDialog;
     }
 }
 
