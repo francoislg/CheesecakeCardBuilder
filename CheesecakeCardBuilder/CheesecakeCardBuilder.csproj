@@ -38,6 +38,9 @@
     <ApplicationIcon>formatedIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiteDB">
+      <HintPath>C:\Users\Francois\Downloads\LiteDB.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -54,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectManager\UnitCardRepository.cs" />
+    <Compile Include="ProjectManager\LiteDBUnitRepository.cs" />
     <Compile Include="Renderer\CardParts\BackgroundRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
@@ -75,7 +80,6 @@
     <Compile Include="Renderer\CardParts\CardPartRenderer.cs" />
     <Compile Include="CardUpdater.cs" />
     <Compile Include="Config\ProjectConfig.cs" />
-    <Compile Include="Card.cs" />
     <Compile Include="Config\ConfigLoader.cs" />
     <Compile Include="Config\GlobalConfig.cs" />
     <Compile Include="Renderer\CardParts\CardPartRendererFactory.cs" />
@@ -85,6 +89,12 @@
     <Compile Include="Renderer\TextRenderer.cs" />
     <Compile Include="Renderer\Text\TextEffectRenderer.cs" />
     <Compile Include="Renderer\ByTypeHandler.cs" />
+    <Compile Include="Unit\CardLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Unit\CardLoader.Designer.cs">
+      <DependentUpon>CardLoader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Unit\KeywordUnitDescription.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +130,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Unit\CardLoader.resx">
+      <DependentUpon>CardLoader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Unit\KeywordUnitDescription.resx">
       <DependentUpon>KeywordUnitDescription.cs</DependentUpon>
     </EmbeddedResource>

@@ -14,13 +14,13 @@ namespace CheesecakeCardBuilder.Unit {
         public String def { get; set; }
         public String spd { get; set; }
         public String acc { get; set; }
-        public UnitType type { get; set; }
-        public Image art { get; set; }
+        public UnitType unitType { get; set; }
+        public String artFile { get; set; }
         public List<UnitDescription> descriptions { get; set; }
 
         public UnitCard() {
             descriptions = new List<UnitDescription>();
-            art = new Bitmap(396, 276);
+            artFile = "template.png";
         }
     }
 }

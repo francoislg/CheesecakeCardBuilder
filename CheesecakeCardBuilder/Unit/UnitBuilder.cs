@@ -12,6 +12,7 @@ namespace CheesecakeCardBuilder {
     using Config;
     using Unit;
     using Renderer;
+    using Repository;
 
     public partial class UnitBuilder : Form, CardUpdater {
         private class TypeDescriptions {
@@ -33,11 +34,13 @@ namespace CheesecakeCardBuilder {
         private ProjectConfig config;
         private UnitDescription lastUnitDescription;
         private UnitDescription lastUnitDescription2;
+        private CardRepository repository;
 
         public UnitBuilder(ProjectConfig config) {
             this.config = config;
             this.card = new UnitCard();
             this.unitCardRenderer = new UnitCardRenderer(card, config);
+            this.repository = new LiteDBRepository(config);
             InitializeComponent();
             descriptionComboBox.DisplayMember = "text";
             descriptionComboBox2.DisplayMember = "text";
@@ -96,12 +99,12 @@ namespace CheesecakeCardBuilder {
         }
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-            card.type = (UnitType)typeComboBox.SelectedItem;
+            card.unitType = (UnitType)typeComboBox.SelectedItem;
             updateCard();
         }
 
         public void loadCard(UnitCard unit) {
-            typeComboBox.SelectedItem = unit.type;
+            typeComboBox.SelectedItem = unit.unitType;
             // Insert other here
         }
 
@@ -113,11 +116,38 @@ namespace CheesecakeCardBuilder {
         }
 
         private void artButton_Click(object sender, EventArgs e) {
+            artSelectionOpenFileDialog.InitialDirectory = config.cardsArtPath;
             if (artSelectionOpenFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                String filename = artSelectionOpenFileDialog.FileName;
-                card.art = new Bitmap(filename);
-                updateCard();
+                if (artSelectionOpenFileDialog.FileName.Contains(config.cardsArtPath)) {
+                    String filename = artSelectionOpenFileDialog.SafeFileName;
+                    card.artFile = filename;
+                    updateCard();
+                } else {
+                    MessageBox.Show("Vous devez sélectionner un fichier dans votre répertoire d'art (" + config.cardsArtPath + ")");
+                }
             }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e) {
+            if (String.IsNullOrEmpty(nameTextBox.Text)) {
+                MessageBox.Show("Vous devez spécifier un nom pour votre carte");
+            } else {
+                repository.save(card);
+            }
+        }
+
+        private void loadButton_Click(object sender, EventArgs e) {
+            CardLoader cardLoader = new CardLoader(repository);
+            if (cardLoader.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                this.card = cardLoader.selectedCard;
+                this.unitCardRenderer = new UnitCardRenderer(card, config);
+                nameTextBox.Text = card.name;
+                accTextBox.Text = card.acc;
+                atkTextBox.Text = card.atk;
+                defTextBox.Text = card.def;
+                spdTextbox.Text = card.spd;
+                updateCard();
+            };
         }
     }
 }

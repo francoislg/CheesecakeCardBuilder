@@ -49,6 +49,8 @@
             this.exportSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.artButton = new System.Windows.Forms.Button();
             this.artSelectionOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -265,7 +267,27 @@
             // artSelectionOpenFileDialog
             // 
             this.artSelectionOpenFileDialog.Filter = "396x276 image|*.png";
-            this.artSelectionOpenFileDialog.Title = "Choississez une image pour votre carte";
+            this.artSelectionOpenFileDialog.Title = "Choisissez une image pour votre carte";
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(256, 351);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 20;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // loadButton
+            // 
+            this.loadButton.Location = new System.Drawing.Point(175, 351);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(75, 23);
+            this.loadButton.TabIndex = 20;
+            this.loadButton.Text = "Load";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // UnitBuilder
             // 
@@ -273,6 +295,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(703, 385);
             this.Controls.Add(this.artButton);
+            this.Controls.Add(this.loadButton);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.typeComboBox);
             this.Controls.Add(this.label8);
@@ -332,6 +356,8 @@
         private System.Windows.Forms.SaveFileDialog exportSaveFileDialog;
         private System.Windows.Forms.Button artButton;
         private System.Windows.Forms.OpenFileDialog artSelectionOpenFileDialog;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button loadButton;
     }
 }
 

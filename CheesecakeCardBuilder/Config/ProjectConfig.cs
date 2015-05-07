@@ -15,73 +15,83 @@ namespace CheesecakeCardBuilder.Config {
 
         public String iconsPath {
             get {
-                return globalConfig.projectPath + "/icones";
+                return globalConfig.projectPath + "\\icones";
             }
         }
         public String cardsPath {
             get {
-                return globalConfig.projectPath + "/cartes";
+                return globalConfig.projectPath + "\\cartes";
+            }
+        }
+        public String cardsArtPath {
+            get {
+                return cardsPath + "\\art";
             }
         }
 
         public String unitFile {
             get {
-                return cardsPath + "/unit.png";
+                return cardsPath + "\\unit.png";
             }
         }
         public String iconAtkFile {
             get {
-                return iconsPath + "/atk.png";
+                return iconsPath + "\\atk.png";
             }
         }
         public String iconDefFile {
             get {
-                return iconsPath + "/def.png";
+                return iconsPath + "\\def.png";
             }
         }
         public String iconAccFile {
             get {
-                return iconsPath + "/acc.png";
+                return iconsPath + "\\acc.png";
             }
         }
         public String iconSpdFile {
             get {
-                return iconsPath + "/spd.png";
+                return iconsPath + "\\spd.png";
             }
         }
         public String iconHPFile {
             get {
-                return iconsPath + "/hp.png";
+                return iconsPath + "\\hp.png";
             }
         }
         public String iconResFile {
             get {
-                return iconsPath + "/res.png";
+                return iconsPath + "\\res.png";
             }
         }
         public String background1File {
             get {
-                return cardsPath + "/bg1.png";
+                return cardsPath + "\\bg1.png";
             }
         }
         public String background2File {
             get {
-                return cardsPath + "/bg2.png";
+                return cardsPath + "\\bg2.png";
             }
         }
         public String background3File {
             get {
-                return cardsPath + "/bg3.png";
+                return cardsPath + "\\bg3.png";
             }
         }
         public String background4File {
             get {
-                return cardsPath + "/bg4.png";
+                return cardsPath + "\\bg4.png";
             }
         }
         public String background5File {
             get {
-                return cardsPath + "/bg5.png";
+                return cardsPath + "\\bg5.png";
+            }
+        }
+        public String databaseFile {
+            get {
+                return globalConfig.projectPath + "\\database.db";
             }
         }
 

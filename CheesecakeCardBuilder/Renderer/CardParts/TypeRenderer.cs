@@ -33,7 +33,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
 
         public void draw(Graphics graphics) {
             brushChanger.update();
-            renderer.draw(graphics, card.type.ToString());
+            renderer.draw(graphics, card.unitType.ToString());
         }
     }
 }

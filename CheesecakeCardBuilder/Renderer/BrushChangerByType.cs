@@ -25,7 +25,7 @@ namespace CheesecakeCardBuilder.Renderer {
         }
 
         public void update() {
-            renderer.changeBrush(Get(card.type));
+            renderer.changeBrush(Get(card.unitType));
         }
     }
 }
