@@ -23,6 +23,7 @@ namespace CheesecakeCardBuilder.Renderer {
             this.unitCard = unitCard;
             this.template = new Bitmap(config.unitFile);
             CardPartRendererFactory statRendererFactory = new CardPartRendererFactory(config, unitCard);
+            renderers.Add(statRendererFactory.create(PartType.Background));
             renderers.Add(statRendererFactory.create(PartType.Atk));
             renderers.Add(statRendererFactory.create(PartType.Def));
             renderers.Add(statRendererFactory.create(PartType.Spd));
@@ -39,13 +40,14 @@ namespace CheesecakeCardBuilder.Renderer {
 
         private Image drawOnCard(Image template) {
             lock (template) {
-                Image card = new Bitmap(template);
+                Image card = new Bitmap(template.Width, template.Height, template.PixelFormat);
                 using (Graphics graphics = Graphics.FromImage(card)) {
                     graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
                     graphics.InterpolationMode = InterpolationMode.High;
                     graphics.CompositingQuality = CompositingQuality.HighQuality;
                     graphics.SmoothingMode = SmoothingMode.AntiAlias;
                     renderers.ForEach(renderer => renderer.draw(graphics));
+                    graphics.DrawImage(template, 0, 0, template.Width, template.Height);
                 }
                 return card;
             }

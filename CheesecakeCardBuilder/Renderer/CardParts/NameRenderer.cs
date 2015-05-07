@@ -31,7 +31,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
         }
 
         public void draw(Graphics graphics) {
-            renderer.draw(graphics, card.name);
+            renderer.draw(graphics, "Unit - " + card.name);
         }
     }
 }

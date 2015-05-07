@@ -16,13 +16,13 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private ProjectConfig config;
         private UnitCard card;
         private CardTextRenderer renderer;
-        private IconRenderer iconRenderer;
+        private ImageRenderer iconRenderer;
 
         public ResStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            this.iconRenderer = new IconRenderer(new Bitmap(config.iconResFile), ICONPOSITION);
-            this.renderer = new CardTextRenderer() { brush = new SolidBrush(Color.FromArgb(255, 99, 255, 99)), font = config.topStatsFont, position = POSITION };
+            this.iconRenderer = new ImageRenderer(new Bitmap(config.iconResFile), ICONPOSITION);
+            this.renderer = new CardTextRenderer() { brush = new SolidBrush(Color.Black), font = config.topStatsFont, position = POSITION };
             this.renderer.addDefaultEffects();
         }
 

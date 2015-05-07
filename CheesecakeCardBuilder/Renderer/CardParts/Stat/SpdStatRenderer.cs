@@ -16,12 +16,12 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private ProjectConfig config;
         private UnitCard card;
         private CardTextRenderer renderer;
-        private IconRenderer iconRenderer;
+        private ImageRenderer iconRenderer;
 
         public SpdStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            this.iconRenderer = new IconRenderer(new Bitmap(config.iconSpdFile), ICONPOSITION);
+            this.iconRenderer = new ImageRenderer(new Bitmap(config.iconSpdFile), ICONPOSITION);
             this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 0), font = config.statsFont, position = POSITION };
             this.renderer.addDefaultEffects();
         }

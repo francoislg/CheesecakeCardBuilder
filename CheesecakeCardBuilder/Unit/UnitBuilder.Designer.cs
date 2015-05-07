@@ -43,6 +43,8 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.descriptionPanel2 = new System.Windows.Forms.Panel();
             this.descriptionComboBox2 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.typeComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -211,11 +213,31 @@
             this.descriptionComboBox2.TabIndex = 16;
             this.descriptionComboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(177, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Type";
+            // 
+            // typeComboBox
+            // 
+            this.typeComboBox.FormattingEnabled = true;
+            this.typeComboBox.Location = new System.Drawing.Point(177, 74);
+            this.typeComboBox.Name = "typeComboBox";
+            this.typeComboBox.Size = new System.Drawing.Size(235, 21);
+            this.typeComboBox.TabIndex = 19;
+            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
+            // 
             // UnitBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(703, 385);
+            this.Controls.Add(this.typeComboBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.descriptionPanel2);
             this.Controls.Add(this.descriptionComboBox2);
             this.Controls.Add(this.nameTextBox);
@@ -266,6 +288,8 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Panel descriptionPanel2;
         private System.Windows.Forms.ComboBox descriptionComboBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox typeComboBox;
     }
 }
 

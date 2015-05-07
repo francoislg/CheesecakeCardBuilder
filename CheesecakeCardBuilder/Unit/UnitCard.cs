@@ -13,6 +13,7 @@ namespace CheesecakeCardBuilder.Unit {
         public String def { get; set; }
         public String spd { get; set; }
         public String acc { get; set; }
+        public UnitType type { get; set; }
         public List<UnitDescription> descriptions { get; set; }
 
         public UnitCard() {

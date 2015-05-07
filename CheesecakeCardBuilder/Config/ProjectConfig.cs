@@ -59,6 +59,31 @@ namespace CheesecakeCardBuilder.Config {
                 return iconsPath + "/res.png";
             }
         }
+        public String background1File {
+            get {
+                return cardsPath + "/bg1.png";
+            }
+        }
+        public String background2File {
+            get {
+                return cardsPath + "/bg2.png";
+            }
+        }
+        public String background3File {
+            get {
+                return cardsPath + "/bg3.png";
+            }
+        }
+        public String background4File {
+            get {
+                return cardsPath + "/bg4.png";
+            }
+        }
+        public String background5File {
+            get {
+                return cardsPath + "/bg5.png";
+            }
+        }
 
         [JsonIgnore]
         private GlobalConfig globalConfig;

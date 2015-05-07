@@ -41,6 +41,7 @@ namespace CheesecakeCardBuilder {
             InitializeComponent();
             descriptionComboBox.DisplayMember = "text";
             descriptionComboBox2.DisplayMember = "text";
+            typeComboBox.DataSource = Enum.GetValues(typeof(UnitType));
             addDescriptions();
         }
 
@@ -92,6 +93,16 @@ namespace CheesecakeCardBuilder {
             card.descriptions.Add(typeDescription.unitDescription);
             lastUnitDescription2 = typeDescription.unitDescription;
             updateCard();
+        }
+
+        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            card.type = (UnitType)typeComboBox.SelectedItem;
+            updateCard();
+        }
+
+        public void loadCard(UnitCard unit) {
+            typeComboBox.SelectedItem = unit.type;
+            // Insert other here
         }
     }
 }
