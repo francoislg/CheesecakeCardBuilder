@@ -106,9 +106,18 @@ namespace CheesecakeCardBuilder {
         }
 
         private void exportButton_Click(object sender, EventArgs e) {
+            exportSaveFileDialog.FileName = String.Join("_", card.name.Split(' ')) + ".png";
             if (exportSaveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 previewPicture.Image.Save(exportSaveFileDialog.FileName);
             };
+        }
+
+        private void artButton_Click(object sender, EventArgs e) {
+            if (artSelectionOpenFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                String filename = artSelectionOpenFileDialog.FileName;
+                card.art = new Bitmap(filename);
+                updateCard();
+            }
         }
     }
 }

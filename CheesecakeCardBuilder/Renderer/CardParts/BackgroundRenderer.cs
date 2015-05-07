@@ -27,6 +27,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
         }
 
         public void draw(Graphics graphics) {
+            graphics.DrawImage(card.art, 0, 0, card.art.Width, card.art.Height);
             backgrounds.Get(card.type).draw(graphics);
         }
     }

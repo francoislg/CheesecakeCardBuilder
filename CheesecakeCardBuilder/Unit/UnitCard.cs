@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Unit {
+    using System.Drawing;
     public class UnitCard {
         public String name { get; set; }
         public String hp { get; set; }
@@ -14,10 +15,12 @@ namespace CheesecakeCardBuilder.Unit {
         public String spd { get; set; }
         public String acc { get; set; }
         public UnitType type { get; set; }
+        public Image art { get; set; }
         public List<UnitDescription> descriptions { get; set; }
 
         public UnitCard() {
             descriptions = new List<UnitDescription>();
+            art = new Bitmap(396, 276);
         }
     }
 }

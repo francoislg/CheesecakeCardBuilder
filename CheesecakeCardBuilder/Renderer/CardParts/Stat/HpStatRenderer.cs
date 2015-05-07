@@ -12,7 +12,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
 
     public class HPStatRenderer : CardPartRenderer {
         private static readonly Point POSITION = new Point(125, 95);
-        private static readonly Point ICONPOSITION = new Point(73, 76);
+        private static readonly Point ICONPOSITION = new Point(73, 82);
         private ProjectConfig config;
         private UnitCard card;
         private CardTextRenderer renderer;

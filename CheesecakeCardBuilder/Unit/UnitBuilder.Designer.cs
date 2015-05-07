@@ -47,6 +47,8 @@
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.exportButton = new System.Windows.Forms.Button();
             this.exportSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.artButton = new System.Windows.Forms.Button();
+            this.artSelectionOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -243,11 +245,34 @@
             this.exportButton.UseVisualStyleBackColor = true;
             this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
+            // exportSaveFileDialog
+            // 
+            this.exportSaveFileDialog.DefaultExt = "png";
+            this.exportSaveFileDialog.FileName = "carte";
+            this.exportSaveFileDialog.Filter = "Images|*.png";
+            this.exportSaveFileDialog.Title = "Enregistrez votre carte";
+            // 
+            // artButton
+            // 
+            this.artButton.Location = new System.Drawing.Point(12, 350);
+            this.artButton.Name = "artButton";
+            this.artButton.Size = new System.Drawing.Size(75, 23);
+            this.artButton.TabIndex = 21;
+            this.artButton.Text = "Choose art";
+            this.artButton.UseVisualStyleBackColor = true;
+            this.artButton.Click += new System.EventHandler(this.artButton_Click);
+            // 
+            // artSelectionOpenFileDialog
+            // 
+            this.artSelectionOpenFileDialog.Filter = "396x276 image|*.png";
+            this.artSelectionOpenFileDialog.Title = "Choississez une image pour votre carte";
+            // 
             // UnitBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(703, 385);
+            this.Controls.Add(this.artButton);
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.typeComboBox);
             this.Controls.Add(this.label8);
@@ -305,6 +330,8 @@
         private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.SaveFileDialog exportSaveFileDialog;
+        private System.Windows.Forms.Button artButton;
+        private System.Windows.Forms.OpenFileDialog artSelectionOpenFileDialog;
     }
 }
 
