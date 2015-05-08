@@ -23,7 +23,7 @@ namespace CheesecakeCardBuilder.Renderer.Text {
         public void draw(Graphics graphics, String text) {
             if (!String.IsNullOrEmpty(text)) {
                 GraphicsPath graphicsPath = new GraphicsPath();
-                graphicsPath.AddString(text, font.FontFamily, 0, graphics.DpiY * font.SizeInPoints / 72, box, format);
+                graphicsPath.AddString(text, font.FontFamily, (int)font.Style, graphics.DpiY * font.Size / 72, box, format);
                 renderer.draw(graphics, graphicsPath);
                 graphicsPath.Dispose();
             }

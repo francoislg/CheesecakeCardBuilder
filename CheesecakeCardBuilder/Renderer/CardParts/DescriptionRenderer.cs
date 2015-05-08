@@ -34,7 +34,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             }
             this.format = new StringFormat();
             this.brush = FontService.getDefaultBrush();
-            this.fuzzyTextRenderer = new FuzzyBoxedTextRenderer(font, new Rectangle(position.X + 2, position.Y + 2, position.Width - 2, position.Height - 2), format);
+            this.fuzzyTextRenderer = new FuzzyBoxedTextRenderer(font, new Rectangle(position.X + 2, position.Y + 2, position.Width, position.Height), format);
         }
 
         public SizeF getSizeOfDescription(Graphics graphics) {
