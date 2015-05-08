@@ -25,7 +25,7 @@ namespace CheesecakeCardBuilder.Repository {
 
         public void save(UnitCard card) {
             if (cardsCollection.Exists(c => c.name.Equals(card.name))) {
-                if (!cardsCollection.Update(card)) {
+                if (!cardsCollection.Update(card.name.ToLower(), card)) {
                     throw new CouldNotSaveCardException();
                 };
             } else {
