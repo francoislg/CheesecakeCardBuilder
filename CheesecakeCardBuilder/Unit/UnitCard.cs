@@ -22,6 +22,13 @@ namespace CheesecakeCardBuilder.Unit {
 
         public UnitCard() {
             artFile = "template.png";
+            hp = "";
+            res = "";
+            atk = "";
+            def = "";
+            spd = "";
+            acc = "";
+            unitType = UnitType.Standard;
             descriptions = new UnitDescription[] { new UnitDescription(), new UnitDescription() };
         }
     }

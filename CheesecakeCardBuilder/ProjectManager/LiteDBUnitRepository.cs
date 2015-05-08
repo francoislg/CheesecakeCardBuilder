@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CheesecakeCardBuilder.ProjectManager;
 
 namespace CheesecakeCardBuilder.Repository {
     using LiteDB;
@@ -19,17 +20,14 @@ namespace CheesecakeCardBuilder.Repository {
         }
 
         public List<UnitCard> getAllUnitCards() {
-            IEnumerable<UnitCard> cards = cardsCollection.FindAll();
-            List<UnitCard> listCards = new List<UnitCard>();
-            foreach(UnitCard card in cards){
-                listCards.Add(card);
-            }
-            return listCards;
+            return cardsCollection.FindAll().ToList<UnitCard>();
         }
 
         public void save(UnitCard card) {
             if (cardsCollection.Exists(c => c.name.Equals(card.name))) {
-                cardsCollection.Update(card);
+                if (!cardsCollection.Update(card)) {
+                    throw new CouldNotSaveCardException();
+                };
             } else {
                 cardsCollection.Insert(card);
             }

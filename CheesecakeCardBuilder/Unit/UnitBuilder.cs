@@ -68,10 +68,15 @@ namespace CheesecakeCardBuilder {
         private void descriptionComboBox_SelectedValueChanged(object sender, EventArgs e) {
             ComboBox descComboBox = (ComboBox)sender;
             int i = (int)descComboBox.Tag;
+            updateComboBox(i);
+        }
+
+        private void updateComboBox(int i) {
             if (lastUnitDescription[i] != null) {
                 card.descriptions[i] = new UnitDescription();
                 lastUnitDescription[i].clear();
             }
+            ComboBox descComboBox = descriptionsComboBox[i];
             if (descComboBox.SelectedItem != null) {
                 UnitDescriptionControl typeDescription = (UnitDescriptionControl)descComboBox.SelectedItem;
                 descriptionsPanel[i].Controls.Clear();
@@ -82,14 +87,37 @@ namespace CheesecakeCardBuilder {
             }
         }
 
+        private void unregisterSelectedValues() {
+            hpTextbox.TextChanged -= event_UpdatePicture;
+            resTextbox.TextChanged -= event_UpdatePicture;
+            atkTextBox.TextChanged -= event_UpdatePicture;
+            defTextBox.TextChanged -= event_UpdatePicture;
+            accTextBox.TextChanged -= event_UpdatePicture;
+            spdTextbox.TextChanged -= event_UpdatePicture;
+            typeComboBox.SelectedIndexChanged -= typeComboBox_SelectedIndexChanged;
+            
+            for (int i = 0; i < descriptionsComboBox.Count(); i++) {
+                descriptionsComboBox[i].SelectedValueChanged -= descriptionComboBox_SelectedValueChanged;
+            }
+        }
+
+        private void registerSelectedValues() {
+            hpTextbox.TextChanged += event_UpdatePicture;
+            resTextbox.TextChanged += event_UpdatePicture;
+            atkTextBox.TextChanged += event_UpdatePicture;
+            defTextBox.TextChanged += event_UpdatePicture;
+            accTextBox.TextChanged += event_UpdatePicture;
+            spdTextbox.TextChanged += event_UpdatePicture;
+            typeComboBox.SelectedIndexChanged += typeComboBox_SelectedIndexChanged;
+
+            for (int i = 0; i < descriptionsComboBox.Count(); i++) {
+                descriptionsComboBox[i].SelectedValueChanged += descriptionComboBox_SelectedValueChanged;
+            }
+        }
+
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
             card.unitType = (UnitType)typeComboBox.SelectedItem;
             updateCard();
-        }
-
-        public void loadCard(UnitCard unit) {
-            typeComboBox.SelectedItem = unit.unitType;
-            // Insert other here
         }
 
         private void exportButton_Click(object sender, EventArgs e) {
@@ -124,27 +152,31 @@ namespace CheesecakeCardBuilder {
             CardLoader cardLoader = new CardLoader(repository);
             cardLoader.ShowDialog();
             if (cardLoader.hasSelected) {
-                UnitCard newCard = cardLoader.selectedCard;
-                nameTextBox.Text = newCard.name;
-                resTextbox.Text = newCard.res;
-                accTextBox.Text = newCard.acc;
-                atkTextBox.Text = newCard.atk;
-                defTextBox.Text = newCard.def;
-                spdTextbox.Text = newCard.spd;
-                typeComboBox.SelectedItem = newCard.unitType;
-                for (int i = 0; i < newCard.descriptions.Count(); i++) {
-                    descriptionsComboBox[i].Text = newCard.descriptions[i].type.ToString();
-                    lastUnitDescription[i].description = newCard.descriptions[i];
-                    newCard.descriptions[i] = lastUnitDescription[i].description;
-                }
-                this.unitCardRenderer = new UnitCardRenderer(newCard, config);
-                this.card = newCard;
-                updateCard();
+                loadCard(cardLoader.selectedCard);
             }
         }
 
-        private void comboBox1_SelectedValueChanged(object sender, EventArgs e) {
 
+        public void loadCard(UnitCard newCard) {
+            unregisterSelectedValues();
+            nameTextBox.Text = newCard.name;
+            hpTextbox.Text = newCard.hp;
+            resTextbox.Text = newCard.res;
+            accTextBox.Text = newCard.acc;
+            atkTextBox.Text = newCard.atk;
+            defTextBox.Text = newCard.def;
+            spdTextbox.Text = newCard.spd;
+            typeComboBox.SelectedItem = newCard.unitType;
+            for (int i = 0; i < newCard.descriptions.Count(); i++) {
+                descriptionsComboBox[i].Text = newCard.descriptions[i].type.ToString();
+                updateComboBox(i);
+                lastUnitDescription[i].description = newCard.descriptions[i];
+                newCard.descriptions[i] = lastUnitDescription[i].description;
+            }
+            this.card = newCard;
+            this.unitCardRenderer = new UnitCardRenderer(card, config);
+            registerSelectedValues();
+            updateCard();
         }
     }
 }

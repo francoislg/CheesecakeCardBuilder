@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectManager\CouldNotSaveCardException.cs" />
     <Compile Include="ProjectManager\UnitCardRepository.cs" />
     <Compile Include="ProjectManager\LiteDBUnitRepository.cs" />
     <Compile Include="Renderer\CardParts\BackgroundRenderer.cs" />
