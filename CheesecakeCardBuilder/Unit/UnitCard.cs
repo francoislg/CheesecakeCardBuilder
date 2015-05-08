@@ -18,11 +18,11 @@ namespace CheesecakeCardBuilder.Unit {
         public String acc { get; set; }
         public UnitType unitType { get; set; }
         public String artFile { get; set; }
-        public List<UnitDescription> descriptions { get; set; }
+        public UnitDescription[] descriptions { get; set; }
 
         public UnitCard() {
             artFile = "template.png";
-            descriptions = new List<UnitDescription>();
+            descriptions = new UnitDescription[] { new UnitDescription(), new UnitDescription() };
         }
     }
 }

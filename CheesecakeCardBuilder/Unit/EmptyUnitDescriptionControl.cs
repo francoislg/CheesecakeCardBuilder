@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using CheesecakeCardBuilder.Config;
 
 namespace CheesecakeCardBuilder.Unit {
-    public partial class DefaultUnitDescriptionControl : UserControl, UnitDescriptionControl {
+    public partial class EmptyUnitDescriptionControl : UserControl, UnitDescriptionControl {
         private CardUpdater updater;
-        private DefaultUnitDescription unitDesc;
+        private UnitDescription unitDesc;
 
         public String name {
             get {
@@ -32,27 +32,17 @@ namespace CheesecakeCardBuilder.Unit {
             }
             set {
                 unitDesc.description = value.description;
-                whenBox.Text = value.description[0].TrimEnd(',');
-                targetBox.Text = value.description[1];
-                actionBox.Text = value.description[2];
             }
         }
 
-        public DefaultUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
+        public EmptyUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
             InitializeComponent();
-            this.unitDesc = new DefaultUnitDescription();
+            this.unitDesc = new UnitDescription();
             this.updater = updater;
         }
 
         public void clear() {
-            whenBox.Text = "";
-            targetBox.Text = "";
-            actionBox.Text = "";
-        }
-
-        private void actionBox_KeyUp(object sender, KeyEventArgs e) {
-            description.description = new String[] { whenBox.Text + ",", targetBox.Text, actionBox.Text };
-            updater.updateCardDescription();
+            
         }
     }
 }

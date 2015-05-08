@@ -37,6 +37,8 @@ namespace CheesecakeCardBuilder {
         }
 
         private void addDescriptions() {
+            descriptionComboBox.Items.Add(new EmptyUnitDescriptionControl(config, this));
+            descriptionComboBox2.Items.Add(new EmptyUnitDescriptionControl(config, this));
             descriptionComboBox.Items.Add(new DefaultUnitDescriptionControl(config, this));
             descriptionComboBox2.Items.Add(new DefaultUnitDescriptionControl(config, this));
             descriptionComboBox.Items.Add(new KeywordUnitDescriptionControl(config, this));
@@ -64,14 +66,14 @@ namespace CheesecakeCardBuilder {
 
         private void descriptionComboBox_SelectedValueChanged(object sender, EventArgs e) {
             if (lastUnitDescription != null) {
-                card.descriptions.Remove(lastUnitDescription.description);
+                card.descriptions[0] = new UnitDescription();
                 lastUnitDescription.clear();
             }
             if (descriptionComboBox.SelectedItem != null) {
                 UnitDescriptionControl typeDescription = (UnitDescriptionControl)descriptionComboBox.SelectedItem;
                 descriptionPanel.Controls.Clear();
                 descriptionPanel.Controls.Add((UserControl)typeDescription);
-                card.descriptions.Add(typeDescription.description);
+                card.descriptions[0] = typeDescription.description;
                 lastUnitDescription = typeDescription;
                 updateCard();
             }
@@ -80,13 +82,13 @@ namespace CheesecakeCardBuilder {
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e) {
             if (lastUnitDescription2 != null) {
                 lastUnitDescription2.clear();
-                card.descriptions.Remove(lastUnitDescription2.description);
+                card.descriptions[1] = new UnitDescription();
             }
             if (descriptionComboBox.SelectedItem != null) {
                 UnitDescriptionControl typeDescription = (UnitDescriptionControl)descriptionComboBox2.SelectedItem;
                 descriptionPanel2.Controls.Clear();
                 descriptionPanel2.Controls.Add((UserControl)typeDescription);
-                card.descriptions.Add(typeDescription.description);
+                card.descriptions[1] = typeDescription.description;
                 lastUnitDescription2 = typeDescription;
                 updateCard();
             }
@@ -135,7 +137,6 @@ namespace CheesecakeCardBuilder {
             cardLoader.ShowDialog();
             if (cardLoader.hasSelected) {
                 UnitCard newCard = cardLoader.selectedCard;
-                this.unitCardRenderer = new UnitCardRenderer(newCard, config);
                 nameTextBox.Text = newCard.name;
                 resTextbox.Text = newCard.res;
                 accTextBox.Text = newCard.acc;
@@ -143,18 +144,13 @@ namespace CheesecakeCardBuilder {
                 defTextBox.Text = newCard.def;
                 spdTextbox.Text = newCard.spd;
                 typeComboBox.SelectedItem = newCard.unitType;
-                if (newCard.descriptions.Count >= 1) {
-                    card.descriptions.Remove(lastUnitDescription.description);
-                    descriptionComboBox.Text = newCard.descriptions[0].type.ToString();
-                    lastUnitDescription.description = newCard.descriptions[0];
-                    card.descriptions.Add(lastUnitDescription.description);
-                }
-                if (newCard.descriptions.Count >= 2) {
-                    card.descriptions.Remove(lastUnitDescription2.description);
-                    descriptionComboBox2.Text = newCard.descriptions[1].type.ToString();
-                    lastUnitDescription2.description = newCard.descriptions[1];
-                    card.descriptions.Add(lastUnitDescription2.description);
-                }
+                descriptionComboBox.Text = newCard.descriptions[0].type.ToString();
+                lastUnitDescription.description = newCard.descriptions[0];
+                newCard.descriptions[0] = lastUnitDescription.description;
+                descriptionComboBox2.Text = newCard.descriptions[1].type.ToString();
+                lastUnitDescription2.description = newCard.descriptions[1];
+                newCard.descriptions[1] = lastUnitDescription2.description;
+                this.unitCardRenderer = new UnitCardRenderer(newCard, config);
                 this.card = newCard;
                 updateCard();
             }

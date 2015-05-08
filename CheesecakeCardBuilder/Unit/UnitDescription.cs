@@ -11,6 +11,8 @@ namespace CheesecakeCardBuilder.Unit {
         public String[] description { get; set; }
 
         public UnitDescription() {
+            this.name = "Empty";
+            this.type = UnitDescriptionType.Empty;
             this.description = new String[] { };
         }
     }

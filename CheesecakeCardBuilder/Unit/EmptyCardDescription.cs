@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Unit {
-    public enum UnitDescriptionType {
-        Empty, Keyword, Default
+    class EmptyCardDescription {
     }
 }

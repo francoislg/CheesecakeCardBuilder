@@ -96,6 +96,13 @@
     <Compile Include="Unit\CardLoader.Designer.cs">
       <DependentUpon>CardLoader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Unit\EmptyUnitDescriptionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Unit\EmptyUnitDescriptionControl.Designer.cs">
+      <DependentUpon>EmptyUnitDescriptionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Unit\EmptyCardDescription.cs" />
     <Compile Include="Unit\KeywordUnitDescription.cs" />
     <Compile Include="Unit\KeywordUnitDescriptionControl.cs">
       <SubType>UserControl</SubType>
@@ -135,6 +142,9 @@
     </Compile>
     <EmbeddedResource Include="Unit\CardLoader.resx">
       <DependentUpon>CardLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Unit\EmptyUnitDescriptionControl.resx">
+      <DependentUpon>EmptyUnitDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Unit\KeywordUnitDescriptionControl.resx">
       <DependentUpon>KeywordUnitDescriptionControl.cs</DependentUpon>
