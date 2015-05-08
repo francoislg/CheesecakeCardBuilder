@@ -18,9 +18,10 @@ namespace CheesecakeCardBuilder {
         private UnitCard card;
         private UnitCardRenderer unitCardRenderer;
         private ProjectConfig config;
-        private UnitDescriptionControl lastUnitDescription;
-        private UnitDescriptionControl lastUnitDescription2;
         private CardRepository repository;
+        private ComboBox[] descriptionsComboBox;
+        private Panel[] descriptionsPanel;
+        private UnitDescriptionControl[] lastUnitDescription = new UnitDescriptionControl[2];
 
         public UnitBuilder(ProjectConfig config) {
             this.config = config;
@@ -28,21 +29,21 @@ namespace CheesecakeCardBuilder {
             this.unitCardRenderer = new UnitCardRenderer(card, config);
             this.repository = new LiteDBRepository(config);
             InitializeComponent();
-            descriptionComboBox.DisplayMember = "name";
-            descriptionComboBox2.DisplayMember = "name";
-            descriptionComboBox.ValueMember = "type";
-            descriptionComboBox2.ValueMember = "type";
+            descriptionsComboBox = new ComboBox[] { descriptionComboBox, descriptionComboBox2 };
+            descriptionsPanel = new Panel[] { descriptionPanel, descriptionPanel2 };
             typeComboBox.DataSource = Enum.GetValues(typeof(UnitType));
             addDescriptions();
         }
 
         private void addDescriptions() {
-            descriptionComboBox.Items.Add(new EmptyUnitDescriptionControl(config, this));
-            descriptionComboBox2.Items.Add(new EmptyUnitDescriptionControl(config, this));
-            descriptionComboBox.Items.Add(new DefaultUnitDescriptionControl(config, this));
-            descriptionComboBox2.Items.Add(new DefaultUnitDescriptionControl(config, this));
-            descriptionComboBox.Items.Add(new KeywordUnitDescriptionControl(config, this));
-            descriptionComboBox2.Items.Add(new KeywordUnitDescriptionControl(config, this));
+            for (int i = 0; i < card.descriptions.Count(); i++) {
+                descriptionsComboBox[i].DisplayMember = "name";
+                descriptionsComboBox[i].Tag = i;
+                descriptionsComboBox[i].Items.Add(new EmptyUnitDescriptionControl(config, this));
+                descriptionsComboBox[i].Items.Add(new DefaultUnitDescriptionControl(config, this));
+                descriptionsComboBox[i].Items.Add(new KeywordUnitDescriptionControl(config, this));
+                descriptionsComboBox[i].SelectedIndex = 0;
+            }
         }
 
         public void updateCardDescription() {
@@ -65,31 +66,18 @@ namespace CheesecakeCardBuilder {
         }
 
         private void descriptionComboBox_SelectedValueChanged(object sender, EventArgs e) {
-            if (lastUnitDescription != null) {
-                card.descriptions[0] = new UnitDescription();
-                lastUnitDescription.clear();
+            ComboBox descComboBox = (ComboBox)sender;
+            int i = (int)descComboBox.Tag;
+            if (lastUnitDescription[i] != null) {
+                card.descriptions[i] = new UnitDescription();
+                lastUnitDescription[i].clear();
             }
-            if (descriptionComboBox.SelectedItem != null) {
-                UnitDescriptionControl typeDescription = (UnitDescriptionControl)descriptionComboBox.SelectedItem;
-                descriptionPanel.Controls.Clear();
-                descriptionPanel.Controls.Add((UserControl)typeDescription);
-                card.descriptions[0] = typeDescription.description;
-                lastUnitDescription = typeDescription;
-                updateCard();
-            }
-        }
-
-        private void comboBox1_SelectedValueChanged(object sender, EventArgs e) {
-            if (lastUnitDescription2 != null) {
-                lastUnitDescription2.clear();
-                card.descriptions[1] = new UnitDescription();
-            }
-            if (descriptionComboBox.SelectedItem != null) {
-                UnitDescriptionControl typeDescription = (UnitDescriptionControl)descriptionComboBox2.SelectedItem;
-                descriptionPanel2.Controls.Clear();
-                descriptionPanel2.Controls.Add((UserControl)typeDescription);
-                card.descriptions[1] = typeDescription.description;
-                lastUnitDescription2 = typeDescription;
+            if (descComboBox.SelectedItem != null) {
+                UnitDescriptionControl typeDescription = (UnitDescriptionControl)descComboBox.SelectedItem;
+                descriptionsPanel[i].Controls.Clear();
+                descriptionsPanel[i].Controls.Add((UserControl)typeDescription);
+                card.descriptions[i] = typeDescription.description;
+                lastUnitDescription[i] = typeDescription;
                 updateCard();
             }
         }
@@ -144,16 +132,19 @@ namespace CheesecakeCardBuilder {
                 defTextBox.Text = newCard.def;
                 spdTextbox.Text = newCard.spd;
                 typeComboBox.SelectedItem = newCard.unitType;
-                descriptionComboBox.Text = newCard.descriptions[0].type.ToString();
-                lastUnitDescription.description = newCard.descriptions[0];
-                newCard.descriptions[0] = lastUnitDescription.description;
-                descriptionComboBox2.Text = newCard.descriptions[1].type.ToString();
-                lastUnitDescription2.description = newCard.descriptions[1];
-                newCard.descriptions[1] = lastUnitDescription2.description;
+                for (int i = 0; i < newCard.descriptions.Count(); i++) {
+                    descriptionsComboBox[i].Text = newCard.descriptions[i].type.ToString();
+                    lastUnitDescription[i].description = newCard.descriptions[i];
+                    newCard.descriptions[i] = lastUnitDescription[i].description;
+                }
                 this.unitCardRenderer = new UnitCardRenderer(newCard, config);
                 this.card = newCard;
                 updateCard();
             }
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e) {
+
         }
     }
 }

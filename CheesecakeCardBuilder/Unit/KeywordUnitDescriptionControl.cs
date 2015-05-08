@@ -32,7 +32,7 @@ namespace CheesecakeCardBuilder.Unit {
             }
             set {
                 unitDesc.description = value.description;
-                keywordComboBox.SelectedItem = value.name;
+                keywordComboBox.Text = value.description[0];
             }
         }
 

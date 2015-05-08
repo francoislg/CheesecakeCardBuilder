@@ -41,8 +41,6 @@
             this.previewPicture = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionPanel2 = new System.Windows.Forms.Panel();
-            this.descriptionComboBox2 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.exportButton = new System.Windows.Forms.Button();
@@ -51,6 +49,8 @@
             this.artSelectionOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
+            this.descriptionPanel2 = new System.Windows.Forms.Panel();
+            this.descriptionComboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,22 +203,6 @@
             this.nameTextBox.TabIndex = 6;
             this.nameTextBox.TextChanged += new System.EventHandler(this.event_UpdatePicture);
             // 
-            // descriptionPanel2
-            // 
-            this.descriptionPanel2.Location = new System.Drawing.Point(12, 239);
-            this.descriptionPanel2.Name = "descriptionPanel2";
-            this.descriptionPanel2.Size = new System.Drawing.Size(400, 80);
-            this.descriptionPanel2.TabIndex = 17;
-            // 
-            // descriptionComboBox2
-            // 
-            this.descriptionComboBox2.FormattingEnabled = true;
-            this.descriptionComboBox2.Location = new System.Drawing.Point(12, 211);
-            this.descriptionComboBox2.Name = "descriptionComboBox2";
-            this.descriptionComboBox2.Size = new System.Drawing.Size(143, 21);
-            this.descriptionComboBox2.TabIndex = 16;
-            this.descriptionComboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -289,6 +273,22 @@
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
+            // descriptionPanel2
+            // 
+            this.descriptionPanel2.Location = new System.Drawing.Point(12, 239);
+            this.descriptionPanel2.Name = "descriptionPanel2";
+            this.descriptionPanel2.Size = new System.Drawing.Size(400, 80);
+            this.descriptionPanel2.TabIndex = 17;
+            // 
+            // descriptionComboBox2
+            // 
+            this.descriptionComboBox2.FormattingEnabled = true;
+            this.descriptionComboBox2.Location = new System.Drawing.Point(12, 211);
+            this.descriptionComboBox2.Name = "descriptionComboBox2";
+            this.descriptionComboBox2.Size = new System.Drawing.Size(143, 21);
+            this.descriptionComboBox2.TabIndex = 16;
+            this.descriptionComboBox2.SelectedValueChanged += new System.EventHandler(this.descriptionComboBox_SelectedValueChanged);
+            // 
             // UnitBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,8 +348,6 @@
         private System.Windows.Forms.PictureBox previewPicture;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.Panel descriptionPanel2;
-        private System.Windows.Forms.ComboBox descriptionComboBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.Button exportButton;
@@ -358,6 +356,8 @@
         private System.Windows.Forms.OpenFileDialog artSelectionOpenFileDialog;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.Panel descriptionPanel2;
+        private System.Windows.Forms.ComboBox descriptionComboBox2;
     }
 }
 
