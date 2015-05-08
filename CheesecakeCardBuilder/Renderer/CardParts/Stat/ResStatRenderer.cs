@@ -16,13 +16,17 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private ProjectConfig config;
         private UnitCard card;
         private CardTextRenderer renderer;
-        private ImageRenderer iconRenderer;
         private BrushChangerByType brushChanger;
+        private ByTypeHandler<ImageRenderer> iconRenderer;
 
         public ResStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            this.iconRenderer = new ImageRenderer(new Bitmap(config.iconResFile), ICONPOSITION);
+            this.iconRenderer = new ByTypeHandler<ImageRenderer>(new ImageRenderer(new Bitmap(config.iconResFile), ICONPOSITION));
+            this.iconRenderer.Add(UnitType.Advanced, new ImageRenderer(new Bitmap(config.iconRes2File), ICONPOSITION));
+            this.iconRenderer.Add(UnitType.Expert, new ImageRenderer(new Bitmap(config.iconRes3File), ICONPOSITION));
+            this.iconRenderer.Add(UnitType.Elite, new ImageRenderer(new Bitmap(config.iconRes4File), ICONPOSITION));
+            this.iconRenderer.Add(UnitType.Master, new ImageRenderer(new Bitmap(config.iconRes5File), ICONPOSITION));
             this.renderer = new CardTextRenderer() { brush = new SolidBrush(Color.Black), font = config.topStatsFont, position = POSITION };
             this.renderer.addDefaultEffects();
             this.brushChanger = new BrushChangerByType(card, renderer);
@@ -35,7 +39,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
 
         public void draw(Graphics graphics) {
             brushChanger.update();
-            iconRenderer.draw(graphics);
+            iconRenderer.Get(card.unitType).draw(graphics);
             renderer.draw(graphics, card.res);
         }
     }

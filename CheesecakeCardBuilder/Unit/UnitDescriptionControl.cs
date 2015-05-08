@@ -8,7 +8,8 @@ using System.Windows.Forms;
 namespace CheesecakeCardBuilder.Unit {
     public interface UnitDescriptionControl {
         String name { get; }
-        UnitDescription description { get; }
-        void addUpdater(CardUpdater updater);
+        UnitDescription description { get; set; }
+        UnitDescriptionType type { get; }
+        void clear();
     }
 }

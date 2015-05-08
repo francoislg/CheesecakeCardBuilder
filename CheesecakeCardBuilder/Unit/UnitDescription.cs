@@ -5,9 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Unit {
-    public interface UnitDescription {
-        UnitDescriptionType type { get; }
-        String name { get; }
-        String[] description { get; set; }
+    public class UnitDescription {
+        public UnitDescriptionType type { get; set; }
+        public String name { get; set; }
+        public String[] description { get; set; }
+
+        public UnitDescription() {
+            this.description = new String[] { };
+        }
     }
 }

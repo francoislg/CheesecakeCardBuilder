@@ -163,7 +163,7 @@
             this.descriptionComboBox.Name = "descriptionComboBox";
             this.descriptionComboBox.Size = new System.Drawing.Size(143, 21);
             this.descriptionComboBox.TabIndex = 7;
-            this.descriptionComboBox.SelectedIndexChanged += new System.EventHandler(this.descriptionComboBox_SelectedIndexChanged);
+            this.descriptionComboBox.SelectedValueChanged += new System.EventHandler(this.descriptionComboBox_SelectedValueChanged);
             // 
             // descriptionPanel
             // 
@@ -217,7 +217,7 @@
             this.descriptionComboBox2.Name = "descriptionComboBox2";
             this.descriptionComboBox2.Size = new System.Drawing.Size(143, 21);
             this.descriptionComboBox2.TabIndex = 16;
-            this.descriptionComboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.descriptionComboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // label8
             // 

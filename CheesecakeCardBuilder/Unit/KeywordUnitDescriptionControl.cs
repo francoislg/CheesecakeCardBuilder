@@ -11,8 +11,8 @@ using System.Windows.Forms;
 namespace CheesecakeCardBuilder.Unit {
     using Config;
     public partial class KeywordUnitDescriptionControl : UserControl, UnitDescriptionControl {
-        public List<CardUpdater> cardUpdaters = new List<CardUpdater>();
         private KeywordUnitDescription unitDesc;
+        private CardUpdater updater;
 
         public String name {
             get {
@@ -20,30 +20,36 @@ namespace CheesecakeCardBuilder.Unit {
             }
         }
 
+        public UnitDescriptionType type {
+            get {
+                return unitDesc.type;
+            }
+        }
+
         public UnitDescription description {
             get {
                 return unitDesc;
             }
+            set {
+                unitDesc.description = value.description;
+                keywordComboBox.SelectedItem = value.name;
+            }
         }
 
         public KeywordUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
-            addUpdater(updater);
-            unitDesc = new KeywordUnitDescription();
             InitializeComponent();
+            this.updater = updater;
+            this.unitDesc = new KeywordUnitDescription();
             keywordComboBox.DataSource = config.keywords;
         }
 
-        public void addUpdater(CardUpdater updater) {
-            cardUpdaters.Add(updater);
+        public void clear() {
+            keywordComboBox.SelectedIndex = 0;
         }
 
         private void keywordComboBox_SelectedIndexChanged(object sender, EventArgs e) {
             unitDesc.description = new String[] { keywordComboBox.SelectedItem.ToString() };
-            update();
-        }
-
-        private void update() {
-            cardUpdaters.ForEach(updater => updater.updateCardDescription());
+            updater.updateCardDescription();
         }
     }
 }

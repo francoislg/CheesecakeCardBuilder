@@ -7,22 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CheesecakeCardBuilder.Config;
 
 namespace CheesecakeCardBuilder.Unit {
     public partial class DefaultUnitDescriptionControl : UserControl, UnitDescriptionControl {
-        public List<CardUpdater> cardUpdaters = new List<CardUpdater>();
+        private CardUpdater updater;
         private DefaultUnitDescription unitDesc;
-        public DefaultUnitDescriptionControl(CardUpdater updater) {
-            addUpdater(updater);
-            unitDesc = new DefaultUnitDescription();
-            InitializeComponent();
-        }
-
-        public UnitDescription description {
-            get {
-                return unitDesc;
-            }
-        }
 
         public String name {
             get {
@@ -30,13 +20,39 @@ namespace CheesecakeCardBuilder.Unit {
             }
         }
 
-        public void addUpdater(CardUpdater updater) {
-            cardUpdaters.Add(updater);
+        public UnitDescriptionType type {
+            get {
+                return unitDesc.type;
+            }
+        }
+
+        public UnitDescription description {
+            get {
+                return unitDesc;
+            }
+            set {
+                unitDesc.description = value.description;
+                whenBox.Text = value.description[0];
+                targetBox.Text = value.description[1];
+                actionBox.Text = value.description[2];
+            }
+        }
+
+        public DefaultUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
+            InitializeComponent();
+            this.unitDesc = new DefaultUnitDescription();
+            this.updater = updater;
+        }
+
+        public void clear() {
+            whenBox.Text = "";
+            targetBox.Text = "";
+            actionBox.Text = "";
         }
 
         private void actionBox_KeyUp(object sender, KeyEventArgs e) {
-            unitDesc.description = new String[] { whenBox.Text, targetBox.Text, actionBox.Text };
-            cardUpdaters.ForEach(updater => updater.updateCardDescription());
+            description.description = new String[] { whenBox.Text + ",", targetBox.Text, actionBox.Text };
+            updater.updateCardDescription();
         }
     }
 }

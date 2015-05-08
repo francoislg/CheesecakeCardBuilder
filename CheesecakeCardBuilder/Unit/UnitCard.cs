@@ -21,8 +21,8 @@ namespace CheesecakeCardBuilder.Unit {
         public List<UnitDescription> descriptions { get; set; }
 
         public UnitCard() {
-            descriptions = new List<UnitDescription>();
             artFile = "template.png";
+            descriptions = new List<UnitDescription>();
         }
     }
 }

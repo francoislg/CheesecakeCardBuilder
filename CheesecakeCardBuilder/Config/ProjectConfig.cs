@@ -61,7 +61,27 @@ namespace CheesecakeCardBuilder.Config {
         }
         public String iconResFile {
             get {
-                return iconsPath + "\\res.png";
+                return iconsPath + "\\res1.png";
+            }
+        }
+        public String iconRes2File {
+            get {
+                return iconsPath + "\\res2.png";
+            }
+        }
+        public String iconRes3File {
+            get {
+                return iconsPath + "\\res3.png";
+            }
+        }
+        public String iconRes4File {
+            get {
+                return iconsPath + "\\res4.png";
+            }
+        }
+        public String iconRes5File {
+            get {
+                return iconsPath + "\\res5.png";
             }
         }
         public String background1File {

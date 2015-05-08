@@ -19,7 +19,12 @@ namespace CheesecakeCardBuilder.Repository {
         }
 
         public List<UnitCard> getAllUnitCards() {
-            return cardsCollection.FindAll().ToList<UnitCard>();
+            IEnumerable<UnitCard> cards = cardsCollection.FindAll();
+            List<UnitCard> listCards = new List<UnitCard>();
+            foreach(UnitCard card in cards){
+                listCards.Add(card);
+            }
+            return listCards;
         }
 
         public void save(UnitCard card) {
