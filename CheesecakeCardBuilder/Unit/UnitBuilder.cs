@@ -22,6 +22,7 @@ namespace CheesecakeCardBuilder {
         private ComboBox[] descriptionsComboBox;
         private Panel[] descriptionsPanel;
         private UnitDescriptionControl[] lastUnitDescription = new UnitDescriptionControl[2];
+        private bool updateActivated = true;
 
         public UnitBuilder(ProjectConfig config) {
             this.config = config;
@@ -62,7 +63,9 @@ namespace CheesecakeCardBuilder {
         }
 
         private async void updateCard() {
-            previewPicture.Image = await unitCardRenderer.generate();
+            if (updateActivated) {
+                previewPicture.Image = await unitCardRenderer.generate();
+            }
         }
 
         private void descriptionComboBox_SelectedValueChanged(object sender, EventArgs e) {
@@ -87,7 +90,9 @@ namespace CheesecakeCardBuilder {
             }
         }
 
-        private void unregisterSelectedValues() {
+        private void desactivateUpdates() {
+            updateActivated = false;
+            /*nameTextBox.TextChanged -= event_UpdatePicture;
             hpTextbox.TextChanged -= event_UpdatePicture;
             resTextbox.TextChanged -= event_UpdatePicture;
             atkTextBox.TextChanged -= event_UpdatePicture;
@@ -98,10 +103,12 @@ namespace CheesecakeCardBuilder {
             
             for (int i = 0; i < descriptionsComboBox.Count(); i++) {
                 descriptionsComboBox[i].SelectedValueChanged -= descriptionComboBox_SelectedValueChanged;
-            }
+            }*/
         }
 
-        private void registerSelectedValues() {
+        private void activateUpdates() {
+            updateActivated = true;
+            /*nameTextBox.TextChanged += event_UpdatePicture;
             hpTextbox.TextChanged += event_UpdatePicture;
             resTextbox.TextChanged += event_UpdatePicture;
             atkTextBox.TextChanged += event_UpdatePicture;
@@ -112,7 +119,7 @@ namespace CheesecakeCardBuilder {
 
             for (int i = 0; i < descriptionsComboBox.Count(); i++) {
                 descriptionsComboBox[i].SelectedValueChanged += descriptionComboBox_SelectedValueChanged;
-            }
+            }*/
         }
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
@@ -158,7 +165,7 @@ namespace CheesecakeCardBuilder {
 
 
         public void loadCard(UnitCard newCard) {
-            unregisterSelectedValues();
+            desactivateUpdates();
             nameTextBox.Text = newCard.name;
             hpTextbox.Text = newCard.hp;
             resTextbox.Text = newCard.res;
@@ -175,7 +182,7 @@ namespace CheesecakeCardBuilder {
             }
             this.card = newCard;
             this.unitCardRenderer = new UnitCardRenderer(card, config);
-            registerSelectedValues();
+            activateUpdates();
             updateCard();
         }
     }
