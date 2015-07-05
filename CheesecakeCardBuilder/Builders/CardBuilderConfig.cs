@@ -27,7 +27,7 @@ namespace CheesecakeCardBuilder.Builder {
 
         public CardControl getControl(Card card){
             if (card is UnitCard) {
-                return new UnitCardControl(config, (UnitCard)card, updater);
+                return new UnitCardControl(config, updater);
             } else {
                 throw new NotSupportedException();
             }

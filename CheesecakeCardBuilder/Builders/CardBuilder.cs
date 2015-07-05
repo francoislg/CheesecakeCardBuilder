@@ -36,12 +36,12 @@ namespace CheesecakeCardBuilder.Builder.Unit {
         public void changeCard(Card newCard) {
             desactivateUpdates();
             nameTextBox.Text = newCard.name;
-            this.currentCard = newCard;
-            this.cardRenderer = cardBuilderConfig.getRenderer(newCard);
             currentCardControl = cardBuilderConfig.getControl(newCard);
             this.cardControlPanel.Controls.Clear();
             this.cardControlPanel.Controls.Add((UserControl)currentCardControl);
-            this.currentCardControl.loadCard(newCard);
+            currentCardControl.loadCard(newCard);
+            this.cardRenderer = cardBuilderConfig.getRenderer(newCard);
+            this.currentCard = newCard;
             activateUpdates();
             updateCard();
         }
