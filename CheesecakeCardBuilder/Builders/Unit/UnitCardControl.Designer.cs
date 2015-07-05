@@ -1,4 +1,4 @@
-﻿namespace CheesecakeCardBuilder.Unit {
+﻿namespace CheesecakeCardBuilder.Builder.Unit {
     partial class UnitCardControl {
         /// <summary> 
         /// Required designer variable.
@@ -99,6 +99,7 @@
             this.resTextbox.Name = "resTextbox";
             this.resTextbox.Size = new System.Drawing.Size(28, 20);
             this.resTextbox.TabIndex = 21;
+            this.resTextbox.TextChanged += new System.EventHandler(this.hpTextbox_TextChanged);
             // 
             // label5
             // 
@@ -124,6 +125,7 @@
             this.hpTextbox.Name = "hpTextbox";
             this.hpTextbox.Size = new System.Drawing.Size(28, 20);
             this.hpTextbox.TabIndex = 20;
+            this.hpTextbox.TextChanged += new System.EventHandler(this.hpTextbox_TextChanged);
             // 
             // spdTextbox
             // 
@@ -131,6 +133,7 @@
             this.spdTextbox.Name = "spdTextbox";
             this.spdTextbox.Size = new System.Drawing.Size(28, 20);
             this.spdTextbox.TabIndex = 25;
+            this.spdTextbox.TextChanged += new System.EventHandler(this.hpTextbox_TextChanged);
             // 
             // label4
             // 
@@ -156,6 +159,7 @@
             this.accTextBox.Name = "accTextBox";
             this.accTextBox.Size = new System.Drawing.Size(28, 20);
             this.accTextBox.TabIndex = 27;
+            this.accTextBox.TextChanged += new System.EventHandler(this.hpTextbox_TextChanged);
             // 
             // label2
             // 
@@ -172,6 +176,7 @@
             this.defTextBox.Name = "defTextBox";
             this.defTextBox.Size = new System.Drawing.Size(28, 20);
             this.defTextBox.TabIndex = 26;
+            this.defTextBox.TextChanged += new System.EventHandler(this.hpTextbox_TextChanged);
             // 
             // label1
             // 
@@ -188,6 +193,7 @@
             this.atkTextBox.Name = "atkTextBox";
             this.atkTextBox.Size = new System.Drawing.Size(28, 20);
             this.atkTextBox.TabIndex = 23;
+            this.atkTextBox.TextChanged += new System.EventHandler(this.hpTextbox_TextChanged);
             // 
             // UnitCardControl
             // 

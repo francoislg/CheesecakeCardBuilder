@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Renderer {
-    using Unit;
+    using CheesecakeCardBuilder.Unit;
     public class ByTypeHandler<Value> {
         private Dictionary<UnitType, Value> list = new Dictionary<UnitType, Value>();
         private Value defaultValue;

@@ -19,8 +19,8 @@ namespace CheesecakeCardBuilder.Renderer {
         private Image template;
         private readonly List<CardPartRenderer> renderers = new List<CardPartRenderer>();
 
-        public UnitCardRenderer(Card card, ProjectConfig config) {
-            this.unitCard = (UnitCard)card;
+        public UnitCardRenderer(UnitCard card, ProjectConfig config) {
+            this.unitCard = card;
             this.template = new Bitmap(config.unitFile);
             CardPartRendererFactory statRendererFactory = new CardPartRendererFactory(config, unitCard);
             renderers.Add(statRendererFactory.create(PartType.Background));

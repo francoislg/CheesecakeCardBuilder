@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CheesecakeCardBuilder.Config;
 
-namespace CheesecakeCardBuilder.Unit {
-    public partial class EmptyUnitDescriptionControl : UserControl, UnitDescriptionControl {
+namespace CheesecakeCardBuilder.Builder.Unit {
+    using Config;
+    using CheesecakeCardBuilder.Unit;
+    public partial class KeywordUnitDescriptionControl : UserControl, UnitDescriptionControl {
+        private KeywordUnitDescription unitDesc;
         private CardUpdater updater;
-        private UnitDescription unitDesc;
 
         public String name {
             get {
@@ -32,17 +33,24 @@ namespace CheesecakeCardBuilder.Unit {
             }
             set {
                 unitDesc.description = value.description;
+                keywordComboBox.Text = value.description[0];
             }
         }
 
-        public EmptyUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
+        public KeywordUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
             InitializeComponent();
-            this.unitDesc = new UnitDescription();
             this.updater = updater;
+            this.unitDesc = new KeywordUnitDescription();
+            keywordComboBox.DataSource = config.keywords;
         }
 
         public void clear() {
-            
+            keywordComboBox.SelectedIndex = 0;
+        }
+
+        private void keywordComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            unitDesc.description = new String[] { keywordComboBox.SelectedItem.ToString() };
+            updater.updateCard();
         }
     }
 }

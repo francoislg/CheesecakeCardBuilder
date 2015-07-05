@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Renderer.CardParts {
     using Text;
+    using CheesecakeCardBuilder.Unit;
     public class CardTextRenderer : TextRenderer {
         public Brush brush { get; set; }
         public Font font { get; set; }

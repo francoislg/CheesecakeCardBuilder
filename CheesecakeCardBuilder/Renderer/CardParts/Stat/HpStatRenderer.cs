@@ -8,7 +8,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using System;
     using System.Drawing;
     using Config;
-    using Unit;
+    using CheesecakeCardBuilder.Unit;
 
     public class HPStatRenderer : CardPartRenderer {
         private static readonly Point POSITION = new Point(125, 95);

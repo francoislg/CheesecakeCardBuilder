@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace CheesecakeCardBuilder {
     using Config;
+    using CheesecakeCardBuilder.Builder.Unit;
 
     static class Program {
         /// <summary>
@@ -19,7 +20,7 @@ namespace CheesecakeCardBuilder {
             String configFile = "CheesecakeCardBuilder.config";
             ConfigLoader loader = new ConfigLoader(myDocumentPath + "\\" + configFile);
 
-            Application.Run(new UnitBuilder(loader.getConfig()));
+            Application.Run(new CardBuilder(loader.getConfig()));
         }
 
         private static void defaultAppConfig() {

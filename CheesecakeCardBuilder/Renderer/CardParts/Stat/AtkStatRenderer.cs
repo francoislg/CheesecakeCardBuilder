@@ -8,7 +8,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using System;
     using System.Drawing;
     using Config;
-    using Unit;
+    using CheesecakeCardBuilder.Unit;
     using System.Drawing.Drawing2D;
 
     public class AtkStatRenderer : CardPartRenderer {

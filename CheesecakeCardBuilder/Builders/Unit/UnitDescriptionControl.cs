@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CheesecakeCardBuilder.Unit {
+namespace CheesecakeCardBuilder.Builder.Unit {
+    using CheesecakeCardBuilder.Unit;
     public interface UnitDescriptionControl {
         String name { get; }
         UnitDescription description { get; set; }

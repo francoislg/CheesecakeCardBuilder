@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder {
     public interface CardUpdater {
-        void updateCardDescription();
+        void updateCard();
     }
 }

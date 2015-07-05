@@ -23,7 +23,7 @@ namespace CheesecakeCardBuilder.Unit {
         }
         public Card selectedCard {
             get{
-                return (Card)cardsListBox.SelectedItem;
+                return (Card)((UnitCard)cardsListBox.SelectedItem);
             }
         }
 

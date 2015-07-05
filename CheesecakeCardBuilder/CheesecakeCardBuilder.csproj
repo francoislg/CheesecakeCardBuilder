@@ -60,7 +60,7 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="CardControl.cs" />
-    <Compile Include="CardManager.cs" />
+    <Compile Include="Builders\CardBuilderConfig.cs" />
     <Compile Include="CardRenderer.cs" />
     <Compile Include="CardType.cs" />
     <Compile Include="ProjectManager\CouldNotSaveCardException.cs" />
@@ -98,50 +98,50 @@
     <Compile Include="Renderer\TextRenderer.cs" />
     <Compile Include="Renderer\Text\TextEffectRenderer.cs" />
     <Compile Include="Renderer\ByTypeHandler.cs" />
-    <Compile Include="CardLoader.cs">
+    <Compile Include="Builders\CardLoader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CardLoader.Designer.cs">
+    <Compile Include="Builders\CardLoader.Designer.cs">
       <DependentUpon>CardLoader.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unit\Controls\EmptyUnitDescriptionControl.cs">
+    <Compile Include="Builders\Unit\EmptyUnitDescriptionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Unit\Controls\EmptyUnitDescriptionControl.Designer.cs">
+    <Compile Include="Builders\Unit\EmptyUnitDescriptionControl.Designer.cs">
       <DependentUpon>EmptyUnitDescriptionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Unit\Descriptions\EmptyCardDescription.cs" />
     <Compile Include="Unit\Descriptions\KeywordUnitDescription.cs" />
-    <Compile Include="Unit\Controls\KeywordUnitDescriptionControl.cs">
+    <Compile Include="Builders\Unit\KeywordUnitDescriptionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Unit\Controls\KeywordUnitDescriptionControl.Designer.cs">
+    <Compile Include="Builders\Unit\KeywordUnitDescriptionControl.Designer.cs">
       <DependentUpon>KeywordUnitDescriptionControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unit\Controls\UnitBuilder.cs">
+    <Compile Include="Builders\CardBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Unit\Controls\UnitBuilder.Designer.cs">
-      <DependentUpon>UnitBuilder.cs</DependentUpon>
+    <Compile Include="Builders\CardBuilder.Designer.cs">
+      <DependentUpon>CardBuilder.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Unit\Controls\DefaultUnitDescriptionControl.cs">
+    <Compile Include="Builders\Unit\DefaultUnitDescriptionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Unit\Controls\DefaultUnitDescriptionControl.Designer.cs">
+    <Compile Include="Builders\Unit\DefaultUnitDescriptionControl.Designer.cs">
       <DependentUpon>DefaultUnitDescriptionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Unit\UnitCard.cs" />
     <Compile Include="Renderer\UnitCardRenderer.cs" />
-    <Compile Include="Unit\Controls\UnitCardControl.cs">
+    <Compile Include="Builders\Unit\UnitCardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Unit\Controls\UnitCardControl.Designer.cs">
+    <Compile Include="Builders\Unit\UnitCardControl.Designer.cs">
       <DependentUpon>UnitCardControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Unit\UnitDescription.cs" />
-    <Compile Include="Unit\UnitDescriptionControl.cs" />
+    <Compile Include="Builders\Unit\UnitDescriptionControl.cs" />
     <Compile Include="Unit\UnitDescriptionTypes.cs" />
     <Compile Include="Unit\UnitType.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -154,22 +154,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="CardLoader.resx">
+    <EmbeddedResource Include="Builders\CardLoader.resx">
       <DependentUpon>CardLoader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Unit\Controls\EmptyUnitDescriptionControl.resx">
+    <EmbeddedResource Include="Builders\Unit\EmptyUnitDescriptionControl.resx">
       <DependentUpon>EmptyUnitDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Unit\Controls\KeywordUnitDescriptionControl.resx">
+    <EmbeddedResource Include="Builders\Unit\KeywordUnitDescriptionControl.resx">
       <DependentUpon>KeywordUnitDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Unit\Controls\UnitBuilder.resx">
-      <DependentUpon>UnitBuilder.cs</DependentUpon>
+    <EmbeddedResource Include="Builders\CardBuilder.resx">
+      <DependentUpon>CardBuilder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Unit\Controls\DefaultUnitDescriptionControl.resx">
+    <EmbeddedResource Include="Builders\Unit\DefaultUnitDescriptionControl.resx">
       <DependentUpon>DefaultUnitDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Unit\Controls\UnitCardControl.resx">
+    <EmbeddedResource Include="Builders\Unit\UnitCardControl.resx">
       <DependentUpon>UnitCardControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

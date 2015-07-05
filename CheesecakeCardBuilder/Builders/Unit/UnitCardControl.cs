@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CheesecakeCardBuilder.Config;
 
-namespace CheesecakeCardBuilder.Unit {
+namespace CheesecakeCardBuilder.Builder.Unit {
+    using CheesecakeCardBuilder.Unit;
     public partial class UnitCardControl : UserControl, CardControl {
         private ProjectConfig config;
         private UnitCard unitCard;
@@ -18,9 +19,9 @@ namespace CheesecakeCardBuilder.Unit {
         private Panel[] descriptionsPanel;
         private UnitDescriptionControl[] lastUnitDescription = new UnitDescriptionControl[2];
 
-        public UnitCardControl(ProjectConfig config, Card card, CardUpdater updater) {
+        public UnitCardControl(ProjectConfig config, UnitCard card, CardUpdater updater) {
             this.config = config;
-            this.unitCard = (UnitCard)card;
+            this.unitCard = card;
             this.updater = updater;
             InitializeComponent();
             descriptionsComboBox = new ComboBox[] { descriptionComboBox, descriptionComboBox2 };
@@ -42,12 +43,12 @@ namespace CheesecakeCardBuilder.Unit {
 
         public void loadCard(Card card) {
             UnitCard newCard = card as UnitCard;
-            hpTextbox.Text = newCard.hp;
-            resTextbox.Text = newCard.res;
-            accTextBox.Text = newCard.acc;
-            atkTextBox.Text = newCard.atk;
-            defTextBox.Text = newCard.def;
-            spdTextbox.Text = newCard.spd;
+            hpTextbox.DataBindings.Add("Text", newCard, "hp");
+            resTextbox.DataBindings.Add("Text", newCard, "res");
+            accTextBox.DataBindings.Add("Text", newCard, "acc");
+            atkTextBox.DataBindings.Add("Text", newCard, "atk");
+            defTextBox.DataBindings.Add("Text", newCard, "def");
+            spdTextbox.DataBindings.Add("Text", newCard, "spd");
             typeComboBox.SelectedItem = newCard.unitType;
             for (int i = 0; i < newCard.descriptions.Count(); i++) {
                 descriptionsComboBox[i].Text = newCard.descriptions[i].type.ToString();
@@ -55,6 +56,7 @@ namespace CheesecakeCardBuilder.Unit {
                 lastUnitDescription[i].description = newCard.descriptions[i];
                 newCard.descriptions[i] = lastUnitDescription[i].description;
             }
+            this.unitCard = newCard;
         }
 
         private void updateComboBox(int i) {
@@ -69,7 +71,7 @@ namespace CheesecakeCardBuilder.Unit {
                 descriptionsPanel[i].Controls.Add((UserControl)typeDescription);
                 unitCard.descriptions[i] = typeDescription.description;
                 lastUnitDescription[i] = typeDescription;
-                updater.updateCardDescription();
+                updater.updateCard();
             }
         }
 
@@ -81,17 +83,11 @@ namespace CheesecakeCardBuilder.Unit {
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
             unitCard.unitType = (UnitType)typeComboBox.SelectedItem;
-            updater.updateCardDescription();
+            updater.updateCard();
         }
 
-        public void updateCard(Card cardToUpdate) {
-            UnitCard card = cardToUpdate as UnitCard;
-            card.atk = atkTextBox.Text;
-            card.def = defTextBox.Text;
-            card.spd = spdTextbox.Text;
-            card.acc = accTextBox.Text;
-            card.hp = hpTextbox.Text;
-            card.res = resTextbox.Text;
+        private void hpTextbox_TextChanged(object sender, EventArgs e) {
+            updater.updateCard();
         }
     }
 }

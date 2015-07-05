@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Renderer.CardParts {
+    using CheesecakeCardBuilder.Unit;
     using Text;
     public class CardBoxedTextRenderer : TextRenderer {
         public Brush brush { get; set; }

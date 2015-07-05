@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Renderer {
-    using Unit;
     using CardParts;
     using System.Drawing;
+    using CheesecakeCardBuilder.Unit;
 
     public class BrushChangerByType : ByTypeHandler<Brush> {
         private UnitCard card;

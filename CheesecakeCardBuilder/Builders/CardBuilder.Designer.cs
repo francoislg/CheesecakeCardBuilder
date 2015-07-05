@@ -1,5 +1,5 @@
-﻿namespace CheesecakeCardBuilder {
-    partial class UnitBuilder {
+﻿namespace CheesecakeCardBuilder.Builder.Unit {
+    partial class CardBuilder {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnitBuilder));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardBuilder));
             this.previewPicture = new System.Windows.Forms.PictureBox();
             this.exportButton = new System.Windows.Forms.Button();
             this.exportSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -111,6 +111,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(261, 20);
             this.nameTextBox.TabIndex = 36;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // label7
             // 
@@ -146,7 +147,7 @@
             this.cardControlPanel.Size = new System.Drawing.Size(425, 330);
             this.cardControlPanel.TabIndex = 40;
             // 
-            // UnitBuilder
+            // CardBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -163,8 +164,8 @@
             this.Controls.Add(this.previewPicture);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(719, 424);
-            this.Name = "UnitBuilder";
-            this.Text = "Unit Builder";
+            this.Name = "CardBuilder";
+            this.Text = "Card Builder";
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
