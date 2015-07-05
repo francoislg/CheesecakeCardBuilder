@@ -14,32 +14,40 @@ namespace CheesecakeCardBuilder.Unit {
 
     public partial class CardLoader : Form {
         private CardRepository repository;
+        private List<UnitCard> cards;
         private bool flagSelected = false;
         public bool hasSelected {
             get {
                 return flagSelected;
             }
         }
-        public UnitCard selectedCard {
+        public Card selectedCard {
             get{
-                return (UnitCard)cardsListBox.SelectedItem;
+                return (Card)cardsListBox.SelectedItem;
             }
         }
 
         public CardLoader(CardRepository repository) {
             InitializeComponent();
+            cards = repository.getAllUnitCards();
             this.repository = repository;
         }
 
         private void CardLoader_Load(object sender, EventArgs e) {
-            List<UnitCard> cards = repository.getAllUnitCards();
-            cardsListBox.DataSource = cards;
+            cardsListBox.Items.AddRange(cards.ToArray());
             cardsListBox.DisplayMember = "name";
         }
 
         private void cardsListBox_MouseDoubleClick(object sender, MouseEventArgs e) {
             flagSelected = true;
             this.Close();
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e) {
+            cardsListBox.Items.Clear();
+            cardsListBox.Items.AddRange(
+                cards.Where(x => x.name.ToLower().Contains(searchBox.Text.ToLower())).ToArray()
+            );
         }
     }
 }

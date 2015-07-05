@@ -14,13 +14,13 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
 
-    public class UnitCardRenderer {
+    public class UnitCardRenderer : CardRenderer {
         private UnitCard unitCard;
         private Image template;
         private readonly List<CardPartRenderer> renderers = new List<CardPartRenderer>();
 
-        public UnitCardRenderer(UnitCard unitCard, ProjectConfig config) {
-            this.unitCard = unitCard;
+        public UnitCardRenderer(Card card, ProjectConfig config) {
+            this.unitCard = (UnitCard)card;
             this.template = new Bitmap(config.unitFile);
             CardPartRendererFactory statRendererFactory = new CardPartRendererFactory(config, unitCard);
             renderers.Add(statRendererFactory.create(PartType.Background));

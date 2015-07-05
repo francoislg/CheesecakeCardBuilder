@@ -23,14 +23,23 @@ namespace CheesecakeCardBuilder.Repository {
             return cardsCollection.FindAll().ToList<UnitCard>();
         }
 
-        public void save(UnitCard card) {
-            if (cardsCollection.Exists(c => c.name.Equals(card.name))) {
-                if (!cardsCollection.Update(card.name.ToLower(), card)) {
+        private void update<T>(LiteCollection<T> collection, T card) where T : Card, new(){
+            if (collection.Exists(c => c.name.Equals(card.name))) {
+                if (!collection.Update(card.name.ToLower(), card)) {
                     throw new CouldNotSaveCardException();
                 };
             } else {
-                cardsCollection.Insert(card);
+                collection.Insert(card);
             }
+        }
+
+        public void save(Card card) {
+            if (card is UnitCard) {
+               update(cardsCollection, (UnitCard)card);
+            } else {
+                throw new NotSupportedException();
+            }
+            
         }
     }
 }

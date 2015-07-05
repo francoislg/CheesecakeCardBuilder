@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CheesecakeCardBuilder.Unit {
     using LiteDB;
     using System.Drawing;
-    public class UnitCard {
+    public class UnitCard : Card {
         [BsonId]
         public String name { get; set; }
         public String hp { get; set; }

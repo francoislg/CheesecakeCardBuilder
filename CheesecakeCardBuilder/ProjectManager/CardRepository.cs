@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace CheesecakeCardBuilder.Repository {
     public interface CardRepository {
         List<UnitCard> getAllUnitCards();
-        void save(UnitCard card);
+        void save(Card card);
     }
 }

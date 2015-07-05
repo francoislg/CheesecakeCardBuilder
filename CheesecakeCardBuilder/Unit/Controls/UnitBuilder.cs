@@ -15,36 +15,26 @@ namespace CheesecakeCardBuilder {
     using Repository;
 
     public partial class UnitBuilder : Form, CardUpdater {
-        private UnitCard card;
-        private UnitCardRenderer unitCardRenderer;
+        private Card card;
+        private CardRenderer cardRenderer;
         private ProjectConfig config;
         private CardRepository repository;
-        private ComboBox[] descriptionsComboBox;
-        private Panel[] descriptionsPanel;
-        private UnitDescriptionControl[] lastUnitDescription = new UnitDescriptionControl[2];
         private bool updateActivated = true;
+        private CardControl currentCardControl;
 
         public UnitBuilder(ProjectConfig config) {
             this.config = config;
             this.card = new UnitCard();
-            this.unitCardRenderer = new UnitCardRenderer(card, config);
+            this.cardRenderer = new UnitCardRenderer(card, config);
             this.repository = new LiteDBRepository(config);
             InitializeComponent();
-            descriptionsComboBox = new ComboBox[] { descriptionComboBox, descriptionComboBox2 };
-            descriptionsPanel = new Panel[] { descriptionPanel, descriptionPanel2 };
-            typeComboBox.DataSource = Enum.GetValues(typeof(UnitType));
-            addDescriptions();
+            changeCardType();
         }
 
-        private void addDescriptions() {
-            for (int i = 0; i < card.descriptions.Count(); i++) {
-                descriptionsComboBox[i].DisplayMember = "name";
-                descriptionsComboBox[i].Tag = i;
-                descriptionsComboBox[i].Items.Add(new EmptyUnitDescriptionControl(config, this));
-                descriptionsComboBox[i].Items.Add(new DefaultUnitDescriptionControl(config, this));
-                descriptionsComboBox[i].Items.Add(new KeywordUnitDescriptionControl(config, this));
-                descriptionsComboBox[i].SelectedIndex = 0;
-            }
+        public void changeCardType() {
+            currentCardControl = new UnitCardControl(config, (UnitCard)card, this);
+            this.cardControlPanel.Controls.Clear();
+            this.cardControlPanel.Controls.Add((UserControl)currentCardControl);
         }
 
         public void updateCardDescription() {
@@ -52,41 +42,13 @@ namespace CheesecakeCardBuilder {
         }
 
         private void event_UpdatePicture(object sender, EventArgs e) {
-            card.atk = atkTextBox.Text;
-            card.def = defTextBox.Text;
-            card.spd = spdTextbox.Text;
-            card.acc = accTextBox.Text;
-            card.hp = hpTextbox.Text;
-            card.res = resTextbox.Text;
             card.name = nameTextBox.Text;
             updateCard();
         }
 
         private async void updateCard() {
             if (updateActivated) {
-                previewPicture.Image = await unitCardRenderer.generate();
-            }
-        }
-
-        private void descriptionComboBox_SelectedValueChanged(object sender, EventArgs e) {
-            ComboBox descComboBox = (ComboBox)sender;
-            int i = (int)descComboBox.Tag;
-            updateComboBox(i);
-        }
-
-        private void updateComboBox(int i) {
-            if (lastUnitDescription[i] != null) {
-                card.descriptions[i] = new UnitDescription();
-                lastUnitDescription[i].clear();
-            }
-            ComboBox descComboBox = descriptionsComboBox[i];
-            if (descComboBox.SelectedItem != null) {
-                UnitDescriptionControl typeDescription = (UnitDescriptionControl)descComboBox.SelectedItem;
-                descriptionsPanel[i].Controls.Clear();
-                descriptionsPanel[i].Controls.Add((UserControl)typeDescription);
-                card.descriptions[i] = typeDescription.description;
-                lastUnitDescription[i] = typeDescription;
-                updateCard();
+                previewPicture.Image = await cardRenderer.generate();
             }
         }
 
@@ -120,11 +82,6 @@ namespace CheesecakeCardBuilder {
             for (int i = 0; i < descriptionsComboBox.Count(); i++) {
                 descriptionsComboBox[i].SelectedValueChanged += descriptionComboBox_SelectedValueChanged;
             }*/
-        }
-
-        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-            card.unitType = (UnitType)typeComboBox.SelectedItem;
-            updateCard();
         }
 
         private void exportButton_Click(object sender, EventArgs e) {
@@ -164,26 +121,18 @@ namespace CheesecakeCardBuilder {
         }
 
 
-        public void loadCard(UnitCard newCard) {
+        public void loadCard(Card newCard) {
             desactivateUpdates();
             nameTextBox.Text = newCard.name;
-            hpTextbox.Text = newCard.hp;
-            resTextbox.Text = newCard.res;
-            accTextBox.Text = newCard.acc;
-            atkTextBox.Text = newCard.atk;
-            defTextBox.Text = newCard.def;
-            spdTextbox.Text = newCard.spd;
-            typeComboBox.SelectedItem = newCard.unitType;
-            for (int i = 0; i < newCard.descriptions.Count(); i++) {
-                descriptionsComboBox[i].Text = newCard.descriptions[i].type.ToString();
-                updateComboBox(i);
-                lastUnitDescription[i].description = newCard.descriptions[i];
-                newCard.descriptions[i] = lastUnitDescription[i].description;
-            }
             this.card = newCard;
-            this.unitCardRenderer = new UnitCardRenderer(card, config);
+            this.currentCardControl.loadCard(newCard);
+            this.cardRenderer = new UnitCardRenderer(card, config);
             activateUpdates();
             updateCard();
+        }
+
+        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+
         }
     }
 }
