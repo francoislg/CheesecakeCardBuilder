@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Unit {
-    public class DefaultUnitDescription : UnitDescription {
+    public class DefaultUnitDescription : CardDescription {
         public DefaultUnitDescription() {
             this.name = "Default";
-            this.type = UnitDescriptionType.Default;
+            this.type = DescriptionType.Default;
         }
     }
 }

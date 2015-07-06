@@ -11,7 +11,7 @@ using CheesecakeCardBuilder.Config;
 
 namespace CheesecakeCardBuilder.Builder.Unit {
     using CheesecakeCardBuilder.Unit;
-    public partial class DefaultUnitDescriptionControl : UserControl, UnitDescriptionControl {
+    public partial class DefaultUnitDescriptionControl : UserControl, DescriptionControl {
         private CardUpdater updater;
         private DefaultUnitDescription unitDesc;
 
@@ -21,13 +21,13 @@ namespace CheesecakeCardBuilder.Builder.Unit {
             }
         }
 
-        public UnitDescriptionType type {
+        public DescriptionType type {
             get {
                 return unitDesc.type;
             }
         }
 
-        public UnitDescription description {
+        public CardDescription description {
             get {
                 return unitDesc;
             }

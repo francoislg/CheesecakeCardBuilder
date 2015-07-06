@@ -16,20 +16,20 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private ProjectConfig config;
         private UnitCard card;
         private CardTextRenderer renderer;
-        private BrushChangerByType brushChanger;
-        private ByTypeHandler<ImageRenderer> iconRenderer;
+        private BrushChangerByUnitType brushChanger;
+        private ByTypeHandler<UnitType, ImageRenderer> iconRenderer;
 
         public ResStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            this.iconRenderer = new ByTypeHandler<ImageRenderer>(new ImageRenderer(new Bitmap(config.iconResFile), ICONPOSITION));
+            this.iconRenderer = new ByTypeHandler<UnitType, ImageRenderer>(new ImageRenderer(new Bitmap(config.iconResFile), ICONPOSITION));
             this.iconRenderer.Add(UnitType.Advanced, new ImageRenderer(new Bitmap(config.iconRes2File), ICONPOSITION));
             this.iconRenderer.Add(UnitType.Expert, new ImageRenderer(new Bitmap(config.iconRes3File), ICONPOSITION));
             this.iconRenderer.Add(UnitType.Elite, new ImageRenderer(new Bitmap(config.iconRes4File), ICONPOSITION));
             this.iconRenderer.Add(UnitType.Master, new ImageRenderer(new Bitmap(config.iconRes5File), ICONPOSITION));
             this.renderer = new CardTextRenderer() { brush = new SolidBrush(Color.Black), font = config.topStatsFont, position = POSITION };
             this.renderer.addDefaultEffects();
-            this.brushChanger = new BrushChangerByType(card, renderer);
+            this.brushChanger = new BrushChangerByUnitType(card);
             this.brushChanger.Add(UnitType.Standard, new SolidBrush(Color.Black));
             this.brushChanger.Add(UnitType.Advanced, new SolidBrush(Color.Turquoise));
             this.brushChanger.Add(UnitType.Expert, new SolidBrush(Color.LightGreen));
@@ -38,7 +38,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         }
 
         public void draw(Graphics graphics) {
-            brushChanger.update();
+            brushChanger.update(renderer);
             iconRenderer.Get(card.unitType).draw(graphics);
             renderer.draw(graphics, card.res);
         }

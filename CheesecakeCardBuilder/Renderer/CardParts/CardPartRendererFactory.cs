@@ -7,43 +7,29 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using CardParts.Stat;
 
     public enum PartType {
-        Atk, Def, Spd, Acc, Hp, Res, Name, Description, Background, Type
+        Name, Description
     }
 
-    public class CardPartRendererFactory {
-        private ProjectConfig config;
-        private UnitCard unitCard;
+    public abstract class CardPartRendererFactory {
+        protected ProjectConfig config;
+        protected Card card;
 
-        public CardPartRendererFactory(ProjectConfig config, UnitCard unitCard){
+        public CardPartRendererFactory(ProjectConfig config, Card card) {
             this.config = config;
-            this.unitCard = unitCard;
+            this.card = card;
         }
 
         public CardPartRenderer create(PartType type) {
             switch (type) {
-                case PartType.Atk:
-                    return new AtkStatRenderer(config, unitCard);
-                case PartType.Def:
-                    return new DefStatRenderer(config, unitCard);
-                case PartType.Spd:
-                    return new SpdStatRenderer(config, unitCard);
-                case PartType.Acc:
-                    return new AccStatRenderer(config, unitCard);
-                case PartType.Hp:
-                    return new HPStatRenderer(config, unitCard);
-                case PartType.Res:
-                    return new ResStatRenderer(config, unitCard);
                 case PartType.Name:
-                    return new NameRenderer(config, unitCard);
+                    return new NameRenderer(config, card);
                 case PartType.Description:
-                    return new DescriptionsRenderer(config, unitCard);
-                case PartType.Background:
-                    return new BackgroundRenderer(config, unitCard);
-                case PartType.Type:
-                    return new TypeRenderer(config, unitCard);
+                    return new DescriptionsRenderer(config, card);
                 default:
                     throw new NotSupportedException();
             }
         }
+
+        
     }
 }

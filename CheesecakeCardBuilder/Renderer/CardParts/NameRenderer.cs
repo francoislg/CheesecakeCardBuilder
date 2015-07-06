@@ -14,11 +14,11 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     public class NameRenderer : CardPartRenderer {
         private static readonly Rectangle POSITION = new Rectangle(170, 330, 450, 200);
         private ProjectConfig config;
-        private UnitCard card;
+        private Card card;
         private TextRenderer renderer;
-        private BrushChangerByType brushChanger;
+        private BrushChangerByUnitType brushChanger;
 
-        public NameRenderer(ProjectConfig config, UnitCard card) {
+        public NameRenderer(ProjectConfig config, Card card) {
             this.config = config;
             this.card = card;
             Font font = config.nameFont;
@@ -29,11 +29,11 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             this.renderer = new CardBoxedTextRenderer() { box = POSITION, format = format, font = font, brush =brush };
             this.renderer.addEffect(new OutlineBoxedTextRenderer(font, POSITION, format, new Pen(Color.Gray, 8f)));
             this.renderer.addEffect(new FuzzyBoxedTextRenderer(font, new Rectangle(POSITION.X + 2, POSITION.Y + 2, POSITION.Width, POSITION.Height), format));
-            this.brushChanger = FontService.getDefaultGradientBrushChangerByType(font, card, renderer);
+            this.brushChanger = FontService.getDefaultGradientBrushChangerByType(font, card);
         }
 
         public void draw(Graphics graphics) {
-            brushChanger.update();
+            brushChanger.update(renderer);
             renderer.draw(graphics, "Unit - " + card.name);
         }
     }

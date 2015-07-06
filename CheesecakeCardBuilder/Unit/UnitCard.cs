@@ -18,7 +18,7 @@ namespace CheesecakeCardBuilder.Unit {
         public String acc { get; set; }
         public UnitType unitType { get; set; }
         public String artFile { get; set; }
-        public UnitDescription[] descriptions { get; set; }
+        public CardDescription[] descriptions { get; set; }
 
         public UnitCard() {
             artFile = "template.png";
@@ -29,7 +29,7 @@ namespace CheesecakeCardBuilder.Unit {
             spd = "";
             acc = "";
             unitType = UnitType.Standard;
-            descriptions = new UnitDescription[] { new UnitDescription(), new UnitDescription() };
+            descriptions = new CardDescription[] { new CardDescription(), new CardDescription() };
         }
     }
 }

@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\Structure\StructureCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Structure\StructureCardControl.Designer.cs">
+      <DependentUpon>StructureCardControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Card.cs" />
     <Compile Include="CardControl.cs" />
     <Compile Include="Builders\CardBuilderConfig.cs" />
@@ -66,13 +72,17 @@
     <Compile Include="ProjectManager\CouldNotSaveCardException.cs" />
     <Compile Include="ProjectManager\CardRepository.cs" />
     <Compile Include="ProjectManager\LiteDBCardRepository.cs" />
-    <Compile Include="Renderer\CardParts\BackgroundRenderer.cs" />
+    <Compile Include="Renderer\BrushChangerByType.cs" />
+    <Compile Include="Renderer\CardParts\Unit\UnitBackgroundRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
     <Compile Include="Renderer\CardParts\ImageRenderer.cs" />
     <Compile Include="Renderer\CardParts\CardBoxedTextRenderer.cs" />
-    <Compile Include="Renderer\BrushChangerByType.cs" />
-    <Compile Include="Renderer\CardParts\TypeRenderer.cs" />
+    <Compile Include="Renderer\BrushChangerByUnitType.cs" />
+    <Compile Include="Renderer\CardParts\CardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Structure\StructureCardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Unit\UnitTypeRenderer.cs" />
+    <Compile Include="Renderer\StructureCardRenderer.cs" />
     <Compile Include="Structure\StructureCard.cs" />
     <Compile Include="Unit\Descriptions\DefaultUnitDescription.cs" />
     <Compile Include="Renderer\Text\FuzzyBoxedTextRenderer.cs" />
@@ -91,7 +101,7 @@
     <Compile Include="Config\ProjectConfig.cs" />
     <Compile Include="Config\ConfigLoader.cs" />
     <Compile Include="Config\GlobalConfig.cs" />
-    <Compile Include="Renderer\CardParts\CardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Unit\UnitCardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\CardTextRenderer.cs" />
     <Compile Include="Renderer\FontService.cs" />
     <Compile Include="Renderer\FuzzyRenderer.cs" />
@@ -140,10 +150,13 @@
     <Compile Include="Builders\Unit\UnitCardControl.Designer.cs">
       <DependentUpon>UnitCardControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unit\UnitDescription.cs" />
-    <Compile Include="Builders\Unit\UnitDescriptionControl.cs" />
-    <Compile Include="Unit\UnitDescriptionTypes.cs" />
+    <Compile Include="CardDescription.cs" />
+    <Compile Include="Builders\DescriptionControl.cs" />
+    <Compile Include="DescriptionType.cs" />
     <Compile Include="Unit\UnitType.cs" />
+    <EmbeddedResource Include="Builders\Structure\StructureCardControl.resx">
+      <DependentUpon>StructureCardControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -11,20 +11,20 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using System.Drawing;
     using System.IO;
 
-    public class BackgroundRenderer : CardPartRenderer {
+    public class UnitBackgroundRenderer : CardPartRenderer {
         private readonly Point POSITION = new Point(0, 542);
         private ProjectConfig config;
         private UnitCard card;
-        private ByTypeHandler<ImageRenderer> backgrounds;
+        private ByTypeHandler<UnitType, ImageRenderer> backgrounds;
         private String lastArt;
         private Image art;
 
-        public BackgroundRenderer(ProjectConfig config, UnitCard card) {
+        public UnitBackgroundRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
             this.lastArt = card.artFile;
             updateArt();
-            this.backgrounds = new ByTypeHandler<ImageRenderer>(new ImageRenderer(new Bitmap(config.background1File), POSITION));
+            this.backgrounds = new ByTypeHandler<UnitType, ImageRenderer>(new ImageRenderer(new Bitmap(config.background1File), POSITION));
             this.backgrounds.Add(UnitType.Advanced, new ImageRenderer(new Bitmap(config.background2File), POSITION));
             this.backgrounds.Add(UnitType.Expert, new ImageRenderer(new Bitmap(config.background3File), POSITION));
             this.backgrounds.Add(UnitType.Elite, new ImageRenderer(new Bitmap(config.background4File), POSITION));

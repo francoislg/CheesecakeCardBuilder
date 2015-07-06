@@ -1,7 +1,7 @@
 ﻿
 namespace CheesecakeCardBuilder.Renderer {
     using Config;
-    using Unit;
+    using Structure;
     using Renderer.CardParts;
     using System;
     using System.Collections.Generic;
@@ -14,23 +14,15 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
 
-    public class UnitCardRenderer : CardRenderer {
-        private UnitCard unitCard;
+    public class StructureCardRenderer : CardRenderer {
+        private StructureCard structureCard;
         private Image template;
         private readonly List<CardPartRenderer> renderers = new List<CardPartRenderer>();
 
-        public UnitCardRenderer(UnitCard card, ProjectConfig config) {
-            this.unitCard = card;
+        public StructureCardRenderer(StructureCard card, ProjectConfig config) {
+            this.structureCard = card;
             this.template = new Bitmap(config.unitFile);
-            UnitCardPartRendererFactory statRendererFactory = new UnitCardPartRendererFactory(config, unitCard);
-            renderers.Add(statRendererFactory.create(UnitPartType.Background));
-            renderers.Add(statRendererFactory.create(UnitPartType.Atk));
-            renderers.Add(statRendererFactory.create(UnitPartType.Def));
-            renderers.Add(statRendererFactory.create(UnitPartType.Spd));
-            renderers.Add(statRendererFactory.create(UnitPartType.Acc));
-            renderers.Add(statRendererFactory.create(UnitPartType.Type));
-            renderers.Add(statRendererFactory.create(UnitPartType.Hp));
-            renderers.Add(statRendererFactory.create(UnitPartType.Res));
+            StructureCardPartRendererFactory statRendererFactory = new StructureCardPartRendererFactory(config, structureCard);
             renderers.Add(statRendererFactory.create(PartType.Name));
             renderers.Add(statRendererFactory.create(PartType.Description));
         }

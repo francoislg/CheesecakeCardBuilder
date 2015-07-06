@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CheesecakeCardBuilder.Builder.Unit {
+namespace CheesecakeCardBuilder.Builder {
     using CheesecakeCardBuilder.Unit;
-    public interface UnitDescriptionControl {
+    public interface DescriptionControl {
         String name { get; }
-        UnitDescription description { get; set; }
-        UnitDescriptionType type { get; }
+        CardDescription description { get; set; }
+        DescriptionType type { get; }
         void clear();
     }
 }

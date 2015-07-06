@@ -13,19 +13,19 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
 
     public class DescriptionRenderer {
         private ProjectConfig config;
-        private UnitDescription description;
+        private CardDescription description;
         private Rectangle position;
         private Font font;
         private StringFormat format;
         private Brush brush;
         private TextEffectRenderer fuzzyTextRenderer;
 
-        public DescriptionRenderer(ProjectConfig config, UnitDescription description, Rectangle position) {
+        public DescriptionRenderer(ProjectConfig config, CardDescription description, Rectangle position) {
             this.config = config;
             this.description = description;
             this.position = position;
             switch (description.type) {
-                case UnitDescriptionType.Keyword:
+                case DescriptionType.Keyword:
                     this.font = config.keywordFont;
                     break;
                 default:

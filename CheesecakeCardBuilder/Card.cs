@@ -9,5 +9,6 @@ namespace CheesecakeCardBuilder {
         string name { get; set; }
         string res { get; set; }
         string artFile { get; set; }
+        CardDescription[] descriptions { get; set; }
     }
 }

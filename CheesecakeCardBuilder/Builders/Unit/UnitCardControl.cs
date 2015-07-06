@@ -17,7 +17,7 @@ namespace CheesecakeCardBuilder.Builder.Unit {
         private CardUpdater updater;
         private ComboBox[] descriptionsComboBox;
         private Panel[] descriptionsPanel;
-        private UnitDescriptionControl[] lastUnitDescription = new UnitDescriptionControl[2];
+        private DescriptionControl[] lastUnitDescription = new DescriptionControl[2];
 
         public UnitCardControl(ProjectConfig config, CardUpdater updater) {
             this.config = config;
@@ -60,12 +60,12 @@ namespace CheesecakeCardBuilder.Builder.Unit {
 
         private void updateComboBox(int i) {
             if (lastUnitDescription[i] != null) {
-                unitCard.descriptions[i] = new UnitDescription();
+                unitCard.descriptions[i] = new CardDescription();
                 lastUnitDescription[i].clear();
             }
             ComboBox descComboBox = descriptionsComboBox[i];
             if (descComboBox.SelectedItem != null) {
-                UnitDescriptionControl typeDescription = (UnitDescriptionControl)descComboBox.SelectedItem;
+                DescriptionControl typeDescription = (DescriptionControl)descComboBox.SelectedItem;
                 descriptionsPanel[i].Controls.Clear();
                 descriptionsPanel[i].Controls.Add((UserControl)typeDescription);
                 lastUnitDescription[i] = typeDescription;

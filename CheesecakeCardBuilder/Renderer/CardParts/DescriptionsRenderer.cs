@@ -13,10 +13,10 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     public class DescriptionsRenderer : CardPartRenderer, IDisposable {
         private static readonly Rectangle INITIALRECTANGLE = new Rectangle(165, 560, 450, 520);
         private ProjectConfig config;
-        private UnitCard card;
+        private Card card;
         private List<DescriptionRenderer> descriptionRenderers = new List<DescriptionRenderer>();
 
-        public DescriptionsRenderer(ProjectConfig config, UnitCard card) {
+        public DescriptionsRenderer(ProjectConfig config, Card card) {
             this.config = config;
             this.card = card;
         }
@@ -25,7 +25,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             descriptionRenderers.ForEach(renderer => renderer.Dispose());
             descriptionRenderers.Clear();
             int currentDescPosition = 0;
-            foreach (UnitDescription unitDescription in card.descriptions) {
+            foreach (CardDescription unitDescription in card.descriptions) {
                 DescriptionRenderer renderer = new DescriptionRenderer(config, unitDescription, new Rectangle(INITIALRECTANGLE.X, INITIALRECTANGLE.Y + currentDescPosition, INITIALRECTANGLE.Width, INITIALRECTANGLE.Height - currentDescPosition));
                 descriptionRenderers.Add(renderer);
                 currentDescPosition += (int)renderer.getSizeOfDescription(graphics).Height;

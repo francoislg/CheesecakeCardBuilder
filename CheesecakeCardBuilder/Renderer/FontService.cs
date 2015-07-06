@@ -27,8 +27,8 @@ namespace CheesecakeCardBuilder.Renderer {
             return linearGradient;
         }
 
-        public static BrushChangerByType getDefaultGradientBrushChangerByType(Font font, UnitCard card, TextRenderer renderer) {
-            BrushChangerByType brushChanger = new BrushChangerByType(card, renderer);
+        public static BrushChangerByUnitType getDefaultGradientBrushChangerByType(Font font, Card card) {
+            BrushChangerByUnitType brushChanger = new BrushChangerByUnitType(card);
             brushChanger.Add(UnitType.Standard, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 180, 180, 180)));
             brushChanger.Add(UnitType.Advanced, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 53, 255, 255)));
             brushChanger.Add(UnitType.Expert, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 154, 254, 155)));

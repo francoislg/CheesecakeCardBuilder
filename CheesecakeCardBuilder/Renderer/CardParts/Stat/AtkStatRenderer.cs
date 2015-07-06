@@ -18,7 +18,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private UnitCard card;
         private CardTextRenderer renderer;
         private ImageRenderer iconRenderer;
-        private BrushChangerByType brushChanger;
+        private BrushChangerByUnitType brushChanger;
 
         public AtkStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
@@ -27,11 +27,11 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
             this.iconRenderer = new ImageRenderer(new Bitmap(config.iconAtkFile), ICONPOSITION);
             this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 0), font = font, position = POSITION };
             this.renderer.addDefaultEffects();
-            this.brushChanger = FontService.getDefaultGradientBrushChangerByType(font, card, renderer);
+            this.brushChanger = FontService.getDefaultGradientBrushChangerByType(font, card);
         }
 
         public void draw(Graphics graphics) {
-            brushChanger.update();
+            brushChanger.update(renderer);
             iconRenderer.draw(graphics);
             renderer.draw(graphics, card.atk);
         }

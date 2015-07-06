@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Unit {
-    public enum UnitDescriptionType {
+namespace CheesecakeCardBuilder {
+    public enum DescriptionType {
         Empty, Keyword, Default
     }
 }

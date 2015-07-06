@@ -14,6 +14,7 @@ namespace CheesecakeCardBuilder.Builder.Unit {
     using Renderer;
     using Repository;
     using CheesecakeCardBuilder.Unit;
+    using CheesecakeCardBuilder.Structure;
 
     public partial class CardBuilder : Form, CardUpdater {
         private Card currentCard;
@@ -25,12 +26,26 @@ namespace CheesecakeCardBuilder.Builder.Unit {
 
         private CardBuilderConfig cardBuilderConfig;
 
+        private class ComboBoxCardType {
+            public string name { get; set; }
+            public Card card { get; set; }
+        }
+
         public CardBuilder(ProjectConfig config) {
             this.config = config;
             this.repository = new LiteDBRepository(config);
             this.cardBuilderConfig = new CardBuilderConfig(config, this);
             InitializeComponent();
-            changeCard(new UnitCard());
+            this.typeComboBox.DisplayMember = "name";
+            this.typeComboBox.Items.Add(new ComboBoxCardType() {
+                name = "Unit",
+                card = new UnitCard()
+            });
+            this.typeComboBox.Items.Add(new ComboBoxCardType() {
+                name = "Structure",
+                card = new StructureCard()
+            });
+            this.typeComboBox.SelectedIndex = 0;
         }
 
         public void changeCard(Card newCard) {
@@ -97,7 +112,8 @@ namespace CheesecakeCardBuilder.Builder.Unit {
         }
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-
+            ComboBoxCardType type = typeComboBox.SelectedItem as ComboBoxCardType;
+            changeCard(type.card);
         }
 
         private void nameTextBox_TextChanged(object sender, EventArgs e) {

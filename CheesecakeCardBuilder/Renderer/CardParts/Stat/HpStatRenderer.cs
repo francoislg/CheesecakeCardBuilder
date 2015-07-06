@@ -17,7 +17,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private UnitCard card;
         private CardTextRenderer renderer;
         private ImageRenderer iconRenderer;
-        private BrushChangerByType brushChanger;
+        private BrushChangerByUnitType brushChanger;
 
         public HPStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
@@ -27,12 +27,12 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
             this.iconRenderer = new ImageRenderer(new Bitmap(config.iconHPFile), ICONPOSITION);
             this.renderer = new CardTextRenderer() { brush = defaultBrush, font = font, position = POSITION };
             this.renderer.addDefaultEffects();
-            this.brushChanger = new BrushChangerByType(card, renderer, defaultBrush);
+            this.brushChanger = new BrushChangerByUnitType(card, defaultBrush);
             this.brushChanger.Add(UnitType.Master, new SolidBrush(Color.Red));
         }
 
         public void draw(Graphics graphics) {
-            brushChanger.update();
+            brushChanger.update(renderer);
             iconRenderer.draw(graphics);
             renderer.draw(graphics, card.hp);
         }
