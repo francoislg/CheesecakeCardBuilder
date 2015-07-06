@@ -39,6 +39,8 @@ namespace CheesecakeCardBuilder.Repository {
         public void save(Card card) {
             if (card is UnitCard) {
                update(unitsCollection, (UnitCard)card);
+            } else if (card is StructureCard) {
+                update(structuresCollection, (StructureCard)card);
             } else {
                 throw new NotSupportedException();
             }
