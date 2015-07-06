@@ -17,7 +17,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private UnitCard card;
         private CardTextRenderer renderer;
         private ImageRenderer iconRenderer;
-        private BrushChangerByUnitType brushChanger;
+        private BrushChangerByType brushChanger;
 
         public SpdStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;

@@ -16,7 +16,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
         private ProjectConfig config;
         private UnitCard card;
         private TextRenderer renderer;
-        private BrushChangerByUnitType brushChanger;
+        private BrushChangerByType brushChanger;
 
         public UnitTypeRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;

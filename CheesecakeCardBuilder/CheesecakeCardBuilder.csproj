@@ -73,6 +73,7 @@
     <Compile Include="ProjectManager\CardRepository.cs" />
     <Compile Include="ProjectManager\LiteDBCardRepository.cs" />
     <Compile Include="Renderer\BrushChangerByType.cs" />
+    <Compile Include="Renderer\BrushChangerNothing.cs" />
     <Compile Include="Renderer\CardParts\Unit\UnitBackgroundRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
