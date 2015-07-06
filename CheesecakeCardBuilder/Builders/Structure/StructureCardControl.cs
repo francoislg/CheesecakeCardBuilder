@@ -22,11 +22,17 @@ namespace CheesecakeCardBuilder.Builders.Structure {
             this.config = config;
             this.updater = updater;
             InitializeComponent();
+            typeComboBox.DataSource = Enum.GetValues(typeof(StructureType));
         }
 
         public void loadCard(Card card) {
             StructureCard newCard = card as StructureCard;
             this.structureCard = newCard;
+        }
+
+        private void typeCombobox_SelectedIndexChanged(object sender, EventArgs e) {
+            structureCard.structureType = (StructureType)typeComboBox.SelectedItem;
+            updater.updateCard();
         }
     }
 }

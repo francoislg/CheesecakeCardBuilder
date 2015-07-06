@@ -9,7 +9,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using System.Drawing;
     using Config;
     using Unit;
-    using Structure;
+    using CheesecakeCardBuilder.Structure;
     using Text;
 
     public class NameRenderer : CardPartRenderer {

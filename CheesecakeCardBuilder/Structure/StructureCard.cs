@@ -15,6 +15,7 @@ namespace CheesecakeCardBuilder.Structure {
         public String storSpeed { get; set; }
         public String maxCapacity { get; set; }
         public CardDescription[] descriptions { get; set; }
+        public StructureType structureType { get; set; }
 
         public StructureCard() {
             artFile = "template.png";
@@ -23,6 +24,7 @@ namespace CheesecakeCardBuilder.Structure {
             storSpeed = "";
             maxCapacity = "";
             descriptions = new CardDescription[] { new CardDescription(), new CardDescription() };
+            structureType = StructureType.Production;
         }
     }
 }

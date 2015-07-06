@@ -74,6 +74,7 @@
     <Compile Include="ProjectManager\LiteDBCardRepository.cs" />
     <Compile Include="Renderer\BrushChangerByType.cs" />
     <Compile Include="Renderer\BrushChangerNothing.cs" />
+    <Compile Include="Renderer\CardParts\Structure\StructureStatRendererByType.cs" />
     <Compile Include="Renderer\CardParts\Unit\UnitBackgroundRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Renderer\CardParts\Unit\UnitTypeRenderer.cs" />
     <Compile Include="Renderer\StructureCardRenderer.cs" />
     <Compile Include="Structure\StructureCard.cs" />
+    <Compile Include="Structure\StructureType.cs" />
     <Compile Include="Unit\Descriptions\DefaultUnitDescription.cs" />
     <Compile Include="Renderer\Text\FuzzyBoxedTextRenderer.cs" />
     <Compile Include="Renderer\Text\FuzzyTextRenderer.cs" />
