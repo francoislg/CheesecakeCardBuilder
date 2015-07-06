@@ -25,6 +25,7 @@ namespace CheesecakeCardBuilder.Renderer {
             StructureCardPartRendererFactory statRendererFactory = new StructureCardPartRendererFactory(config, structureCard);
             renderers.Add(statRendererFactory.create(PartType.Name));
             renderers.Add(statRendererFactory.create(PartType.Description));
+            renderers.Add(statRendererFactory.create(StructurePartType.Res));
             renderers.Add(statRendererFactory.create(StructurePartType.Stats));
         }
 

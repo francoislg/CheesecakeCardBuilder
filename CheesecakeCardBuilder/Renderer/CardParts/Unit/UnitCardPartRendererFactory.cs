@@ -30,7 +30,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
                 case UnitPartType.Hp:
                     return new HPStatRenderer(config, unitCard);
                 case UnitPartType.Res:
-                    return new ResStatRenderer(config, unitCard);
+                    return new UnitResStatRenderer(config, unitCard);
                 case UnitPartType.Type:
                     return new UnitTypeRenderer(config, unitCard);
                 case UnitPartType.Background:

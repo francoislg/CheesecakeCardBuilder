@@ -8,7 +8,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using Renderer.CardParts.Structure;
 
     public enum StructurePartType {
-        Stats
+        Stats, Res
     }
 
     public class StructureCardPartRendererFactory : CardPartRendererFactory {
@@ -23,6 +23,8 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             switch (type) {
                 case StructurePartType.Stats:
                     return new StructureStatRendererByType(config, structureCard);
+                case StructurePartType.Res:
+                    return new ResStatRenderer(config, structureCard);
                 default:
                     throw new NotSupportedException();
             }

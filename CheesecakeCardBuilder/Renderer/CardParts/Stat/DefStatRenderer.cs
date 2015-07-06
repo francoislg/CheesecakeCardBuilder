@@ -11,28 +11,19 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
     using CheesecakeCardBuilder.Unit;
 
     public class DefStatRenderer : CardPartRenderer {
-        private static readonly Point POSITION = new Point(70, 975);
-        private static readonly Point ICONPOSITION = new Point(POSITION.X - 50, POSITION.Y - 135);
         private ProjectConfig config;
         private UnitCard card;
-        private CardTextRenderer renderer;
-        private ImageRenderer iconRenderer;
-        private BrushChangerByType brushChanger;
+        private IconTextRenderer iconTextRenderer;
 
         public DefStatRenderer(ProjectConfig config, UnitCard card) {
             this.config = config;
             this.card = card;
-            Font font = config.statsFont;
-            this.iconRenderer = new ImageRenderer(new Bitmap(config.iconDefFile), ICONPOSITION);
-            this.renderer = new CardTextRenderer() { brush = FontService.getGradiantBrush(config.statsFont, 28), font = font, position = POSITION };
-            this.renderer.addDefaultEffects();
-            this.brushChanger = FontService.getDefaultGradientBrushChangerByType(font, card);
+            this.iconTextRenderer = new IconTextRenderer(CardPosition.BottomLeft, card, config.statsFont, config.iconDefFile);
+            this.iconTextRenderer.renderer.addDefaultEffects();
         }
 
         public void draw(Graphics graphics) {
-            brushChanger.update(renderer);
-            iconRenderer.draw(graphics);
-            renderer.draw(graphics, card.def);
+            this.iconTextRenderer.draw(graphics, card.def);
         }
     }
 }

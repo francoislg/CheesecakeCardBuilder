@@ -76,10 +76,14 @@ namespace CheesecakeCardBuilder.Builder.Unit {
         }
 
         private void exportButton_Click(object sender, EventArgs e) {
-            exportSaveFileDialog.FileName = String.Join("_", currentCard.name.Split(' ')) + ".png";
-            if (exportSaveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                previewPicture.Image.Save(exportSaveFileDialog.FileName);
-            };
+            if (String.IsNullOrEmpty(currentCard.name)) {
+                MessageBox.Show("Vous devez spécifier un nom pour la carte");
+            } else {
+                exportSaveFileDialog.FileName = String.Join("_", currentCard.name.Split(' ')) + ".png";
+                if (exportSaveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                    previewPicture.Image.Save(exportSaveFileDialog.FileName);
+                };
+            }
         }
 
         private void artButton_Click(object sender, EventArgs e) {

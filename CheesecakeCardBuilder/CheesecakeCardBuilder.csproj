@@ -73,7 +73,12 @@
     <Compile Include="ProjectManager\CardRepository.cs" />
     <Compile Include="ProjectManager\LiteDBCardRepository.cs" />
     <Compile Include="Renderer\BrushChangerByType.cs" />
-    <Compile Include="Renderer\BrushChangerNothing.cs" />
+    <Compile Include="Renderer\BrushChangerOneType.cs" />
+    <Compile Include="Renderer\CardParts\Stat\ResStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\IconTextRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Structure\TransportCardPartRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Structure\StorageCardPartRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Structure\ProductionCardPartRenderer.cs" />
     <Compile Include="Renderer\CardParts\Structure\StructureStatRendererByType.cs" />
     <Compile Include="Renderer\CardParts\Unit\UnitBackgroundRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
@@ -93,7 +98,7 @@
     <Compile Include="Renderer\CardParts\NameRenderer.cs" />
     <Compile Include="Renderer\Text\OutlineBoxedTextRenderer.cs" />
     <Compile Include="Renderer\Text\OutlineTextRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\ResStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\UnitResStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\HpStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\AccStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\SpdStatRenderer.cs" />

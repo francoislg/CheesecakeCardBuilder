@@ -69,7 +69,7 @@ namespace CheesecakeCardBuilder.Config {
                 return iconsPath + "\\res2.png";
             }
         }
-        public String iconRes3File {
+        public String iconGreenResFile {
             get {
                 return iconsPath + "\\res3.png";
             }
@@ -107,6 +107,21 @@ namespace CheesecakeCardBuilder.Config {
         public String background5File {
             get {
                 return cardsPath + "\\bg5.png";
+            }
+        }
+        public String iconProdFile {
+            get {
+                return iconsPath + "\\production.png";
+            }
+        }
+        public String iconStorageFile {
+            get {
+                return iconsPath + "\\storage.png";
+            }
+        }
+        public String iconStorageSpeedFile {
+            get {
+                return iconsPath + "\\storagespeed.png";
             }
         }
         public String databaseFile {

@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Structure {
     public enum StructureType {
+        Production, Transport, Storage
     }
 }
-

@@ -27,11 +27,19 @@ namespace CheesecakeCardBuilder.Builders.Structure {
 
         public void loadCard(Card card) {
             StructureCard newCard = card as StructureCard;
+            resTextbox.DataBindings.Add("Text", newCard, "res", false, DataSourceUpdateMode.OnPropertyChanged);
+            prodTextbox.DataBindings.Add("Text", newCard, "prod", false, DataSourceUpdateMode.OnPropertyChanged);
+            storTextbox.DataBindings.Add("Text", newCard, "storage", false, DataSourceUpdateMode.OnPropertyChanged);
+            storSpeedTextbox.DataBindings.Add("Text", newCard, "storSpeed", false, DataSourceUpdateMode.OnPropertyChanged);
             this.structureCard = newCard;
         }
 
         private void typeCombobox_SelectedIndexChanged(object sender, EventArgs e) {
             structureCard.structureType = (StructureType)typeComboBox.SelectedItem;
+            updater.updateCard();
+        }
+
+        private void resTextbox_TextChanged(object sender, EventArgs e) {
             updater.updateCard();
         }
     }

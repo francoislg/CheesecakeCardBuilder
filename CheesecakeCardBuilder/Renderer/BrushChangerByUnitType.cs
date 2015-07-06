@@ -10,22 +10,19 @@ namespace CheesecakeCardBuilder.Renderer {
     using CheesecakeCardBuilder.Unit;
 
     public class BrushChangerByUnitType : ByTypeHandler<UnitType, Brush>, BrushChangerByType {
-        private Card card;
+        private UnitCard card;
 
-        public BrushChangerByUnitType(Card card) {
+        public BrushChangerByUnitType(UnitCard card) {
             this.card = card;
         }
 
-        public BrushChangerByUnitType(Card card, Brush defaultBrush)
+        public BrushChangerByUnitType(UnitCard card, Brush defaultBrush)
             : base(defaultBrush) {
             this.card = card;
         }
 
         public void update(TextRenderer renderer) {
-            if (card is UnitCard) {
-                UnitCard unitCard = card as UnitCard;
-                renderer.changeBrush(Get(unitCard.unitType));
-            }
+            renderer.changeBrush(Get(card.unitType));
         }
     }
 }

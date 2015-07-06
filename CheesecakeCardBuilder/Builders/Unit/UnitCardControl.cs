@@ -42,12 +42,12 @@ namespace CheesecakeCardBuilder.Builder.Unit {
 
         public void loadCard(Card card) {
             UnitCard newCard = card as UnitCard;
-            hpTextbox.DataBindings.Add("Text", newCard, "hp");
-            resTextbox.DataBindings.Add("Text", newCard, "res");
-            accTextBox.DataBindings.Add("Text", newCard, "acc");
-            atkTextBox.DataBindings.Add("Text", newCard, "atk");
-            defTextBox.DataBindings.Add("Text", newCard, "def");
-            spdTextbox.DataBindings.Add("Text", newCard, "spd");
+            hpTextbox.DataBindings.Add("Text", newCard, "hp", false, DataSourceUpdateMode.OnPropertyChanged);
+            resTextbox.DataBindings.Add("Text", newCard, "res", false, DataSourceUpdateMode.OnPropertyChanged);
+            accTextBox.DataBindings.Add("Text", newCard, "acc", false, DataSourceUpdateMode.OnPropertyChanged);
+            atkTextBox.DataBindings.Add("Text", newCard, "atk", false, DataSourceUpdateMode.OnPropertyChanged);
+            defTextBox.DataBindings.Add("Text", newCard, "def", false, DataSourceUpdateMode.OnPropertyChanged);
+            spdTextbox.DataBindings.Add("Text", newCard, "spd", false, DataSourceUpdateMode.OnPropertyChanged);
             typeComboBox.SelectedItem = newCard.unitType;
             for (int i = 0; i < newCard.descriptions.Count(); i++) {
                 descriptionsComboBox[i].Text = newCard.descriptions[i].type.ToString();
