@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CheesecakeCardBuilder.Config;
 
-namespace CheesecakeCardBuilder.Builders.Unit {
+namespace CheesecakeCardBuilder.Builders.Structure {
     using Description;
-    public partial class DefaultUnitDescriptionControl : UserControl, DescriptionControl {
+    public partial class StructureDescriptionControl : UserControl, DescriptionControl {
         private CardUpdater updater;
         private DefaultDescription unitDesc;
 
@@ -33,26 +33,24 @@ namespace CheesecakeCardBuilder.Builders.Unit {
             }
             set {
                 unitDesc.description = value.description;
-                whenBox.Text = value.description[1].TrimEnd(',');
-                targetBox.Text = value.description[2];
-                actionBox.Text = value.description[3];
+                if (value.description.Count() > 0) {
+                    descTextBox.Text = value.description[1];
+                }
             }
         }
 
-        public DefaultUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
+        public StructureDescriptionControl(ProjectConfig config, CardUpdater updater) {
             InitializeComponent();
             this.unitDesc = new DefaultDescription();
             this.updater = updater;
         }
 
         public void clear() {
-            whenBox.Text = "";
-            targetBox.Text = "";
-            actionBox.Text = "";
+            descTextBox.Text = "";
         }
 
-        private void actionBox_KeyUp(object sender, KeyEventArgs e) {
-            description.description = new String[] { "Special :", whenBox.Text + ",", targetBox.Text, actionBox.Text };
+        private void descTextBox_TextChanged(object sender, EventArgs e) {
+            description.description = new String[] { String.IsNullOrEmpty(descTextBox.Text) ? "" : "Special :", descTextBox.Text };
             updater.updateCard();
         }
     }

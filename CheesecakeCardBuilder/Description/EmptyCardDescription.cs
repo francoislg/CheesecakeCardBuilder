@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Unit {
-    class EmptyCardDescription {
+namespace CheesecakeCardBuilder.Description{
+    class EmptyCardDescription : CardDescription {
     }
 }

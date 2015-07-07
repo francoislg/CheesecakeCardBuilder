@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CheesecakeCardBuilder.Config;
 
-namespace CheesecakeCardBuilder.Builder.Unit {
+namespace CheesecakeCardBuilder.Builders.Unit {
     using CheesecakeCardBuilder.Unit;
+    using Description;
     public partial class EmptyUnitDescriptionControl : UserControl, DescriptionControl {
         private CardUpdater updater;
-        private CardDescription unitDesc;
+        private EmptyCardDescription unitDesc;
 
         public String name {
             get {
@@ -38,7 +39,7 @@ namespace CheesecakeCardBuilder.Builder.Unit {
 
         public EmptyUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
             InitializeComponent();
-            this.unitDesc = new CardDescription();
+            this.unitDesc = new EmptyCardDescription();
             this.updater = updater;
         }
 

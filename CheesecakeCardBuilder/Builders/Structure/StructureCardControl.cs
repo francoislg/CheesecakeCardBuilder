@@ -11,17 +11,19 @@ using System.Windows.Forms;
 namespace CheesecakeCardBuilder.Builders.Structure {
     using CheesecakeCardBuilder.Structure;
     using CheesecakeCardBuilder.Config;
-    using CheesecakeCardBuilder.Builder;
     public partial class StructureCardControl : UserControl, CardControl {
         private ProjectConfig config;
         private StructureCard structureCard = new StructureCard();
         private CardUpdater updater;
-        private DescriptionControl[] lastUnitDescription = new DescriptionControl[2];
+        private StructureDescriptionControl descControl;
 
         public StructureCardControl(ProjectConfig config, CardUpdater updater) {
             this.config = config;
             this.updater = updater;
             InitializeComponent();
+            descControl = new StructureDescriptionControl(config, updater);
+            descriptionPanel.Controls.Clear();
+            descriptionPanel.Controls.Add((UserControl)descControl);
             typeComboBox.DataSource = Enum.GetValues(typeof(StructureType));
         }
 
@@ -31,6 +33,8 @@ namespace CheesecakeCardBuilder.Builders.Structure {
             prodTextbox.DataBindings.Add("Text", newCard, "prod", false, DataSourceUpdateMode.OnPropertyChanged);
             storTextbox.DataBindings.Add("Text", newCard, "storage", false, DataSourceUpdateMode.OnPropertyChanged);
             storSpeedTextbox.DataBindings.Add("Text", newCard, "storSpeed", false, DataSourceUpdateMode.OnPropertyChanged);
+            descControl.description = newCard.descriptions[0];
+            newCard.descriptions[0] = descControl.description;
             this.structureCard = newCard;
         }
 

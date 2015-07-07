@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CheesecakeCardBuilder.Config;
 
-namespace CheesecakeCardBuilder.Builder.Unit {
+namespace CheesecakeCardBuilder.Builders.Unit {
     using CheesecakeCardBuilder.Unit;
     public partial class UnitCardControl : UserControl, CardControl {
         private ProjectConfig config;

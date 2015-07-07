@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Builder {
+namespace CheesecakeCardBuilder.Builders {
     using Unit;
-    using Structure;
+    using CheesecakeCardBuilder.Structure;
     using CheesecakeCardBuilder.Unit;
     using CheesecakeCardBuilder.Renderer;
     using CheesecakeCardBuilder.Builders.Structure;

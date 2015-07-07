@@ -26,6 +26,10 @@ namespace CheesecakeCardBuilder.Repository {
             return unitsCollection.FindAll().ToList<UnitCard>();
         }
 
+        public List<StructureCard> getAllStructureCards() {
+            return structuresCollection.FindAll().ToList<StructureCard>();
+        }
+
         private void update<T>(LiteCollection<T> collection, T card) where T : Card, new(){
             if (collection.Exists(c => c.name.Equals(card.name))) {
                 if (!collection.Update(card.name.ToLower(), card)) {

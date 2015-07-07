@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CheesecakeCardBuilder.Builder.Unit {
+namespace CheesecakeCardBuilder.Builders.Unit {
     using Config;
+    using Description;
     using CheesecakeCardBuilder.Unit;
     public partial class KeywordUnitDescriptionControl : UserControl, DescriptionControl {
-        private KeywordUnitDescription unitDesc;
+        private KeywordDescription unitDesc;
         private CardUpdater updater;
 
         public String name {
@@ -40,7 +41,7 @@ namespace CheesecakeCardBuilder.Builder.Unit {
         public KeywordUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
             InitializeComponent();
             this.updater = updater;
-            this.unitDesc = new KeywordUnitDescription();
+            this.unitDesc = new KeywordDescription();
             keywordComboBox.DataSource = config.keywords;
         }
 

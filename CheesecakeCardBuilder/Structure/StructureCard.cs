@@ -23,7 +23,7 @@ namespace CheesecakeCardBuilder.Structure {
             prod = "";
             storSpeed = "";
             storage = "";
-            descriptions = new CardDescription[] { new CardDescription(), new CardDescription() };
+            descriptions = new CardDescription[] { new CardDescription() };
             structureType = StructureType.Production;
         }
     }

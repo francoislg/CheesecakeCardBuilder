@@ -1,4 +1,4 @@
-﻿namespace CheesecakeCardBuilder.Builder.Unit {
+﻿namespace CheesecakeCardBuilder.Builders.Unit {
     partial class UnitCardControl {
         /// <summary> 
         /// Required designer variable.
