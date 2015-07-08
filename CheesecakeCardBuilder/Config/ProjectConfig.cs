@@ -12,7 +12,6 @@ namespace CheesecakeCardBuilder.Config {
     using System.Runtime.InteropServices;
 
     public class ProjectConfig {
-
         public String iconsPath {
             get {
                 return globalConfig.projectPath + "\\icones";
@@ -131,7 +130,7 @@ namespace CheesecakeCardBuilder.Config {
         }
 
         [JsonIgnore]
-        private GlobalConfig globalConfig;
+        public GlobalConfig globalConfig { get; set; }
         public readonly Font topStatsFont, statsFont, descriptionFont, keywordFont, nameFont;
         public readonly List<String> keywords = new List<string>();
 
@@ -141,10 +140,6 @@ namespace CheesecakeCardBuilder.Config {
             descriptionFont = new Font("Vijaya", pointsToEm(11f), FontStyle.Bold);
             nameFont = new Font("Vijaya", pointsToEm(13f), FontStyle.Regular);
             keywordFont = new Font("Segoe Script", pointsToEm(9.5f), FontStyle.Regular);
-            setGlobalConfig(globalConfig);
-        }
-
-        public void setGlobalConfig(GlobalConfig globalConfig) {
             this.globalConfig = globalConfig;
         }
 
