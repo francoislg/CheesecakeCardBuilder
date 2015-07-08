@@ -1,6 +1,5 @@
 ﻿
 namespace CheesecakeCardBuilder.Renderer.CardParts.Caster {
-    using CheesecakeCardBuilder.Caster;
     using Config;
     using System;
     using CardParts;

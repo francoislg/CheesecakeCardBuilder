@@ -15,11 +15,13 @@ namespace CheesecakeCardBuilder.Repository {
         private LiteDatabase database;
         private LiteCollection<UnitCard> unitsCollection;
         private LiteCollection<StructureCard> structuresCollection;
+        private LiteCollection<CasterCard> castersCollection;
         public LiteDBRepository(ProjectConfig config) {
             this.config = config;
             this.database = new LiteDatabase(config.databaseFile);
             this.unitsCollection = database.GetCollection<UnitCard>("units");
             this.structuresCollection = database.GetCollection<StructureCard>("structures");
+            this.castersCollection = database.GetCollection<CasterCard>("casters");
         }
 
         public List<UnitCard> getAllUnitCards() {
@@ -28,6 +30,10 @@ namespace CheesecakeCardBuilder.Repository {
 
         public List<StructureCard> getAllStructureCards() {
             return structuresCollection.FindAll().ToList<StructureCard>();
+        }
+
+        public List<CasterCard> getAllCasterCards() {
+            return castersCollection.FindAll().ToList<CasterCard>();
         }
 
         private void update<T>(LiteCollection<T> collection, T card) where T : Card, new(){
@@ -45,6 +51,8 @@ namespace CheesecakeCardBuilder.Repository {
                update(unitsCollection, (UnitCard)card);
             } else if (card is StructureCard) {
                 update(structuresCollection, (StructureCard)card);
+            } else if (card is CasterCard) {
+                update(castersCollection, (CasterCard)card);
             } else {
                 throw new NotSupportedException();
             }

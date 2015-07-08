@@ -1,8 +1,6 @@
 ﻿
 namespace CheesecakeCardBuilder.Renderer {
     using Config;
-    using Caster;
-    using Renderer.CardParts;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -14,6 +12,7 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
     using CheesecakeCardBuilder.Renderer.CardParts.Caster;
+    using CheesecakeCardBuilder.Renderer.CardParts;
 
     public class CasterCardRenderer : CardRenderer {
         private CasterCard casterCard;

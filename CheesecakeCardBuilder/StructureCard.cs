@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Structure {
+namespace CheesecakeCardBuilder {
     using LiteDB;
+    using Structure;
     public class StructureCard : Card {
         [BsonId]
         public String name { get; set; }

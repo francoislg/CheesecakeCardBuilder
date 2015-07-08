@@ -10,6 +10,7 @@ namespace CheesecakeCardBuilder.Repository {
     public interface CardRepository {
         List<UnitCard> getAllUnitCards();
         List<StructureCard> getAllStructureCards();
+        List<CasterCard> getAllCasterCards();
         void save(Card card);
     }
 }

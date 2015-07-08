@@ -8,9 +8,6 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using System;
     using System.Drawing;
     using Config;
-    using CheesecakeCardBuilder.Unit;
-    using CheesecakeCardBuilder.Structure;
-    using CheesecakeCardBuilder.Caster;
     using Text;
 
     public class NameRenderer : CardPartRenderer {

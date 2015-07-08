@@ -9,6 +9,9 @@ namespace CheesecakeCardBuilder.Renderer {
 
     public class FontService {
         public static Color lightGreen = Color.FromArgb(255, 154, 254, 155);
+        public static Color lightBlue = Color.FromArgb(255, 53, 255, 255);
+        public static Color lightGray = Color.FromArgb(255, 180, 180, 180);
+        public static Color lightOrange = Color.FromArgb(255, 252, 153, 49);
         public static Font getDefaultFont(){
             return new Font("Segeo Script", 8.25f, FontStyle.Regular);
         }
@@ -32,14 +35,16 @@ namespace CheesecakeCardBuilder.Renderer {
         public static BrushChangerByType getDefaultGradientBrushChangerByType(Font font, Card card) {
             if (card is UnitCard) {
                 BrushChangerByUnitType brushChanger = new BrushChangerByUnitType((UnitCard)card);
-                brushChanger.Add(UnitType.Standard, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 180, 180, 180)));
-                brushChanger.Add(UnitType.Advanced, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 53, 255, 255)));
+                brushChanger.Add(UnitType.Standard, FontService.getGradiantBrush(font, 0, lightGray));
+                brushChanger.Add(UnitType.Advanced, FontService.getGradiantBrush(font, 0, lightBlue));
                 brushChanger.Add(UnitType.Expert, FontService.getGradiantBrush(font, 0, lightGreen));
-                brushChanger.Add(UnitType.Elite, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 252, 153, 49)));
+                brushChanger.Add(UnitType.Elite, FontService.getGradiantBrush(font, 0, lightOrange));
                 brushChanger.Add(UnitType.Master, FontService.getGradiantBrush(font, 0, Color.Red));
                 return brushChanger;
             } else if(card is StructureCard) {
                 return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightGreen));
+            } else if (card is CasterCard) {
+                return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightBlue));
             } else {
                 throw new NotSupportedException();
             }

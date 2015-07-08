@@ -10,7 +10,6 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using CardParts;
     using System.Drawing;
     using System.IO;
-    using CheesecakeCardBuilder.Structure;
 
     public class DefaultBackgroundRenderer : CardPartRenderer {
         private readonly Point POSITION = new Point(0, 542);
@@ -27,9 +26,11 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             string backgroundFile = config.background1File;
             if (card is StructureCard) {
                 backgroundFile = config.background3File;
+            } else if (card is CasterCard) {
+                backgroundFile = config.backgroundCasterFile;
             }
             updateArt();
-            this.background = new ImageRenderer(new Bitmap(config.background3File), POSITION);
+            this.background = new ImageRenderer(new Bitmap(backgroundFile), POSITION);
         }
 
         private void updateArt() {

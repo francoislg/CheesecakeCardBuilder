@@ -11,6 +11,7 @@ namespace CheesecakeCardBuilder.Builders {
     using CheesecakeCardBuilder.Unit;
     using CheesecakeCardBuilder.Renderer;
     using CheesecakeCardBuilder.Builders.Structure;
+    using CheesecakeCardBuilder.Builders.Caster;
     public class CardBuilderConfig {
         private ProjectConfig config;
         private CardUpdater updater;
@@ -24,7 +25,9 @@ namespace CheesecakeCardBuilder.Builders {
                 return new UnitCardRenderer((UnitCard)card, config);
             } else if(card is StructureCard) {
                 return new StructureCardRenderer((StructureCard)card, config);
-            }else{
+            } else if (card is CasterCard) {
+                return new CasterCardRenderer((CasterCard)card, config);
+            } else {
                 throw new NotSupportedException();
             }
         }
@@ -34,7 +37,9 @@ namespace CheesecakeCardBuilder.Builders {
                 return new UnitCardControl(config, updater);
             } else if(card is StructureCard) {
                 return new StructureCardControl(config, updater);
-            }else {
+            }else if(card is CasterCard){
+                return new CasterCardControl(config, updater);
+            }else{
                 throw new NotSupportedException();
             }
         }

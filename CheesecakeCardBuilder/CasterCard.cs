@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Caster {
+namespace CheesecakeCardBuilder {
     using LiteDB;
     public class CasterCard : Card {
         [BsonId]

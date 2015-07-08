@@ -13,8 +13,6 @@ namespace CheesecakeCardBuilder.Builders {
     using Unit;
     using Renderer;
     using Repository;
-    using CheesecakeCardBuilder.Unit;
-    using CheesecakeCardBuilder.Structure;
 
     public partial class CardBuilder : Form, CardUpdater {
         private Card currentCard;
@@ -44,6 +42,10 @@ namespace CheesecakeCardBuilder.Builders {
             this.typeComboBox.Items.Add(new ComboBoxCardType() {
                 name = "Structure",
                 card = new StructureCard()
+            });
+            this.typeComboBox.Items.Add(new ComboBoxCardType() {
+                name = "Caster",
+                card = new CasterCard()
             });
             this.typeComboBox.SelectedIndex = 0;
         }

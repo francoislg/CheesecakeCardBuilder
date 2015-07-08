@@ -15,59 +15,35 @@ namespace CheesecakeCardBuilder.Builders {
     using CheesecakeCardBuilder.Structure;
 
     public partial class CardLoader : Form {
-        private CardRepository repository;
-        private List<UnitCard> unitCards;
-        private List<StructureCard> structureCards;
-        private bool flagSelected = false;
+        private Dictionary<string, TypeLoader> typeLoaders = new Dictionary<string, TypeLoader>();
         public bool hasSelected {
             get {
-                return flagSelected;
+                return selectedCard != null;
             }
         }
         public Card selectedCard { get; private set; }
 
         public CardLoader(CardRepository repository) {
             InitializeComponent();
-            unitCards = repository.getAllUnitCards();
-            structureCards = repository.getAllStructureCards();
-            this.repository = repository;
+            typeLoaders.Add("Units", new AnyTypeLoader<UnitCard>(repository.getAllUnitCards(), this));
+            typeLoaders.Add("Structures", new AnyTypeLoader<StructureCard>(repository.getAllStructureCards(), this));
+            typeLoaders.Add("Casters", new AnyTypeLoader<CasterCard>(repository.getAllCasterCards(), this));
         }
 
         private void CardLoader_Load(object sender, EventArgs e) {
-            unitListBox.Items.AddRange(unitCards.ToArray());
-            unitListBox.DisplayMember = "name";
-            structureListBox.Items.AddRange(structureCards.ToArray());
-            structureListBox.DisplayMember = "name";
-        }
-
-        private void structureSearchbox_TextChanged(object sender, EventArgs e) {
-            structureListBox.Items.Clear();
-            structureListBox.Items.AddRange(
-                structureCards.Where(x => x.name.ToLower().Contains(structureListBox.Text.ToLower())).ToArray()
-            );
-        }
-
-        private void unitSearchBox_TextChanged(object sender, EventArgs e) {
-            unitListBox.Items.Clear();
-            unitListBox.Items.AddRange(
-                unitCards.Where(x => x.name.ToLower().Contains(unitSearchBox.Text.ToLower())).ToArray()
-            );
-        }
-
-        private void cardsListBox_MouseDoubleClick(object sender, MouseEventArgs e) {
-            selectedCard = unitListBox.SelectedItem as UnitCard;
-            if (selectedCard != null) {
-                flagSelected = true;
+            foreach (string key in typeLoaders.Keys) {
+                TypeLoader typeLoader = typeLoaders[key];
+                TabPage page = new TabPage(key);
+                page.Controls.Add((UserControl)typeLoader);
+                loadTabs.TabPages.Add(page);
             }
-            this.Close();
         }
 
-        private void structureListbox_DoubleClick(object sender, EventArgs e) {
-            selectedCard = structureListBox.SelectedItem as StructureCard;
-            if (selectedCard != null) {
-                flagSelected = true;
+        public void finish(Card card) {
+            if (card != null) {
+                selectedCard = card;
+                this.Close();
             }
-            this.Close();
         }
     }
 }

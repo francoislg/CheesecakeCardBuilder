@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Unit {
+namespace CheesecakeCardBuilder {
     using LiteDB;
     using System.Drawing;
+    using Unit;
     public class UnitCard : Card {
         [BsonId]
         public String name { get; set; }
