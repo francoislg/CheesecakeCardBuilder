@@ -12,6 +12,11 @@ namespace CheesecakeCardBuilder {
         public String res { get; set; }
         public String artFile { get; set; }
         public CardDescription[] descriptions { get; set; }
+        public string type {
+            get {
+                return "Caster";
+            }
+        }
 
         public CasterCard() {
             artFile = "template.png";

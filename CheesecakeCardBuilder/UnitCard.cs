@@ -20,6 +20,11 @@ namespace CheesecakeCardBuilder {
         public UnitType unitType { get; set; }
         public String artFile { get; set; }
         public CardDescription[] descriptions { get; set; }
+        public string type {
+            get {
+                return "Unit";
+            }
+        }
 
         public UnitCard() {
             artFile = "template.png";

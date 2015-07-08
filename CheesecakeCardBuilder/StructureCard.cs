@@ -17,6 +17,11 @@ namespace CheesecakeCardBuilder {
         public String storage { get; set; }
         public CardDescription[] descriptions { get; set; }
         public StructureType structureType { get; set; }
+        public string type {
+            get {
+                return "Structure";
+            }
+        }
 
         public StructureCard() {
             artFile = "template.png";

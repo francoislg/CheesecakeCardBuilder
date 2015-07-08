@@ -21,12 +21,20 @@ namespace CheesecakeCardBuilder.Builders {
         private CardRepository repository;
         private bool updateActivated = true;
         private CardControl currentCardControl;
+        private List<ComboBoxCardType> cbCardTypes = new List<ComboBoxCardType>();
 
         private CardBuilderConfig cardBuilderConfig;
 
         private class ComboBoxCardType {
-            public string name { get; set; }
-            public Card card { get; set; }
+            public string name {
+                get {
+                    return card.type;
+                }
+            }
+            public Card card { get; private set; }
+            public ComboBoxCardType(Card card) {
+                this.card = card;
+            }
         }
 
         public CardBuilder(ProjectConfig config) {
@@ -34,25 +42,20 @@ namespace CheesecakeCardBuilder.Builders {
             this.repository = new LiteDBRepository(config);
             this.cardBuilderConfig = new CardBuilderConfig(config, this);
             InitializeComponent();
+            cbCardTypes.Add(new ComboBoxCardType(new UnitCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new StructureCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new CasterCard()));
             this.typeComboBox.DisplayMember = "name";
-            this.typeComboBox.Items.Add(new ComboBoxCardType() {
-                name = "Unit",
-                card = new UnitCard()
-            });
-            this.typeComboBox.Items.Add(new ComboBoxCardType() {
-                name = "Structure",
-                card = new StructureCard()
-            });
-            this.typeComboBox.Items.Add(new ComboBoxCardType() {
-                name = "Caster",
-                card = new CasterCard()
-            });
+            this.typeComboBox.ValueMember = "name";
+            this.typeComboBox.DataSource = cbCardTypes;
             this.typeComboBox.SelectedIndex = 0;
         }
 
         public void changeCard(Card newCard) {
+            Console.WriteLine("CHANGED");
             desactivateUpdates();
             nameTextBox.Text = newCard.name;
+            this.typeComboBox.SelectedValue = newCard.type;
             currentCardControl = cardBuilderConfig.getControl(newCard);
             this.cardControlPanel.Controls.Clear();
             this.cardControlPanel.Controls.Add((UserControl)currentCardControl);
