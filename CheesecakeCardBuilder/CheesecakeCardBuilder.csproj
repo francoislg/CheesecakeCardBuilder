@@ -103,6 +103,7 @@
     <Compile Include="Builders\CardBuilderConfig.cs" />
     <Compile Include="CardRenderer.cs" />
     <Compile Include="CardType.cs" />
+    <Compile Include="Caster\CasterCard.cs" />
     <Compile Include="Description\DefaultDescription.cs" />
     <Compile Include="Description\EmptyCardDescription.cs" />
     <Compile Include="Description\KeywordDescription.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="ProjectManager\LiteDBCardRepository.cs" />
     <Compile Include="Renderer\BrushChangerByType.cs" />
     <Compile Include="Renderer\BrushChangerOneType.cs" />
+    <Compile Include="Renderer\CardParts\Caster\CasterCardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Stat\ResStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\IconTextRenderer.cs" />
     <Compile Include="Renderer\CardParts\Structure\TransportCardPartRenderer.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="Renderer\CardParts\CardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Structure\StructureCardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Unit\UnitTypeRenderer.cs" />
+    <Compile Include="Renderer\CasterCardRenderer.cs" />
     <Compile Include="Renderer\StructureCardRenderer.cs" />
     <Compile Include="Structure\StructureCard.cs" />
     <Compile Include="Structure\StructureType.cs" />

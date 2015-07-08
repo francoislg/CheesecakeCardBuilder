@@ -8,8 +8,9 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using System;
     using System.Drawing;
     using Config;
-    using Unit;
+    using CheesecakeCardBuilder.Unit;
     using CheesecakeCardBuilder.Structure;
+    using CheesecakeCardBuilder.Caster;
     using Text;
 
     public class NameRenderer : CardPartRenderer {
@@ -36,6 +37,8 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
                 cardType = "Unit";
             }else if (card is StructureCard){
                 cardType = "Structure";
+            } else if (card is CasterCard) {
+                cardType = "Caster";
             }
         }
 

@@ -1,7 +1,7 @@
 ﻿
 namespace CheesecakeCardBuilder.Renderer {
     using Config;
-    using Structure;
+    using Caster;
     using Renderer.CardParts;
     using System;
     using System.Collections.Generic;
@@ -13,22 +13,21 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Text;
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
-    using CheesecakeCardBuilder.Renderer.CardParts.Structure;
+    using CheesecakeCardBuilder.Renderer.CardParts.Caster;
 
-    public class StructureCardRenderer : CardRenderer {
-        private StructureCard structureCard;
+    public class CasterCardRenderer : CardRenderer {
+        private CasterCard casterCard;
         private Image template;
         private readonly List<CardPartRenderer> renderers = new List<CardPartRenderer>();
 
-        public StructureCardRenderer(StructureCard card, ProjectConfig config) {
-            this.structureCard = card;
+        public CasterCardRenderer(CasterCard card, ProjectConfig config) {
+            this.casterCard = card;
             this.template = new Bitmap(config.unitFile);
-            StructureCardPartRendererFactory cardPartRendererFactory = new StructureCardPartRendererFactory(config, structureCard);
+            CasterCardPartRendererFactory cardPartRendererFactory = new CasterCardPartRendererFactory(config, casterCard);
             renderers.Add(cardPartRendererFactory.create(PartType.Background));
             renderers.Add(cardPartRendererFactory.create(PartType.Name));
             renderers.Add(cardPartRendererFactory.create(PartType.Description));
-            renderers.Add(cardPartRendererFactory.create(StructurePartType.Res));
-            renderers.Add(cardPartRendererFactory.create(StructurePartType.Stats));
+            renderers.Add(cardPartRendererFactory.create(CasterPartType.Res));
         }
 
         public async Task<Image> generate() {

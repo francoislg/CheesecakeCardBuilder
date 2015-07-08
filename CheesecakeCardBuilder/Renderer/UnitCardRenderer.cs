@@ -13,6 +13,7 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Text;
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
+    using CheesecakeCardBuilder.Renderer.CardParts.Unit;
 
     public class UnitCardRenderer : CardRenderer {
         private UnitCard unitCard;

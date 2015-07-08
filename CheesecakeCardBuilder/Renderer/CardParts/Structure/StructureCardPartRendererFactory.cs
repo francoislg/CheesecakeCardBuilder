@@ -1,5 +1,5 @@
 ﻿
-namespace CheesecakeCardBuilder.Renderer.CardParts {
+namespace CheesecakeCardBuilder.Renderer.CardParts.Structure {
     using CheesecakeCardBuilder.Structure;
     using Config;
     using System;
@@ -24,7 +24,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
                 case StructurePartType.Stats:
                     return new StructureStatRendererByType(config, structureCard);
                 case StructurePartType.Res:
-                    return new ResStatRenderer(config, structureCard);
+                    return new ResStatRenderer(config, structureCard, config.iconGreenResFile);
                 default:
                     throw new NotSupportedException();
             }

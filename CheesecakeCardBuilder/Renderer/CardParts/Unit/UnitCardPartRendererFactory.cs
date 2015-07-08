@@ -1,6 +1,6 @@
 ﻿
-namespace CheesecakeCardBuilder.Renderer.CardParts {
-    using Unit;
+namespace CheesecakeCardBuilder.Renderer.CardParts.Unit {
+    using CheesecakeCardBuilder.Unit;
     using Config;
     using System;
     using CardParts;

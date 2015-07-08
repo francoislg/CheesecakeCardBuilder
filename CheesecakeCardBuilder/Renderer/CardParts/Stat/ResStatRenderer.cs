@@ -17,10 +17,10 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private Card card;
         private IconTextRenderer renderer;
 
-        public ResStatRenderer(ProjectConfig config, Card card) {
+        public ResStatRenderer(ProjectConfig config, Card card, string iconFile) {
             this.config = config;
             this.card = card;
-            this.renderer = new IconTextRenderer(CardPosition.Resources, card, config.topStatsFont, config.iconGreenResFile);
+            this.renderer = new IconTextRenderer(CardPosition.Resources, card, config.topStatsFont, iconFile);
             this.renderer.renderer.addDefaultEffects();
         }
 
