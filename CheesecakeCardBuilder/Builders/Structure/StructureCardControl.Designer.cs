@@ -33,7 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.storSpeedTextbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.descriptionsPanel = new System.Windows.Forms.Panel();
+            this.descriptionsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // typeComboBox
@@ -124,9 +124,9 @@
             // 
             // descriptionsPanel
             // 
-            this.descriptionsPanel.Location = new System.Drawing.Point(3, 123);
+            this.descriptionsPanel.Location = new System.Drawing.Point(6, 108);
             this.descriptionsPanel.Name = "descriptionsPanel";
-            this.descriptionsPanel.Size = new System.Drawing.Size(514, 204);
+            this.descriptionsPanel.Size = new System.Drawing.Size(511, 219);
             this.descriptionsPanel.TabIndex = 42;
             // 
             // StructureCardControl
@@ -163,7 +163,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox storSpeedTextbox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel descriptionsPanel;
+        private System.Windows.Forms.FlowLayoutPanel descriptionsPanel;
 
     }
 }

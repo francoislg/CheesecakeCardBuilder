@@ -34,9 +34,11 @@ namespace CheesecakeCardBuilder.Builders.Description {
             }
             set {
                 unitDesc.description = value.description;
-                whenBox.Text = value.description[1].TrimEnd(',');
-                targetBox.Text = value.description[2];
-                actionBox.Text = value.description[3];
+                if (value.description.Count() > 0) {
+                    whenBox.Text = value.description[1].TrimEnd(',');
+                    targetBox.Text = value.description[2];
+                    actionBox.Text = value.description[3];
+                }
             }
         }
 

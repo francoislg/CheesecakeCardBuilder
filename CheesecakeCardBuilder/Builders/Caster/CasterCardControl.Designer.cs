@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.resTextbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.descriptionsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // resTextbox
@@ -44,10 +45,18 @@
             this.label5.TabIndex = 37;
             this.label5.Text = "Res";
             // 
+            // descriptionsPanel
+            // 
+            this.descriptionsPanel.Location = new System.Drawing.Point(6, 108);
+            this.descriptionsPanel.Name = "descriptionsPanel";
+            this.descriptionsPanel.Size = new System.Drawing.Size(511, 219);
+            this.descriptionsPanel.TabIndex = 43;
+            // 
             // CasterCardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.descriptionsPanel);
             this.Controls.Add(this.resTextbox);
             this.Controls.Add(this.label5);
             this.Name = "CasterCardControl";
@@ -61,5 +70,6 @@
 
         private System.Windows.Forms.TextBox resTextbox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.FlowLayoutPanel descriptionsPanel;
     }
 }
