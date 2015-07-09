@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CheesecakeCardBuilder.Builders.Unit {
+namespace CheesecakeCardBuilder.Builders.Description {
     using Config;
     using Description;
     using CheesecakeCardBuilder.Unit;
-    public partial class KeywordUnitDescriptionControl : UserControl, DescriptionControl {
+    using CheesecakeCardBuilder.Description;
+    public partial class KeywordDescriptionControl : UserControl, DescriptionControl {
         private KeywordDescription unitDesc;
         private CardUpdater updater;
 
@@ -22,13 +23,13 @@ namespace CheesecakeCardBuilder.Builders.Unit {
             }
         }
 
-        public DescriptionType type {
+        public DescriptionType typeDescription {
             get {
                 return unitDesc.type;
             }
         }
 
-        public CardDescription description {
+        public CardDescription cardDescription {
             get {
                 return unitDesc;
             }
@@ -38,7 +39,7 @@ namespace CheesecakeCardBuilder.Builders.Unit {
             }
         }
 
-        public KeywordUnitDescriptionControl(ProjectConfig config, CardUpdater updater) {
+        public KeywordDescriptionControl(ProjectConfig config, CardUpdater updater) {
             InitializeComponent();
             this.updater = updater;
             this.unitDesc = new KeywordDescription();

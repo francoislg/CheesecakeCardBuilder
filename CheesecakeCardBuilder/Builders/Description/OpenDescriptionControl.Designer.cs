@@ -1,5 +1,5 @@
-﻿namespace CheesecakeCardBuilder.Builders.Structure {
-    partial class StructureDescriptionControl {
+﻿namespace CheesecakeCardBuilder.Builders.Description {
+    partial class OpenDescriptionControl {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

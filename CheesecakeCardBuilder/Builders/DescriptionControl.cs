@@ -9,8 +9,8 @@ namespace CheesecakeCardBuilder.Builders {
     using CheesecakeCardBuilder.Unit;
     public interface DescriptionControl {
         String name { get; }
-        CardDescription description { get; set; }
-        DescriptionType type { get; }
+        CardDescription cardDescription { get; set; }
+        DescriptionType typeDescription { get; }
         void clear();
     }
 }

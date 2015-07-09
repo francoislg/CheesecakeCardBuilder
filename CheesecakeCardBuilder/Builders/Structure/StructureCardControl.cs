@@ -11,19 +11,16 @@ using System.Windows.Forms;
 namespace CheesecakeCardBuilder.Builders.Structure {
     using CheesecakeCardBuilder.Structure;
     using CheesecakeCardBuilder.Config;
+    using CheesecakeCardBuilder.Builders.Description;
     public partial class StructureCardControl : UserControl, CardControl {
         private ProjectConfig config;
         private StructureCard structureCard = new StructureCard();
         private CardUpdater updater;
-        private StructureDescriptionControl descControl;
 
         public StructureCardControl(ProjectConfig config, CardUpdater updater) {
             this.config = config;
             this.updater = updater;
             InitializeComponent();
-            descControl = new StructureDescriptionControl(config, updater);
-            descriptionPanel.Controls.Clear();
-            descriptionPanel.Controls.Add((UserControl)descControl);
             typeComboBox.DataSource = Enum.GetValues(typeof(StructureType));
         }
 
@@ -33,9 +30,17 @@ namespace CheesecakeCardBuilder.Builders.Structure {
             prodTextbox.DataBindings.Add("Text", newCard, "prod", false, DataSourceUpdateMode.OnPropertyChanged);
             storTextbox.DataBindings.Add("Text", newCard, "storage", false, DataSourceUpdateMode.OnPropertyChanged);
             storSpeedTextbox.DataBindings.Add("Text", newCard, "storSpeed", false, DataSourceUpdateMode.OnPropertyChanged);
-            descControl.description = newCard.descriptions[0];
-            newCard.descriptions[0] = descControl.description;
+            for (int i = 0; i < newCard.descriptions.Count(); i++) {
+                CardDescriptionContainer container = new CardDescriptionContainer(newCard, i);
+                descriptionsPanel.Controls.Add(new DescriptionSelectorControl(getNewDescriptionControls(), updater, container));
+            }
             this.structureCard = newCard;
+        }
+
+        private List<UserControl> getNewDescriptionControls() {
+            List<UserControl> descriptionControls = new List<UserControl>();
+            descriptionControls.Add(new OpenDescriptionControl(config, updater));
+            return descriptionControls;
         }
 
         private void typeCombobox_SelectedIndexChanged(object sender, EventArgs e) {

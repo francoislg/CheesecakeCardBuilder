@@ -1,5 +1,5 @@
-﻿namespace CheesecakeCardBuilder.Builders.Unit {
-    partial class DefaultUnitDescriptionControl {
+﻿namespace CheesecakeCardBuilder.Builders.Description {
+    partial class DefaultDescriptionControl {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -42,6 +42,7 @@
             // 
             // whenBox
             // 
+            this.whenBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.whenBox.Location = new System.Drawing.Point(46, 1);
             this.whenBox.Name = "whenBox";
             this.whenBox.Size = new System.Drawing.Size(350, 20);
@@ -50,6 +51,7 @@
             // 
             // targetBox
             // 
+            this.targetBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.targetBox.Location = new System.Drawing.Point(46, 27);
             this.targetBox.Name = "targetBox";
             this.targetBox.Size = new System.Drawing.Size(350, 20);
@@ -67,6 +69,7 @@
             // 
             // actionBox
             // 
+            this.actionBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.actionBox.Location = new System.Drawing.Point(46, 53);
             this.actionBox.Name = "actionBox";
             this.actionBox.Size = new System.Drawing.Size(350, 20);
@@ -82,17 +85,18 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Target";
             // 
-            // DefaultUnitDescription
+            // DefaultUnitDescriptionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.actionBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.targetBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.whenBox);
             this.Controls.Add(this.label1);
-            this.Name = "DefaultUnitDescription";
+            this.Name = "DefaultUnitDescriptionControl";
             this.Size = new System.Drawing.Size(400, 80);
             this.ResumeLayout(false);
             this.PerformLayout();

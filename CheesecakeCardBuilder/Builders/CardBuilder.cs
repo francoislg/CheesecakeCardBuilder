@@ -121,13 +121,17 @@ namespace CheesecakeCardBuilder.Builders {
         }
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-            ComboBoxCardType type = typeComboBox.SelectedItem as ComboBoxCardType;
-            changeCard(type.card);
+            if (updateActivated) {
+                ComboBoxCardType type = typeComboBox.SelectedItem as ComboBoxCardType;
+                changeCard(type.card);
+            }
         }
 
         private void nameTextBox_TextChanged(object sender, EventArgs e) {
-            currentCard.name = nameTextBox.Text;
-            updateCard();
+            if (updateActivated) {
+                currentCard.name = nameTextBox.Text;
+                updateCard();
+            }
         }
     }
 }

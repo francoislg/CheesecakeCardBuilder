@@ -51,7 +51,7 @@
             this.Controls.Add(this.resTextbox);
             this.Controls.Add(this.label5);
             this.Name = "CasterCardControl";
-            this.Size = new System.Drawing.Size(425, 330);
+            this.Size = new System.Drawing.Size(520, 330);
             this.ResumeLayout(false);
             this.PerformLayout();
 

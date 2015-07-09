@@ -25,6 +25,7 @@ namespace CheesecakeCardBuilder.Builders {
 
         public CardLoader(CardRepository repository) {
             InitializeComponent();
+            forceResize();
             typeLoaders.Add("Units", new AnyTypeLoader<UnitCard>(repository.getAllUnitCards(), this));
             typeLoaders.Add("Structures", new AnyTypeLoader<StructureCard>(repository.getAllStructureCards(), this));
             typeLoaders.Add("Casters", new AnyTypeLoader<CasterCard>(repository.getAllCasterCards(), this));
@@ -43,6 +44,16 @@ namespace CheesecakeCardBuilder.Builders {
             if (card != null) {
                 selectedCard = card;
                 this.Close();
+            }
+        }
+
+        private void loadTabs_SizeChanged(object sender, EventArgs e) {
+            forceResize();
+        }
+
+        private void forceResize() {
+            foreach (UserControl control in typeLoaders.Values) {
+                control.Size = new Size(loadTabs.Size.Width - 50, loadTabs.Size.Height - 50);
             }
         }
     }

@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CheesecakeCardBuilder.Config;
 
-namespace CheesecakeCardBuilder.Builders.Structure {
+namespace CheesecakeCardBuilder.Builders.Description {
     using Description;
-    public partial class StructureDescriptionControl : UserControl, DescriptionControl {
+    using CheesecakeCardBuilder.Description;
+    public partial class OpenDescriptionControl : UserControl, DescriptionControl {
         private CardUpdater updater;
         private DefaultDescription unitDesc;
 
@@ -21,13 +22,13 @@ namespace CheesecakeCardBuilder.Builders.Structure {
             }
         }
 
-        public DescriptionType type {
+        public DescriptionType typeDescription {
             get {
                 return unitDesc.type;
             }
         }
 
-        public CardDescription description {
+        public CardDescription cardDescription {
             get {
                 return unitDesc;
             }
@@ -39,7 +40,7 @@ namespace CheesecakeCardBuilder.Builders.Structure {
             }
         }
 
-        public StructureDescriptionControl(ProjectConfig config, CardUpdater updater) {
+        public OpenDescriptionControl(ProjectConfig config, CardUpdater updater) {
             InitializeComponent();
             this.unitDesc = new DefaultDescription();
             this.updater = updater;
@@ -50,7 +51,7 @@ namespace CheesecakeCardBuilder.Builders.Structure {
         }
 
         private void descTextBox_TextChanged(object sender, EventArgs e) {
-            description.description = new String[] { String.IsNullOrEmpty(descTextBox.Text) ? "" : "Special :", descTextBox.Text };
+            cardDescription.description = new String[] { String.IsNullOrEmpty(descTextBox.Text) ? "" : "Special :", descTextBox.Text };
             updater.updateCard();
         }
     }

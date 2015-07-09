@@ -30,14 +30,17 @@
             // 
             // loadTabs
             // 
-            this.loadTabs.Location = new System.Drawing.Point(12, 12);
+            this.loadTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loadTabs.Location = new System.Drawing.Point(0, 0);
             this.loadTabs.Name = "loadTabs";
             this.loadTabs.SelectedIndex = 0;
-            this.loadTabs.Size = new System.Drawing.Size(370, 253);
+            this.loadTabs.Size = new System.Drawing.Size(389, 298);
             this.loadTabs.TabIndex = 2;
+            this.loadTabs.SizeChanged += new System.EventHandler(this.loadTabs_SizeChanged);
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 273);
             this.label1.Name = "label1";
@@ -53,6 +56,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loadTabs);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(405, 337);
             this.Name = "CardLoader";
             this.Text = "CardLoader";
             this.Load += new System.EventHandler(this.CardLoader_Load);

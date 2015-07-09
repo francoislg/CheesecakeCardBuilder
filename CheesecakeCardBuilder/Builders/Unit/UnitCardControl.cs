@@ -10,34 +10,18 @@ using System.Windows.Forms;
 using CheesecakeCardBuilder.Config;
 
 namespace CheesecakeCardBuilder.Builders.Unit {
+    using CheesecakeCardBuilder.Builders.Description;
     using CheesecakeCardBuilder.Unit;
     public partial class UnitCardControl : UserControl, CardControl {
         private ProjectConfig config;
         private UnitCard unitCard = new UnitCard();
         private CardUpdater updater;
-        private ComboBox[] descriptionsComboBox;
-        private Panel[] descriptionsPanel;
-        private DescriptionControl[] lastUnitDescription = new DescriptionControl[2];
 
         public UnitCardControl(ProjectConfig config, CardUpdater updater) {
             this.config = config;
             this.updater = updater;
             InitializeComponent();
-            descriptionsComboBox = new ComboBox[] { descriptionComboBox, descriptionComboBox2 };
-            descriptionsPanel = new Panel[] { descriptionPanel, descriptionPanel2 };
             typeComboBox.DataSource = Enum.GetValues(typeof(UnitType));
-            addDescriptions();
-        }
-
-        private void addDescriptions() {
-            for (int i = 0; i < descriptionsComboBox.Count(); i++) {
-                descriptionsComboBox[i].DisplayMember = "name";
-                descriptionsComboBox[i].Tag = i;
-                descriptionsComboBox[i].Items.Add(new EmptyUnitDescriptionControl(config, updater));
-                descriptionsComboBox[i].Items.Add(new DefaultUnitDescriptionControl(config, updater));
-                descriptionsComboBox[i].Items.Add(new KeywordUnitDescriptionControl(config, updater));
-                descriptionsComboBox[i].SelectedIndex = 0;
-            }
         }
 
         public void loadCard(Card card) {
@@ -50,34 +34,18 @@ namespace CheesecakeCardBuilder.Builders.Unit {
             spdTextbox.DataBindings.Add("Text", newCard, "spd", false, DataSourceUpdateMode.OnPropertyChanged);
             typeComboBox.SelectedItem = newCard.unitType;
             for (int i = 0; i < newCard.descriptions.Count(); i++) {
-                descriptionsComboBox[i].Text = newCard.descriptions[i].type.ToString();
-                updateComboBox(i);
-                lastUnitDescription[i].description = newCard.descriptions[i];
-                newCard.descriptions[i] = lastUnitDescription[i].description;
+                CardDescriptionContainer container = new CardDescriptionContainer(newCard, i);
+                descriptionsPanel.Controls.Add(new DescriptionSelectorControl(getNewDescriptionControls(), updater, container));
             }
             this.unitCard = newCard;
         }
 
-        private void updateComboBox(int i) {
-            if (lastUnitDescription[i] != null) {
-                unitCard.descriptions[i] = new CardDescription();
-                lastUnitDescription[i].clear();
-            }
-            ComboBox descComboBox = descriptionsComboBox[i];
-            if (descComboBox.SelectedItem != null) {
-                DescriptionControl typeDescription = (DescriptionControl)descComboBox.SelectedItem;
-                descriptionsPanel[i].Controls.Clear();
-                descriptionsPanel[i].Controls.Add((UserControl)typeDescription);
-                lastUnitDescription[i] = typeDescription;
-                unitCard.descriptions[i] = typeDescription.description;
-                updater.updateCard();
-            }
-        }
-
-        private void descriptionComboBox_SelectedValueChanged(object sender, EventArgs e) {
-            ComboBox descComboBox = (ComboBox)sender;
-            int i = (int)descComboBox.Tag;
-            updateComboBox(i);
+        private List<UserControl> getNewDescriptionControls() {
+            List<UserControl> descriptionControls = new List<UserControl>();
+            descriptionControls.Add(new EmptyDescriptionControl(config, updater));
+            descriptionControls.Add(new DefaultDescriptionControl(config, updater));
+            descriptionControls.Add(new KeywordDescriptionControl(config, updater));
+            return descriptionControls;
         }
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {

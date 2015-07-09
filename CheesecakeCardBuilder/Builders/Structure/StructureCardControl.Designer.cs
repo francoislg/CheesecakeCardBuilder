@@ -33,7 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.storSpeedTextbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.descriptionPanel = new System.Windows.Forms.Panel();
+            this.descriptionsPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // typeComboBox
@@ -122,18 +122,18 @@
             this.label4.TabIndex = 41;
             this.label4.Text = "Storage Speed";
             // 
-            // descriptionPanel
+            // descriptionsPanel
             // 
-            this.descriptionPanel.Location = new System.Drawing.Point(12, 125);
-            this.descriptionPanel.Name = "descriptionPanel";
-            this.descriptionPanel.Size = new System.Drawing.Size(400, 80);
-            this.descriptionPanel.TabIndex = 42;
+            this.descriptionsPanel.Location = new System.Drawing.Point(3, 123);
+            this.descriptionsPanel.Name = "descriptionsPanel";
+            this.descriptionsPanel.Size = new System.Drawing.Size(514, 204);
+            this.descriptionsPanel.TabIndex = 42;
             // 
             // StructureCardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.descriptionPanel);
+            this.Controls.Add(this.descriptionsPanel);
             this.Controls.Add(this.storSpeedTextbox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.storTextbox);
@@ -145,7 +145,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.typeComboBox);
             this.Name = "StructureCardControl";
-            this.Size = new System.Drawing.Size(425, 330);
+            this.Size = new System.Drawing.Size(520, 330);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,7 +163,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox storSpeedTextbox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel descriptionPanel;
+        private System.Windows.Forms.Panel descriptionsPanel;
 
     }
 }
