@@ -11,6 +11,9 @@ namespace CheesecakeCardBuilder.Repository {
         List<UnitCard> getAllUnitCards();
         List<StructureCard> getAllStructureCards();
         List<CasterCard> getAllCasterCards();
+        List<LocationCard> getAllLocationCards();
+        List<GearCard> getAllGearCards();
+        List<BlessingCard> getAllBlessingCards();
         void save(Card card);
     }
 }
