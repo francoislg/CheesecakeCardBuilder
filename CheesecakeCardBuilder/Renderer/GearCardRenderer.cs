@@ -13,27 +13,23 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Text;
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
-    using CheesecakeCardBuilder.Renderer.CardParts.Unit;
+    using CheesecakeCardBuilder.Renderer.CardParts.Gear;
 
-    public class UnitCardRenderer : CardRenderer {
-        private UnitCard unitCard;
+    public class GearCardRenderer : CardRenderer {
+        private GearCard gearCard;
         private Image template;
         private readonly List<CardPartRenderer> renderers = new List<CardPartRenderer>();
 
-        public UnitCardRenderer(UnitCard card, ProjectConfig config) {
-            this.unitCard = card;
+        public GearCardRenderer(GearCard card, ProjectConfig config) {
+            this.gearCard = card;
             this.template = new Bitmap(config.unitFile);
-            UnitCardPartRendererFactory cardPartRendererFactory = new UnitCardPartRendererFactory(config, unitCard);
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Background));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Atk));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Def));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Spd));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Acc));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Type));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Hp));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Res));
+            GearCardPartRendererFactory cardPartRendererFactory = new GearCardPartRendererFactory(config, gearCard);
+            renderers.Add(cardPartRendererFactory.create(PartType.Background));
             renderers.Add(cardPartRendererFactory.create(PartType.Name));
             renderers.Add(cardPartRendererFactory.create(PartType.Description));
+            renderers.Add(cardPartRendererFactory.create(GearPartType.Res));
+            renderers.Add(cardPartRendererFactory.create(GearPartType.Atk));
+            renderers.Add(cardPartRendererFactory.create(GearPartType.Def));
         }
 
         public async Task<Image> generate() {

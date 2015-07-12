@@ -123,6 +123,11 @@ namespace CheesecakeCardBuilder.Config {
                 return cardsPath + "\\bgCaster.png";
             }
         }
+        public String backgroundBlessingFile {
+            get {
+                return cardsPath + "\\bgBless.png";
+            }
+        }
         public String iconProdFile {
             get {
                 return iconsPath + "\\production.png";

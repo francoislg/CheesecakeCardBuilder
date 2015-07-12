@@ -45,6 +45,12 @@ namespace CheesecakeCardBuilder.Renderer {
                 return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightGreen));
             } else if (card is CasterCard) {
                 return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightBlue));
+            } else if (card is LocationCard) {
+                return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightGray));
+            } else if (card is GearCard) {
+                return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightGray));
+            } else if (card is BlessingCard) {
+                return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, Color.Red));
             } else {
                 throw new NotSupportedException();
             }

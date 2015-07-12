@@ -86,6 +86,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\Blessing\BlessingCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Blessing\BlessingCardControl.Designer.cs">
+      <DependentUpon>BlessingCardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Builders\Gear\GearCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Gear\GearCardControl.Designer.cs">
+      <DependentUpon>GearCardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GearCard.cs" />
     <Compile Include="Builders\Caster\CasterCardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,6 +118,12 @@
     <Compile Include="Builders\Description\OpenDescriptionControl.Designer.cs">
       <DependentUpon>OpenDescriptionControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Builders\Location\LocationCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Location\LocationCardControl.Designer.cs">
+      <DependentUpon>LocationCardControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Builders\Structure\StructureCardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,6 +136,8 @@
     <Compile Include="Builders\CardBuilderConfig.cs" />
     <Compile Include="CardRenderer.cs" />
     <Compile Include="CardType.cs" />
+    <Compile Include="BlessingCard.cs" />
+    <Compile Include="LocationCard.cs" />
     <Compile Include="CasterCard.cs" />
     <Compile Include="Description\DefaultDescription.cs" />
     <Compile Include="Description\EmptyCardDescription.cs" />
@@ -126,7 +147,14 @@
     <Compile Include="ProjectManager\LiteDBCardRepository.cs" />
     <Compile Include="Renderer\BrushChangerByType.cs" />
     <Compile Include="Renderer\BrushChangerOneType.cs" />
+    <Compile Include="Renderer\CardParts\Blessing\BlessingCardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Caster\CasterCardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Gear\GearDefStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Gear\GearCardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Gear\GearAtkStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Location\LocationCardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Location\LifespanStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Location\ProductionSpeedStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\ResStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Stat\IconTextRenderer.cs" />
     <Compile Include="Renderer\CardParts\Structure\TransportCardPartRenderer.cs" />
@@ -144,7 +172,10 @@
     <Compile Include="Renderer\CardParts\Structure\StructureCardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Unit\UnitTypeRenderer.cs" />
     <Compile Include="Renderer\CasterCardRenderer.cs" />
+    <Compile Include="Renderer\BlessingCardRenderer.cs" />
+    <Compile Include="Renderer\LocationCardRenderer.cs" />
     <Compile Include="Renderer\StructureCardRenderer.cs" />
+    <Compile Include="Renderer\GearCardRenderer.cs" />
     <Compile Include="StructureCard.cs" />
     <Compile Include="Structure\StructureType.cs" />
     <Compile Include="Renderer\Text\FuzzyBoxedTextRenderer.cs" />
@@ -152,12 +183,12 @@
     <Compile Include="Renderer\CardParts\NameRenderer.cs" />
     <Compile Include="Renderer\Text\OutlineBoxedTextRenderer.cs" />
     <Compile Include="Renderer\Text\OutlineTextRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\UnitResStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\HpStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\AccStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\SpdStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\DefStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\AtkStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\UnitResStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\HpStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\AccStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\SpdStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\DefStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\AtkStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\CardPartRenderer.cs" />
     <Compile Include="CardUpdater.cs" />
     <Compile Include="Config\ProjectConfig.cs" />
@@ -220,6 +251,9 @@
     <Compile Include="Builders\DescriptionControl.cs" />
     <Compile Include="DescriptionType.cs" />
     <Compile Include="Unit\UnitType.cs" />
+    <EmbeddedResource Include="Builders\Blessing\BlessingCardControl.resx">
+      <DependentUpon>BlessingCardControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Builders\Caster\CasterCardControl.resx">
       <DependentUpon>CasterCardControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +262,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Builders\Description\OpenDescriptionControl.resx">
       <DependentUpon>OpenDescriptionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Builders\Gear\GearCardControl.resx">
+      <DependentUpon>GearCardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Builders\Location\LocationCardControl.resx">
+      <DependentUpon>LocationCardControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Builders\Structure\StructureCardControl.resx">
       <DependentUpon>StructureCardControl.cs</DependentUpon>
@@ -295,6 +335,7 @@
   <ItemGroup>
     <Content Include="formatedIcon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

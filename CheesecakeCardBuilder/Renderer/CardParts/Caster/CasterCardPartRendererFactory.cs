@@ -13,9 +13,9 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Caster {
     public class CasterCardPartRendererFactory : CardPartRendererFactory {
         private CasterCard casterCard;
 
-        public CasterCardPartRendererFactory(ProjectConfig config, CasterCard structureCard)
-            : base(config, structureCard) {
-                this.casterCard = structureCard;
+        public CasterCardPartRendererFactory(ProjectConfig config, CasterCard casterCard)
+            : base(config, casterCard) {
+                this.casterCard = casterCard;
         }
 
         public CardPartRenderer create(CasterPartType type) {

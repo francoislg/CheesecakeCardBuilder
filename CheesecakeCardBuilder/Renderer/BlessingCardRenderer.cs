@@ -13,27 +13,21 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Text;
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
-    using CheesecakeCardBuilder.Renderer.CardParts.Unit;
+    using CheesecakeCardBuilder.Renderer.CardParts.Blessing;
 
-    public class UnitCardRenderer : CardRenderer {
-        private UnitCard unitCard;
+    public class BlessingCardRenderer : CardRenderer {
+        private BlessingCard blessingCard;
         private Image template;
         private readonly List<CardPartRenderer> renderers = new List<CardPartRenderer>();
 
-        public UnitCardRenderer(UnitCard card, ProjectConfig config) {
-            this.unitCard = card;
+        public BlessingCardRenderer(BlessingCard card, ProjectConfig config) {
+            this.blessingCard = card;
             this.template = new Bitmap(config.unitFile);
-            UnitCardPartRendererFactory cardPartRendererFactory = new UnitCardPartRendererFactory(config, unitCard);
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Background));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Atk));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Def));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Spd));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Acc));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Type));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Hp));
-            renderers.Add(cardPartRendererFactory.create(UnitPartType.Res));
+            BlessingCardPartRendererFactory cardPartRendererFactory = new BlessingCardPartRendererFactory(config, blessingCard);
+            renderers.Add(cardPartRendererFactory.create(PartType.Background));
             renderers.Add(cardPartRendererFactory.create(PartType.Name));
             renderers.Add(cardPartRendererFactory.create(PartType.Description));
+            renderers.Add(cardPartRendererFactory.create(BlessingPartType.Res));
         }
 
         public async Task<Image> generate() {

@@ -28,6 +28,8 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
                 backgroundFile = config.background3File;
             } else if (card is CasterCard) {
                 backgroundFile = config.backgroundCasterFile;
+            } else if (card is BlessingCard) {
+                backgroundFile = config.backgroundBlessingFile;
             }
             updateArt();
             this.background = new ImageRenderer(new Bitmap(backgroundFile), POSITION);

@@ -45,6 +45,9 @@ namespace CheesecakeCardBuilder.Builders {
             cbCardTypes.Add(new ComboBoxCardType(new UnitCard()));
             cbCardTypes.Add(new ComboBoxCardType(new StructureCard()));
             cbCardTypes.Add(new ComboBoxCardType(new CasterCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new LocationCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new GearCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new BlessingCard()));
             this.typeComboBox.DisplayMember = "name";
             this.typeComboBox.ValueMember = "name";
             this.typeComboBox.DataSource = cbCardTypes;
