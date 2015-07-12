@@ -29,6 +29,9 @@ namespace CheesecakeCardBuilder.Builders {
             typeLoaders.Add("Units", new AnyTypeLoader<UnitCard>(repository.getAllUnitCards(), this));
             typeLoaders.Add("Structures", new AnyTypeLoader<StructureCard>(repository.getAllStructureCards(), this));
             typeLoaders.Add("Casters", new AnyTypeLoader<CasterCard>(repository.getAllCasterCards(), this));
+            typeLoaders.Add("Locations", new AnyTypeLoader<LocationCard>(repository.getAllLocationCards(), this));
+            typeLoaders.Add("Gears", new AnyTypeLoader<GearCard>(repository.getAllGearCards(), this));
+            typeLoaders.Add("Blessings", new AnyTypeLoader<BlessingCard>(repository.getAllBlessingCards(), this));
         }
 
         private void CardLoader_Load(object sender, EventArgs e) {
