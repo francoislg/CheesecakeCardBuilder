@@ -22,6 +22,7 @@ namespace CheesecakeCardBuilder.Builders {
         private bool updateActivated = true;
         private CardControl currentCardControl;
         private List<ComboBoxCardType> cbCardTypes = new List<ComboBoxCardType>();
+        private CardLoader cardLoader;
 
         private CardBuilderConfig cardBuilderConfig;
 
@@ -41,6 +42,7 @@ namespace CheesecakeCardBuilder.Builders {
             this.config = config;
             this.repository = new LiteDBRepository(config);
             this.cardBuilderConfig = new CardBuilderConfig(config, this);
+            this.cardLoader = new CardLoader(repository);
             InitializeComponent();
             cbCardTypes.Add(new ComboBoxCardType(new UnitCard()));
             cbCardTypes.Add(new ComboBoxCardType(new StructureCard()));
@@ -115,7 +117,6 @@ namespace CheesecakeCardBuilder.Builders {
         }
 
         private void loadButton_Click(object sender, EventArgs e) {
-            CardLoader cardLoader = new CardLoader(repository);
             cardLoader.ShowDialog();
             if (cardLoader.hasSelected) {
                 changeCard(cardLoader.selectedCard);

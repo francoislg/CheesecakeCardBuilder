@@ -58,8 +58,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(405, 337);
             this.Name = "CardLoader";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CardLoader";
-            this.Load += new System.EventHandler(this.CardLoader_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
