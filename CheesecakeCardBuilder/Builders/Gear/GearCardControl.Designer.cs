@@ -31,6 +31,8 @@
             this.resTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.rareCheckbox = new System.Windows.Forms.CheckBox();
+            this.typeComboBox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // descriptionsPanel
@@ -102,10 +104,30 @@
             this.rareCheckbox.UseVisualStyleBackColor = true;
             this.rareCheckbox.CheckedChanged += new System.EventHandler(this.resTextBox_TextChanged);
             // 
+            // typeComboBox
+            // 
+            this.typeComboBox.FormattingEnabled = true;
+            this.typeComboBox.Location = new System.Drawing.Point(282, 16);
+            this.typeComboBox.Name = "typeComboBox";
+            this.typeComboBox.Size = new System.Drawing.Size(235, 21);
+            this.typeComboBox.TabIndex = 52;
+            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(282, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 13);
+            this.label8.TabIndex = 51;
+            this.label8.Text = "Gear Type";
+            // 
             // GearCardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.typeComboBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.rareCheckbox);
             this.Controls.Add(this.resTextBox);
             this.Controls.Add(this.label3);
@@ -131,5 +153,7 @@
         private System.Windows.Forms.TextBox resTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox rareCheckbox;
+        private System.Windows.Forms.ComboBox typeComboBox;
+        private System.Windows.Forms.Label label8;
     }
 }

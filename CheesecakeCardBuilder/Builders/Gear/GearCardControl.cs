@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace CheesecakeCardBuilder.Builders.Gear {
     using CheesecakeCardBuilder.Config;
 using CheesecakeCardBuilder.Builders.Description;
+    using CheesecakeCardBuilder.Gear;
     public partial class GearCardControl : UserControl, CardControl {
         private ProjectConfig config;
         private GearCard gearCard = new GearCard();
@@ -19,6 +20,7 @@ using CheesecakeCardBuilder.Builders.Description;
             this.config = config;
             this.updater = updater;
             InitializeComponent();
+            typeComboBox.DataSource = Enum.GetValues(typeof(GearType));
         }
 
         public void loadCard(Card card) {
@@ -41,6 +43,11 @@ using CheesecakeCardBuilder.Builders.Description;
         }
 
         private void resTextBox_TextChanged(object sender, EventArgs e) {
+            updater.updateCard();
+        }
+
+        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            this.gearCard.gearType = (GearType)typeComboBox.SelectedItem;
             updater.updateCard();
         }
     }

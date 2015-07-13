@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder {
-    using LiteDB;
+    using CheesecakeCardBuilder.Gear;
+using LiteDB;
     public class GearCard : Card {
         [BsonId]
         public String name { get; set; }
@@ -14,6 +15,7 @@ namespace CheesecakeCardBuilder {
         public String atk { get; set; }
         public String def { get; set; }
         public bool rare { get; set; }
+        public GearType gearType { get; set; }
         public CardDescription[] descriptions { get; set; }
         public string type {
             get {

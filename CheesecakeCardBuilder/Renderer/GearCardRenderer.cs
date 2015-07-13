@@ -27,6 +27,7 @@ namespace CheesecakeCardBuilder.Renderer {
             renderers.Add(cardPartRendererFactory.create(PartType.Background));
             renderers.Add(cardPartRendererFactory.create(PartType.Name));
             renderers.Add(cardPartRendererFactory.create(PartType.Description));
+            renderers.Add(cardPartRendererFactory.create(GearPartType.Type));
             renderers.Add(cardPartRendererFactory.create(GearPartType.Res));
             renderers.Add(cardPartRendererFactory.create(GearPartType.Atk));
             renderers.Add(cardPartRendererFactory.create(GearPartType.Def));

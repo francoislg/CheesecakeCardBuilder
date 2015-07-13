@@ -137,6 +137,7 @@
     <Compile Include="CardRenderer.cs" />
     <Compile Include="CardType.cs" />
     <Compile Include="BlessingCard.cs" />
+    <Compile Include="Gear\GearType.cs" />
     <Compile Include="LocationCard.cs" />
     <Compile Include="CasterCard.cs" />
     <Compile Include="Description\DefaultDescription.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Renderer\CardParts\Gear\GearDefStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Gear\GearCardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Gear\GearAtkStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Gear\GearTypeRenderer.cs" />
     <Compile Include="Renderer\CardParts\Location\LocationCardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Location\LifespanStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\Location\ProductionSpeedStatRenderer.cs" />

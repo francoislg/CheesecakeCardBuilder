@@ -6,7 +6,7 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Gear {
     using CardParts.Stat;
 
     public enum GearPartType {
-        Res, Atk, Def
+        Res, Atk, Def, Type
     }
 
     public class GearCardPartRendererFactory : CardPartRendererFactory {
@@ -25,6 +25,8 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Gear {
                     return new GearDefStatRenderer(config, gearCard);
                 case GearPartType.Res:
                     return new ResStatRenderer(config, gearCard, config.iconResFile);
+                case GearPartType.Type:
+                    return new GearTypeRenderer(config, gearCard);
                 default:
                     throw new NotSupportedException();
             }
