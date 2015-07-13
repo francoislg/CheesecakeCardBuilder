@@ -15,6 +15,7 @@ namespace CheesecakeCardBuilder {
         public String prod { get; set; }
         public String storSpeed { get; set; }
         public String storage { get; set; }
+        public bool rare { get; set; }
         public CardDescription[] descriptions { get; set; }
         public StructureType structureType { get; set; }
         public string type {
@@ -29,6 +30,7 @@ namespace CheesecakeCardBuilder {
             prod = "";
             storSpeed = "";
             storage = "";
+            rare = false;
             descriptions = new CardDescription[] { new CardDescription() };
             structureType = StructureType.Production;
         }

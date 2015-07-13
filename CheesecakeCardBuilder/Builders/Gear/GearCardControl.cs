@@ -26,6 +26,7 @@ using CheesecakeCardBuilder.Builders.Description;
             resTextBox.DataBindings.Add("Text", newCard, "res", false, DataSourceUpdateMode.OnPropertyChanged);
             atkTextBox.DataBindings.Add("Text", newCard, "atk", false, DataSourceUpdateMode.OnPropertyChanged);
             defTextBox.DataBindings.Add("Text", newCard, "def", false, DataSourceUpdateMode.OnPropertyChanged);
+            rareCheckbox.DataBindings.Add("Checked", newCard, "rare", false, DataSourceUpdateMode.OnPropertyChanged);
             for (int i = 0; i < newCard.descriptions.Count(); i++) {
                 CardDescriptionContainer container = new CardDescriptionContainer(newCard, i);
                 descriptionsPanel.Controls.Add(new DescriptionSelectorControl(getNewDescriptionControls(), updater, container));

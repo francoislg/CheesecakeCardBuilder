@@ -13,6 +13,7 @@ namespace CheesecakeCardBuilder {
         public String artFile { get; set; }
         public String atk { get; set; }
         public String def { get; set; }
+        public bool rare { get; set; }
         public CardDescription[] descriptions { get; set; }
         public string type {
             get {
@@ -25,6 +26,7 @@ namespace CheesecakeCardBuilder {
             atk = "";
             def = "";
             res = "";
+            rare = false;
             descriptions = new CardDescription[] { new CardDescription() };
         }
     }

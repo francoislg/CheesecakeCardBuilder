@@ -15,6 +15,7 @@ namespace CheesecakeCardBuilder {
             }
             set {}
         }
+        public bool rare { get; set; }
         public String productionSpeed { get; set; }
         public String lifespan { get; set; }
         public String artFile { get; set; }
@@ -29,6 +30,7 @@ namespace CheesecakeCardBuilder {
             artFile = "template.png";
             productionSpeed = "";
             lifespan = "";
+            rare = false;
             descriptions = new CardDescription[] { new CardDescription() };
         }
     }

@@ -28,6 +28,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lifespanTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.rareCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // descriptionsPanel
@@ -71,10 +72,22 @@
             this.label2.TabIndex = 47;
             this.label2.Text = "Lifespan";
             // 
+            // rareCheckbox
+            // 
+            this.rareCheckbox.AutoSize = true;
+            this.rareCheckbox.Location = new System.Drawing.Point(458, 73);
+            this.rareCheckbox.Name = "rareCheckbox";
+            this.rareCheckbox.Size = new System.Drawing.Size(49, 17);
+            this.rareCheckbox.TabIndex = 48;
+            this.rareCheckbox.Text = "Rare";
+            this.rareCheckbox.UseVisualStyleBackColor = true;
+            this.rareCheckbox.CheckedChanged += new System.EventHandler(this.lifespanTextBox_TextChanged);
+            // 
             // LocationCardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.rareCheckbox);
             this.Controls.Add(this.lifespanTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.prodSpeedTextBox);
@@ -94,5 +107,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox lifespanTextBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox rareCheckbox;
     }
 }

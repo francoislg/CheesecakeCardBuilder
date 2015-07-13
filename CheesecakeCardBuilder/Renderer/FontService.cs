@@ -33,24 +33,26 @@ namespace CheesecakeCardBuilder.Renderer {
         }
 
         public static BrushChangerByType getDefaultGradientBrushChangerByType(Font font, Card card) {
+            int offset = 20;
+            Brush rareBrush = FontService.getGradiantBrush(font, offset, Color.Red);
             if (card is UnitCard) {
                 BrushChangerByUnitType brushChanger = new BrushChangerByUnitType((UnitCard)card);
-                brushChanger.Add(UnitType.Standard, FontService.getGradiantBrush(font, 0, lightGray));
-                brushChanger.Add(UnitType.Advanced, FontService.getGradiantBrush(font, 0, lightBlue));
-                brushChanger.Add(UnitType.Expert, FontService.getGradiantBrush(font, 0, lightGreen));
-                brushChanger.Add(UnitType.Elite, FontService.getGradiantBrush(font, 0, lightOrange));
-                brushChanger.Add(UnitType.Master, FontService.getGradiantBrush(font, 0, Color.Red));
+                brushChanger.Add(UnitType.Standard, FontService.getGradiantBrush(font, offset, lightGray));
+                brushChanger.Add(UnitType.Advanced, FontService.getGradiantBrush(font, offset, lightBlue));
+                brushChanger.Add(UnitType.Expert, FontService.getGradiantBrush(font, offset, lightGreen));
+                brushChanger.Add(UnitType.Elite, FontService.getGradiantBrush(font, offset, lightOrange));
+                brushChanger.Add(UnitType.Master, FontService.getGradiantBrush(font, offset, Color.Red));
                 return brushChanger;
             } else if(card is StructureCard) {
-                return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightGreen));
+                return new BrushChangerOneType(FontService.getGradiantBrush(font, offset, lightGreen));
             } else if (card is CasterCard) {
-                return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightBlue));
+                return new BrushChangerByRarity(card, FontService.getGradiantBrush(font, offset, lightBlue), rareBrush);
             } else if (card is LocationCard) {
-                return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightGray));
+                return new BrushChangerByRarity(card, FontService.getGradiantBrush(font, offset, lightGray), rareBrush);
             } else if (card is GearCard) {
-                return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, lightGray));
+                return new BrushChangerByRarity(card, FontService.getGradiantBrush(font, offset, lightGray), rareBrush);
             } else if (card is BlessingCard) {
-                return new BrushChangerOneType(FontService.getGradiantBrush(font, 0, Color.Red));
+                return new BrushChangerByRarity(card, FontService.getGradiantBrush(font, offset, Color.Red), rareBrush);
             } else {
                 throw new NotSupportedException();
             }

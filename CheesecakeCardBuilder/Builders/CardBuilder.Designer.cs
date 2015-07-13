@@ -41,7 +41,8 @@
             // 
             // previewPicture
             // 
-            this.previewPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.previewPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.previewPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.previewPicture.InitialImage = null;
@@ -54,6 +55,7 @@
             // 
             // exportButton
             // 
+            this.exportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.exportButton.Location = new System.Drawing.Point(458, 399);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(75, 23);
@@ -71,6 +73,7 @@
             // 
             // artButton
             // 
+            this.artButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.artButton.Location = new System.Drawing.Point(12, 399);
             this.artButton.Name = "artButton";
             this.artButton.Size = new System.Drawing.Size(75, 23);
@@ -86,6 +89,7 @@
             // 
             // saveButton
             // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.saveButton.Location = new System.Drawing.Point(377, 399);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
@@ -96,6 +100,7 @@
             // 
             // loadButton
             // 
+            this.loadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.loadButton.Location = new System.Drawing.Point(296, 400);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(75, 23);
@@ -141,6 +146,8 @@
             // 
             // cardControlPanel
             // 
+            this.cardControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.cardControlPanel.Location = new System.Drawing.Point(13, 52);
             this.cardControlPanel.Name = "cardControlPanel";
             this.cardControlPanel.Size = new System.Drawing.Size(520, 330);

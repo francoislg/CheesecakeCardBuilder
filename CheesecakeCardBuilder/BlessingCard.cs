@@ -11,6 +11,7 @@ namespace CheesecakeCardBuilder {
         public String name { get; set; }
         public String res { get; set; }
         public String artFile { get; set; }
+        public bool rare { get; set; }
         public CardDescription[] descriptions { get; set; }
         public string type {
             get {
@@ -21,6 +22,7 @@ namespace CheesecakeCardBuilder {
         public BlessingCard() {
             artFile = "template.png";
             res = "";
+            rare = false;
             descriptions = new CardDescription[] { new CardDescription() };
         }
     }

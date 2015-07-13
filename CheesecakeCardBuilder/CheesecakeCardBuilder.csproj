@@ -146,6 +146,7 @@
     <Compile Include="ProjectManager\CardRepository.cs" />
     <Compile Include="ProjectManager\LiteDBCardRepository.cs" />
     <Compile Include="Renderer\BrushChangerByType.cs" />
+    <Compile Include="Renderer\BrushChangerByRarity.cs" />
     <Compile Include="Renderer\BrushChangerOneType.cs" />
     <Compile Include="Renderer\CardParts\Blessing\BlessingCardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Caster\CasterCardPartRendererFactory.cs" />

@@ -55,7 +55,6 @@ namespace CheesecakeCardBuilder.Builders {
         }
 
         public void changeCard(Card newCard) {
-            Console.WriteLine("CHANGED");
             desactivateUpdates();
             nameTextBox.Text = newCard.name;
             this.typeComboBox.SelectedValue = newCard.type;

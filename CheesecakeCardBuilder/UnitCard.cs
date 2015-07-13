@@ -17,6 +17,14 @@ namespace CheesecakeCardBuilder {
         public String def { get; set; }
         public String spd { get; set; }
         public String acc { get; set; }
+        public bool rare { 
+            get {
+                return false;
+            }
+            set {
+
+            }
+        }
         public UnitType unitType { get; set; }
         public String artFile { get; set; }
         public CardDescription[] descriptions { get; set; }

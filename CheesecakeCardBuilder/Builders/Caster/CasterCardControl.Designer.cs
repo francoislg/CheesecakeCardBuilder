@@ -26,6 +26,7 @@
             this.resTextbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.descriptionsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.rareCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // resTextbox
@@ -52,10 +53,22 @@
             this.descriptionsPanel.Size = new System.Drawing.Size(511, 219);
             this.descriptionsPanel.TabIndex = 43;
             // 
+            // rareCheckbox
+            // 
+            this.rareCheckbox.AutoSize = true;
+            this.rareCheckbox.Location = new System.Drawing.Point(459, 85);
+            this.rareCheckbox.Name = "rareCheckbox";
+            this.rareCheckbox.Size = new System.Drawing.Size(49, 17);
+            this.rareCheckbox.TabIndex = 49;
+            this.rareCheckbox.Text = "Rare";
+            this.rareCheckbox.UseVisualStyleBackColor = true;
+            this.rareCheckbox.CheckedChanged += new System.EventHandler(this.resTextbox_TextChanged);
+            // 
             // CasterCardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.rareCheckbox);
             this.Controls.Add(this.descriptionsPanel);
             this.Controls.Add(this.resTextbox);
             this.Controls.Add(this.label5);
@@ -71,5 +84,6 @@
         private System.Windows.Forms.TextBox resTextbox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel descriptionsPanel;
+        private System.Windows.Forms.CheckBox rareCheckbox;
     }
 }

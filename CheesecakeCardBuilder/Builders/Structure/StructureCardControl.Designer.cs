@@ -34,6 +34,7 @@
             this.storSpeedTextbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.descriptionsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.rareCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // typeComboBox
@@ -129,10 +130,22 @@
             this.descriptionsPanel.Size = new System.Drawing.Size(511, 219);
             this.descriptionsPanel.TabIndex = 42;
             // 
+            // rareCheckbox
+            // 
+            this.rareCheckbox.AutoSize = true;
+            this.rareCheckbox.Location = new System.Drawing.Point(468, 84);
+            this.rareCheckbox.Name = "rareCheckbox";
+            this.rareCheckbox.Size = new System.Drawing.Size(49, 17);
+            this.rareCheckbox.TabIndex = 50;
+            this.rareCheckbox.Text = "Rare";
+            this.rareCheckbox.UseVisualStyleBackColor = true;
+            this.rareCheckbox.CheckedChanged += new System.EventHandler(this.resTextbox_TextChanged);
+            // 
             // StructureCardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.rareCheckbox);
             this.Controls.Add(this.descriptionsPanel);
             this.Controls.Add(this.storSpeedTextbox);
             this.Controls.Add(this.label4);
@@ -164,6 +177,7 @@
         private System.Windows.Forms.TextBox storSpeedTextbox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FlowLayoutPanel descriptionsPanel;
+        private System.Windows.Forms.CheckBox rareCheckbox;
 
     }
 }
