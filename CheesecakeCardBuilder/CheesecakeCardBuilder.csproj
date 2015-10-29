@@ -11,6 +11,22 @@
     <AssemblyName>CheesecakeCardBuilder</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Bibliothèques\Mes Documents\Google Drive\Projets\CheesecakeCardBuilder\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,6 +53,18 @@
   <PropertyGroup>
     <ApplicationIcon>formatedIcon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>495E21A1561B993723E5C3C9E5B2F980BAE6AABE</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CheesecakeCardBuilder_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiteDB, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -58,22 +86,85 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\Blessing\BlessingCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Blessing\BlessingCardControl.Designer.cs">
+      <DependentUpon>BlessingCardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Builders\Gear\GearCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Gear\GearCardControl.Designer.cs">
+      <DependentUpon>GearCardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GearCard.cs" />
+    <Compile Include="Builders\Caster\CasterCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Caster\CasterCardControl.Designer.cs">
+      <DependentUpon>CasterCardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Builders\Description\CardDescriptionContainer.cs" />
+    <Compile Include="Builders\Description\DescriptionSelectorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Description\DescriptionSelectorControl.Designer.cs">
+      <DependentUpon>DescriptionSelectorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Builders\Description\OpenDescriptionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Description\OpenDescriptionControl.Designer.cs">
+      <DependentUpon>OpenDescriptionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Builders\Location\LocationCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\Location\LocationCardControl.Designer.cs">
+      <DependentUpon>LocationCardControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Builders\Structure\StructureCardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Builders\Structure\StructureCardControl.Designer.cs">
       <DependentUpon>StructureCardControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Builders\TypeLoader.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardControl.cs" />
     <Compile Include="Builders\CardBuilderConfig.cs" />
     <Compile Include="CardRenderer.cs" />
     <Compile Include="CardType.cs" />
+    <Compile Include="BlessingCard.cs" />
+    <Compile Include="Gear\GearType.cs" />
+    <Compile Include="LocationCard.cs" />
+    <Compile Include="CasterCard.cs" />
+    <Compile Include="Description\DefaultDescription.cs" />
+    <Compile Include="Description\EmptyCardDescription.cs" />
+    <Compile Include="Description\KeywordDescription.cs" />
     <Compile Include="ProjectManager\CouldNotSaveCardException.cs" />
     <Compile Include="ProjectManager\CardRepository.cs" />
     <Compile Include="ProjectManager\LiteDBCardRepository.cs" />
     <Compile Include="Renderer\BrushChangerByType.cs" />
-    <Compile Include="Renderer\BrushChangerNothing.cs" />
+    <Compile Include="Renderer\BrushChangerByRarity.cs" />
+    <Compile Include="Renderer\BrushChangerOneType.cs" />
+    <Compile Include="Renderer\CardParts\Blessing\BlessingCardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Caster\CasterCardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Gear\GearDefStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Gear\GearCardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Gear\GearAtkStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Gear\GearTypeRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Location\LocationCardPartRendererFactory.cs" />
+    <Compile Include="Renderer\CardParts\Location\LifespanStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Location\ProductionSpeedStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\ResStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Stat\IconTextRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Structure\TransportCardPartRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Structure\StorageCardPartRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Structure\ProductionCardPartRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Structure\StructureStatRendererByType.cs" />
+    <Compile Include="Renderer\CardParts\DefaultBackgroundRenderer.cs" />
     <Compile Include="Renderer\CardParts\Unit\UnitBackgroundRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionRenderer.cs" />
     <Compile Include="Renderer\CardParts\DescriptionsRenderer.cs" />
@@ -83,20 +174,24 @@
     <Compile Include="Renderer\CardParts\CardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Structure\StructureCardPartRendererFactory.cs" />
     <Compile Include="Renderer\CardParts\Unit\UnitTypeRenderer.cs" />
+    <Compile Include="Renderer\CasterCardRenderer.cs" />
+    <Compile Include="Renderer\BlessingCardRenderer.cs" />
+    <Compile Include="Renderer\LocationCardRenderer.cs" />
     <Compile Include="Renderer\StructureCardRenderer.cs" />
-    <Compile Include="Structure\StructureCard.cs" />
-    <Compile Include="Unit\Descriptions\DefaultUnitDescription.cs" />
+    <Compile Include="Renderer\GearCardRenderer.cs" />
+    <Compile Include="StructureCard.cs" />
+    <Compile Include="Structure\StructureType.cs" />
     <Compile Include="Renderer\Text\FuzzyBoxedTextRenderer.cs" />
     <Compile Include="Renderer\Text\FuzzyTextRenderer.cs" />
     <Compile Include="Renderer\CardParts\NameRenderer.cs" />
     <Compile Include="Renderer\Text\OutlineBoxedTextRenderer.cs" />
     <Compile Include="Renderer\Text\OutlineTextRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\ResStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\HpStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\AccStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\SpdStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\DefStatRenderer.cs" />
-    <Compile Include="Renderer\CardParts\Stat\AtkStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\UnitResStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\HpStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\AccStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\SpdStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\DefStatRenderer.cs" />
+    <Compile Include="Renderer\CardParts\Unit\AtkStatRenderer.cs" />
     <Compile Include="Renderer\CardParts\CardPartRenderer.cs" />
     <Compile Include="CardUpdater.cs" />
     <Compile Include="Config\ProjectConfig.cs" />
@@ -115,19 +210,17 @@
     <Compile Include="Builders\CardLoader.Designer.cs">
       <DependentUpon>CardLoader.cs</DependentUpon>
     </Compile>
-    <Compile Include="Builders\Unit\EmptyUnitDescriptionControl.cs">
+    <Compile Include="Builders\Description\EmptyDescriptionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Builders\Unit\EmptyUnitDescriptionControl.Designer.cs">
-      <DependentUpon>EmptyUnitDescriptionControl.cs</DependentUpon>
+    <Compile Include="Builders\Description\EmptyDescriptionControl.Designer.cs">
+      <DependentUpon>EmptyDescriptionControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unit\Descriptions\EmptyCardDescription.cs" />
-    <Compile Include="Unit\Descriptions\KeywordUnitDescription.cs" />
-    <Compile Include="Builders\Unit\KeywordUnitDescriptionControl.cs">
+    <Compile Include="Builders\Description\KeywordDescriptionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Builders\Unit\KeywordUnitDescriptionControl.Designer.cs">
-      <DependentUpon>KeywordUnitDescriptionControl.cs</DependentUpon>
+    <Compile Include="Builders\Description\KeywordDescriptionControl.Designer.cs">
+      <DependentUpon>KeywordDescriptionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Builders\CardBuilder.cs">
       <SubType>Form</SubType>
@@ -137,13 +230,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Builders\Unit\DefaultUnitDescriptionControl.cs">
+    <Compile Include="Builders\Description\DefaultDescriptionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Builders\Unit\DefaultUnitDescriptionControl.Designer.cs">
-      <DependentUpon>DefaultUnitDescriptionControl.cs</DependentUpon>
+    <Compile Include="Builders\Description\DefaultDescriptionControl.Designer.cs">
+      <DependentUpon>DefaultDescriptionControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unit\UnitCard.cs" />
+    <Compile Include="Builders\AnyTypeLoader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Builders\AnyTypeLoader.Designer.cs">
+      <DependentUpon>AnyTypeLoader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitCard.cs" />
     <Compile Include="Renderer\UnitCardRenderer.cs" />
     <Compile Include="Builders\Unit\UnitCardControl.cs">
       <SubType>UserControl</SubType>
@@ -155,8 +254,29 @@
     <Compile Include="Builders\DescriptionControl.cs" />
     <Compile Include="DescriptionType.cs" />
     <Compile Include="Unit\UnitType.cs" />
+    <EmbeddedResource Include="Builders\Blessing\BlessingCardControl.resx">
+      <DependentUpon>BlessingCardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Builders\Caster\CasterCardControl.resx">
+      <DependentUpon>CasterCardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Builders\Description\DescriptionSelectorControl.resx">
+      <DependentUpon>DescriptionSelectorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Builders\Description\OpenDescriptionControl.resx">
+      <DependentUpon>OpenDescriptionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Builders\Gear\GearCardControl.resx">
+      <DependentUpon>GearCardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Builders\Location\LocationCardControl.resx">
+      <DependentUpon>LocationCardControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Builders\Structure\StructureCardControl.resx">
       <DependentUpon>StructureCardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Builders\AnyTypeLoader.resx">
+      <DependentUpon>AnyTypeLoader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -171,21 +291,22 @@
     <EmbeddedResource Include="Builders\CardLoader.resx">
       <DependentUpon>CardLoader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builders\Unit\EmptyUnitDescriptionControl.resx">
-      <DependentUpon>EmptyUnitDescriptionControl.cs</DependentUpon>
+    <EmbeddedResource Include="Builders\Description\EmptyDescriptionControl.resx">
+      <DependentUpon>EmptyDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builders\Unit\KeywordUnitDescriptionControl.resx">
-      <DependentUpon>KeywordUnitDescriptionControl.cs</DependentUpon>
+    <EmbeddedResource Include="Builders\Description\KeywordDescriptionControl.resx">
+      <DependentUpon>KeywordDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Builders\CardBuilder.resx">
       <DependentUpon>CardBuilder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builders\Unit\DefaultUnitDescriptionControl.resx">
-      <DependentUpon>DefaultUnitDescriptionControl.cs</DependentUpon>
+    <EmbeddedResource Include="Builders\Description\DefaultDescriptionControl.resx">
+      <DependentUpon>DefaultDescriptionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Builders\Unit\UnitCardControl.resx">
       <DependentUpon>UnitCardControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="CheesecakeCardBuilder_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <EmbeddedResource Include="Resources\vijaya.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -194,13 +315,30 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="formatedIcon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

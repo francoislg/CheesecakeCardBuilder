@@ -28,7 +28,7 @@ namespace CheesecakeCardBuilder.Config {
             String projectConfigFileFullPath = globalConfig.projectPath + "/" + projectConfigFile;
             if (File.Exists(projectConfigFileFullPath)) {
                 projectConfig = DeserializeFile<ProjectConfig>(projectConfigFileFullPath);
-                projectConfig.setGlobalConfig(globalConfig);
+                projectConfig.globalConfig = globalConfig;
             } else {
                 projectConfig = new ProjectConfig(globalConfig);
                 writeFirstConfigInProjectFolder(projectConfigFileFullPath);
@@ -43,7 +43,11 @@ namespace CheesecakeCardBuilder.Config {
 
         private void writeFirstConfigInProjectFolder(String projectConfigPath) {
             createSubFolders();
+            // Tmp so that global config won't be save in the project config...
+            GlobalConfig tmpConfig = projectConfig.globalConfig;
+            projectConfig.globalConfig = new GlobalConfig() { projectPath = "" };
             writeToFile<ProjectConfig>(projectConfigPath, projectConfig);
+            projectConfig.globalConfig = tmpConfig;
         }
 
         private void createSubFolders() {

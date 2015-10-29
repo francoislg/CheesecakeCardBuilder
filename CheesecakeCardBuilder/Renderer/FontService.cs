@@ -1,5 +1,6 @@
 ﻿
 namespace CheesecakeCardBuilder.Renderer {
+    using CheesecakeCardBuilder.Structure;
     using CheesecakeCardBuilder.Unit;
     using Renderer.Text;
     using System;
@@ -7,6 +8,10 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Drawing2D;
 
     public class FontService {
+        public static Color lightGreen = Color.FromArgb(255, 154, 254, 155);
+        public static Color lightBlue = Color.FromArgb(255, 53, 255, 255);
+        public static Color lightGray = Color.FromArgb(255, 180, 180, 180);
+        public static Color lightOrange = Color.FromArgb(255, 252, 153, 49);
         public static Font getDefaultFont(){
             return new Font("Segeo Script", 8.25f, FontStyle.Regular);
         }
@@ -28,16 +33,28 @@ namespace CheesecakeCardBuilder.Renderer {
         }
 
         public static BrushChangerByType getDefaultGradientBrushChangerByType(Font font, Card card) {
+            int offset = 20;
+            Brush rareBrush = FontService.getGradiantBrush(font, offset, Color.Red);
             if (card is UnitCard) {
-                BrushChangerByUnitType brushChanger = new BrushChangerByUnitType(card);
-                brushChanger.Add(UnitType.Standard, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 180, 180, 180)));
-                brushChanger.Add(UnitType.Advanced, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 53, 255, 255)));
-                brushChanger.Add(UnitType.Expert, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 154, 254, 155)));
-                brushChanger.Add(UnitType.Elite, FontService.getGradiantBrush(font, 0, Color.FromArgb(255, 252, 153, 49)));
-                brushChanger.Add(UnitType.Master, FontService.getGradiantBrush(font, 0, Color.Red));
+                BrushChangerByUnitType brushChanger = new BrushChangerByUnitType((UnitCard)card);
+                brushChanger.Add(UnitType.Standard, FontService.getGradiantBrush(font, offset, lightGray));
+                brushChanger.Add(UnitType.Advanced, FontService.getGradiantBrush(font, offset, lightBlue));
+                brushChanger.Add(UnitType.Expert, FontService.getGradiantBrush(font, offset, lightGreen));
+                brushChanger.Add(UnitType.Elite, FontService.getGradiantBrush(font, offset, lightOrange));
+                brushChanger.Add(UnitType.Master, FontService.getGradiantBrush(font, offset, Color.Red));
                 return brushChanger;
+            } else if(card is StructureCard) {
+                return new BrushChangerOneType(FontService.getGradiantBrush(font, offset, lightGreen));
+            } else if (card is CasterCard) {
+                return new BrushChangerByRarity(card, FontService.getGradiantBrush(font, offset, lightBlue), rareBrush);
+            } else if (card is LocationCard) {
+                return new BrushChangerByRarity(card, FontService.getGradiantBrush(font, offset, lightGray), rareBrush);
+            } else if (card is GearCard) {
+                return new BrushChangerByRarity(card, FontService.getGradiantBrush(font, offset, lightGray), rareBrush);
+            } else if (card is BlessingCard) {
+                return new BrushChangerByRarity(card, FontService.getGradiantBrush(font, offset, Color.Red), rareBrush);
             } else {
-                return new BrushChangerNothing();
+                throw new NotSupportedException();
             }
         }
 

@@ -13,6 +13,7 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Text;
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
+    using CheesecakeCardBuilder.Renderer.CardParts.Structure;
 
     public class StructureCardRenderer : CardRenderer {
         private StructureCard structureCard;
@@ -22,9 +23,12 @@ namespace CheesecakeCardBuilder.Renderer {
         public StructureCardRenderer(StructureCard card, ProjectConfig config) {
             this.structureCard = card;
             this.template = new Bitmap(config.unitFile);
-            StructureCardPartRendererFactory statRendererFactory = new StructureCardPartRendererFactory(config, structureCard);
-            renderers.Add(statRendererFactory.create(PartType.Name));
-            renderers.Add(statRendererFactory.create(PartType.Description));
+            StructureCardPartRendererFactory cardPartRendererFactory = new StructureCardPartRendererFactory(config, structureCard);
+            renderers.Add(cardPartRendererFactory.create(PartType.Background));
+            renderers.Add(cardPartRendererFactory.create(PartType.Name));
+            renderers.Add(cardPartRendererFactory.create(PartType.Description));
+            renderers.Add(cardPartRendererFactory.create(StructurePartType.Res));
+            renderers.Add(cardPartRendererFactory.create(StructurePartType.Stats));
         }
 
         public async Task<Image> generate() {

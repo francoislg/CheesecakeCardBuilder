@@ -8,13 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CheesecakeCardBuilder.Builder.Unit {
+namespace CheesecakeCardBuilder.Builders {
     using Config;
     using Unit;
     using Renderer;
     using Repository;
-    using CheesecakeCardBuilder.Unit;
-    using CheesecakeCardBuilder.Structure;
 
     public partial class CardBuilder : Form, CardUpdater {
         private Card currentCard;
@@ -23,34 +21,45 @@ namespace CheesecakeCardBuilder.Builder.Unit {
         private CardRepository repository;
         private bool updateActivated = true;
         private CardControl currentCardControl;
+        private List<ComboBoxCardType> cbCardTypes = new List<ComboBoxCardType>();
+        private CardLoader cardLoader;
 
         private CardBuilderConfig cardBuilderConfig;
 
         private class ComboBoxCardType {
-            public string name { get; set; }
-            public Card card { get; set; }
+            public string name {
+                get {
+                    return card.type;
+                }
+            }
+            public Card card { get; private set; }
+            public ComboBoxCardType(Card card) {
+                this.card = card;
+            }
         }
 
         public CardBuilder(ProjectConfig config) {
             this.config = config;
             this.repository = new LiteDBRepository(config);
             this.cardBuilderConfig = new CardBuilderConfig(config, this);
+            this.cardLoader = new CardLoader(repository);
             InitializeComponent();
+            cbCardTypes.Add(new ComboBoxCardType(new UnitCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new StructureCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new CasterCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new LocationCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new GearCard()));
+            cbCardTypes.Add(new ComboBoxCardType(new BlessingCard()));
             this.typeComboBox.DisplayMember = "name";
-            this.typeComboBox.Items.Add(new ComboBoxCardType() {
-                name = "Unit",
-                card = new UnitCard()
-            });
-            this.typeComboBox.Items.Add(new ComboBoxCardType() {
-                name = "Structure",
-                card = new StructureCard()
-            });
+            this.typeComboBox.ValueMember = "name";
+            this.typeComboBox.DataSource = cbCardTypes;
             this.typeComboBox.SelectedIndex = 0;
         }
 
         public void changeCard(Card newCard) {
             desactivateUpdates();
             nameTextBox.Text = newCard.name;
+            this.typeComboBox.SelectedValue = newCard.type;
             currentCardControl = cardBuilderConfig.getControl(newCard);
             this.cardControlPanel.Controls.Clear();
             this.cardControlPanel.Controls.Add((UserControl)currentCardControl);
@@ -76,10 +85,14 @@ namespace CheesecakeCardBuilder.Builder.Unit {
         }
 
         private void exportButton_Click(object sender, EventArgs e) {
-            exportSaveFileDialog.FileName = String.Join("_", currentCard.name.Split(' ')) + ".png";
-            if (exportSaveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                previewPicture.Image.Save(exportSaveFileDialog.FileName);
-            };
+            if (String.IsNullOrEmpty(currentCard.name)) {
+                MessageBox.Show("Vous devez spécifier un nom pour la carte");
+            } else {
+                exportSaveFileDialog.FileName = String.Join("_", currentCard.name.Split(' ')) + ".png";
+                if (exportSaveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                    previewPicture.Image.Save(exportSaveFileDialog.FileName);
+                };
+            }
         }
 
         private void artButton_Click(object sender, EventArgs e) {
@@ -104,7 +117,6 @@ namespace CheesecakeCardBuilder.Builder.Unit {
         }
 
         private void loadButton_Click(object sender, EventArgs e) {
-            CardLoader cardLoader = new CardLoader(repository);
             cardLoader.ShowDialog();
             if (cardLoader.hasSelected) {
                 changeCard(cardLoader.selectedCard);
@@ -112,13 +124,17 @@ namespace CheesecakeCardBuilder.Builder.Unit {
         }
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-            ComboBoxCardType type = typeComboBox.SelectedItem as ComboBoxCardType;
-            changeCard(type.card);
+            if (updateActivated) {
+                ComboBoxCardType type = typeComboBox.SelectedItem as ComboBoxCardType;
+                changeCard(type.card);
+            }
         }
 
         private void nameTextBox_TextChanged(object sender, EventArgs e) {
-            currentCard.name = nameTextBox.Text;
-            updateCard();
+            if (updateActivated) {
+                currentCard.name = nameTextBox.Text;
+                updateCard();
+            }
         }
     }
 }

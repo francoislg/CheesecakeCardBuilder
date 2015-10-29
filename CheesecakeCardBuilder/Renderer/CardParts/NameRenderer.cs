@@ -8,8 +8,6 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
     using System;
     using System.Drawing;
     using Config;
-    using Unit;
-    using Structure;
     using Text;
 
     public class NameRenderer : CardPartRenderer {
@@ -18,7 +16,6 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
         private Card card;
         private TextRenderer renderer;
         private BrushChangerByType brushChanger;
-        private string cardType = "INVALID";
 
         public NameRenderer(ProjectConfig config, Card card) {
             this.config = config;
@@ -32,16 +29,11 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
             this.renderer.addEffect(new OutlineBoxedTextRenderer(font, POSITION, format, new Pen(Color.Gray, 8f)));
             this.renderer.addEffect(new FuzzyBoxedTextRenderer(font, new Rectangle(POSITION.X + 2, POSITION.Y + 2, POSITION.Width, POSITION.Height), format));
             this.brushChanger = FontService.getDefaultGradientBrushChangerByType(font, card);
-            if (card is UnitCard) {
-                cardType = "Unit";
-            }else if (card is StructureCard){
-                cardType = "Structure";
-            }
         }
 
         public void draw(Graphics graphics) {
             brushChanger.update(renderer);
-            renderer.draw(graphics, cardType + " - " + card.name);
+            renderer.draw(graphics, card.type + " - " + card.name);
         }
     }
 }

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Renderer.CardParts {
+namespace CheesecakeCardBuilder.Renderer.CardParts.Unit {
     using System;
     using System.Drawing;
     using Config;
-    using Unit;
+    using CheesecakeCardBuilder.Unit;
     using Text;
 
     public class UnitTypeRenderer : CardPartRenderer {

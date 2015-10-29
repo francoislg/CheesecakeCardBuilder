@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheesecakeCardBuilder.Renderer.CardParts {
+namespace CheesecakeCardBuilder.Renderer.CardParts.Unit {
     using Config;
-    using Unit;
+    using CheesecakeCardBuilder.Unit;
     using CardParts;
     using System.Drawing;
     using System.IO;

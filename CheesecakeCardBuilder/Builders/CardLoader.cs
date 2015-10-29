@@ -8,46 +8,53 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CheesecakeCardBuilder.Unit {
+namespace CheesecakeCardBuilder.Builders {
     using Config;
     using Repository;
+    using CheesecakeCardBuilder.Unit;
+    using CheesecakeCardBuilder.Structure;
 
     public partial class CardLoader : Form {
-        private CardRepository repository;
-        private List<UnitCard> cards;
-        private bool flagSelected = false;
+        private Dictionary<string, TypeLoader> typeLoaders = new Dictionary<string, TypeLoader>();
         public bool hasSelected {
             get {
-                return flagSelected;
+                return selectedCard != null;
             }
         }
-        public Card selectedCard {
-            get{
-                return (Card)((UnitCard)cardsListBox.SelectedItem);
-            }
-        }
+        public Card selectedCard { get; private set; }
 
         public CardLoader(CardRepository repository) {
             InitializeComponent();
-            cards = repository.getAllUnitCards();
-            this.repository = repository;
+            forceResize();
+            typeLoaders.Add("Units", new AnyTypeLoader<UnitCard>(repository.getAllUnitCards(), this));
+            typeLoaders.Add("Structures", new AnyTypeLoader<StructureCard>(repository.getAllStructureCards(), this));
+            typeLoaders.Add("Casters", new AnyTypeLoader<CasterCard>(repository.getAllCasterCards(), this));
+            typeLoaders.Add("Locations", new AnyTypeLoader<LocationCard>(repository.getAllLocationCards(), this));
+            typeLoaders.Add("Gears", new AnyTypeLoader<GearCard>(repository.getAllGearCards(), this));
+            typeLoaders.Add("Blessings", new AnyTypeLoader<BlessingCard>(repository.getAllBlessingCards(), this));
+            foreach (string key in typeLoaders.Keys) {
+                TypeLoader typeLoader = typeLoaders[key];
+                TabPage page = new TabPage(key);
+                page.Controls.Add((UserControl)typeLoader);
+                loadTabs.TabPages.Add(page);
+            }
         }
 
-        private void CardLoader_Load(object sender, EventArgs e) {
-            cardsListBox.Items.AddRange(cards.ToArray());
-            cardsListBox.DisplayMember = "name";
+        public void finish(Card card) {
+            if (card != null) {
+                selectedCard = card;
+                this.Close();
+            }
         }
 
-        private void cardsListBox_MouseDoubleClick(object sender, MouseEventArgs e) {
-            flagSelected = true;
-            this.Close();
+        private void loadTabs_SizeChanged(object sender, EventArgs e) {
+            forceResize();
         }
 
-        private void searchBox_TextChanged(object sender, EventArgs e) {
-            cardsListBox.Items.Clear();
-            cardsListBox.Items.AddRange(
-                cards.Where(x => x.name.ToLower().Contains(searchBox.Text.ToLower())).ToArray()
-            );
+        private void forceResize() {
+            foreach (UserControl control in typeLoaders.Values) {
+                control.Size = new Size(loadTabs.Size.Width - 50, loadTabs.Size.Height - 50);
+            }
         }
     }
 }

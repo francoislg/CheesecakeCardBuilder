@@ -13,6 +13,7 @@ namespace CheesecakeCardBuilder.Renderer {
     using System.Drawing.Text;
     using System.Drawing.Drawing2D;
     using System.Windows.Forms;
+    using CheesecakeCardBuilder.Renderer.CardParts.Unit;
 
     public class UnitCardRenderer : CardRenderer {
         private UnitCard unitCard;
@@ -22,17 +23,17 @@ namespace CheesecakeCardBuilder.Renderer {
         public UnitCardRenderer(UnitCard card, ProjectConfig config) {
             this.unitCard = card;
             this.template = new Bitmap(config.unitFile);
-            UnitCardPartRendererFactory statRendererFactory = new UnitCardPartRendererFactory(config, unitCard);
-            renderers.Add(statRendererFactory.create(UnitPartType.Background));
-            renderers.Add(statRendererFactory.create(UnitPartType.Atk));
-            renderers.Add(statRendererFactory.create(UnitPartType.Def));
-            renderers.Add(statRendererFactory.create(UnitPartType.Spd));
-            renderers.Add(statRendererFactory.create(UnitPartType.Acc));
-            renderers.Add(statRendererFactory.create(UnitPartType.Type));
-            renderers.Add(statRendererFactory.create(UnitPartType.Hp));
-            renderers.Add(statRendererFactory.create(UnitPartType.Res));
-            renderers.Add(statRendererFactory.create(PartType.Name));
-            renderers.Add(statRendererFactory.create(PartType.Description));
+            UnitCardPartRendererFactory cardPartRendererFactory = new UnitCardPartRendererFactory(config, unitCard);
+            renderers.Add(cardPartRendererFactory.create(UnitPartType.Background));
+            renderers.Add(cardPartRendererFactory.create(UnitPartType.Atk));
+            renderers.Add(cardPartRendererFactory.create(UnitPartType.Def));
+            renderers.Add(cardPartRendererFactory.create(UnitPartType.Spd));
+            renderers.Add(cardPartRendererFactory.create(UnitPartType.Acc));
+            renderers.Add(cardPartRendererFactory.create(UnitPartType.Type));
+            renderers.Add(cardPartRendererFactory.create(UnitPartType.Hp));
+            renderers.Add(cardPartRendererFactory.create(UnitPartType.Res));
+            renderers.Add(cardPartRendererFactory.create(PartType.Name));
+            renderers.Add(cardPartRendererFactory.create(PartType.Description));
         }
 
         public async Task<Image> generate() {

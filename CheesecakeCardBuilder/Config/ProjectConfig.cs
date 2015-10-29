@@ -12,7 +12,6 @@ namespace CheesecakeCardBuilder.Config {
     using System.Runtime.InteropServices;
 
     public class ProjectConfig {
-
         public String iconsPath {
             get {
                 return globalConfig.projectPath + "\\icones";
@@ -59,6 +58,16 @@ namespace CheesecakeCardBuilder.Config {
                 return iconsPath + "\\hp.png";
             }
         }
+        public String iconLifespanFile {
+            get {
+                return iconsPath + "\\lifespan.png";
+            }
+        }
+        public String iconResBlessFile {
+            get {
+                return iconsPath + "\\resBless.png";
+            }
+        }
         public String iconResFile {
             get {
                 return iconsPath + "\\res1.png";
@@ -69,7 +78,7 @@ namespace CheesecakeCardBuilder.Config {
                 return iconsPath + "\\res2.png";
             }
         }
-        public String iconRes3File {
+        public String iconGreenResFile {
             get {
                 return iconsPath + "\\res3.png";
             }
@@ -109,6 +118,36 @@ namespace CheesecakeCardBuilder.Config {
                 return cardsPath + "\\bg5.png";
             }
         }
+        public String backgroundCasterFile {
+            get {
+                return cardsPath + "\\bgCaster.png";
+            }
+        }
+        public String backgroundBlessingFile {
+            get {
+                return cardsPath + "\\bgBless.png";
+            }
+        }
+        public String iconProdFile {
+            get {
+                return iconsPath + "\\production.png";
+            }
+        }
+        public String iconProdLocFile {
+            get {
+                return iconsPath + "\\productionLoc.png";
+            }
+        }
+        public String iconStorageFile {
+            get {
+                return iconsPath + "\\storage.png";
+            }
+        }
+        public String iconStorageSpeedFile {
+            get {
+                return iconsPath + "\\storagespeed.png";
+            }
+        }
         public String databaseFile {
             get {
                 return globalConfig.projectPath + "\\database.db";
@@ -116,7 +155,7 @@ namespace CheesecakeCardBuilder.Config {
         }
 
         [JsonIgnore]
-        private GlobalConfig globalConfig;
+        public GlobalConfig globalConfig { get; set; }
         public readonly Font topStatsFont, statsFont, descriptionFont, keywordFont, nameFont;
         public readonly List<String> keywords = new List<string>();
 
@@ -126,10 +165,6 @@ namespace CheesecakeCardBuilder.Config {
             descriptionFont = new Font("Vijaya", pointsToEm(11f), FontStyle.Bold);
             nameFont = new Font("Vijaya", pointsToEm(13f), FontStyle.Regular);
             keywordFont = new Font("Segoe Script", pointsToEm(9.5f), FontStyle.Regular);
-            setGlobalConfig(globalConfig);
-        }
-
-        public void setGlobalConfig(GlobalConfig globalConfig) {
             this.globalConfig = globalConfig;
         }
 

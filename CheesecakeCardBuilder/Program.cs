@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CheesecakeCardBuilder {
     using Config;
-    using CheesecakeCardBuilder.Builder.Unit;
+    using CheesecakeCardBuilder.Builders;
 
     static class Program {
         /// <summary>

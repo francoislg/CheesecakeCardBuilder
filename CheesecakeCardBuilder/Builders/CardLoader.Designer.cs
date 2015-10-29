@@ -1,4 +1,4 @@
-﻿namespace CheesecakeCardBuilder.Unit {
+﻿namespace CheesecakeCardBuilder.Builders {
     partial class CardLoader {
         /// <summary>
         /// Required designer variable.
@@ -24,38 +24,42 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardLoader));
-            this.cardsListBox = new System.Windows.Forms.ListBox();
-            this.searchBox = new System.Windows.Forms.TextBox();
+            this.loadTabs = new System.Windows.Forms.TabControl();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // cardsListBox
+            // loadTabs
             // 
-            this.cardsListBox.FormattingEnabled = true;
-            this.cardsListBox.Location = new System.Drawing.Point(13, 39);
-            this.cardsListBox.Name = "cardsListBox";
-            this.cardsListBox.Size = new System.Drawing.Size(414, 199);
-            this.cardsListBox.TabIndex = 0;
-            this.cardsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.cardsListBox_MouseDoubleClick);
+            this.loadTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loadTabs.Location = new System.Drawing.Point(0, 0);
+            this.loadTabs.Name = "loadTabs";
+            this.loadTabs.SelectedIndex = 0;
+            this.loadTabs.Size = new System.Drawing.Size(389, 298);
+            this.loadTabs.TabIndex = 2;
+            this.loadTabs.SizeChanged += new System.EventHandler(this.loadTabs_SizeChanged);
             // 
-            // searchBox
+            // label1
             // 
-            this.searchBox.Location = new System.Drawing.Point(13, 12);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(414, 20);
-            this.searchBox.TabIndex = 1;
-            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 273);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Double-click to load a card";
             // 
             // CardLoader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 246);
-            this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.cardsListBox);
+            this.ClientSize = new System.Drawing.Size(389, 298);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.loadTabs);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(405, 337);
             this.Name = "CardLoader";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CardLoader";
-            this.Load += new System.EventHandler(this.CardLoader_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -63,8 +67,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox cardsListBox;
-        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.TabControl loadTabs;
+        private System.Windows.Forms.Label label1;
+
 
     }
 }

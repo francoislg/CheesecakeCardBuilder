@@ -1,4 +1,4 @@
-﻿namespace CheesecakeCardBuilder.Builder.Unit {
+﻿namespace CheesecakeCardBuilder.Builders {
     partial class CardBuilder {
         /// <summary>
         /// Required designer variable.
@@ -46,16 +46,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.previewPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.previewPicture.InitialImage = null;
-            this.previewPicture.Location = new System.Drawing.Point(444, 11);
+            this.previewPicture.Location = new System.Drawing.Point(541, 12);
             this.previewPicture.Name = "previewPicture";
-            this.previewPicture.Size = new System.Drawing.Size(316, 412);
+            this.previewPicture.Size = new System.Drawing.Size(289, 411);
             this.previewPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.previewPicture.TabIndex = 14;
             this.previewPicture.TabStop = false;
             // 
             // exportButton
             // 
-            this.exportButton.Location = new System.Drawing.Point(363, 399);
+            this.exportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.exportButton.Location = new System.Drawing.Point(458, 399);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(75, 23);
             this.exportButton.TabIndex = 20;
@@ -72,6 +73,7 @@
             // 
             // artButton
             // 
+            this.artButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.artButton.Location = new System.Drawing.Point(12, 399);
             this.artButton.Name = "artButton";
             this.artButton.Size = new System.Drawing.Size(75, 23);
@@ -87,7 +89,8 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(282, 399);
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.saveButton.Location = new System.Drawing.Point(377, 399);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 20;
@@ -97,7 +100,8 @@
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(201, 400);
+            this.loadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.loadButton.Location = new System.Drawing.Point(296, 400);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(75, 23);
             this.loadButton.TabIndex = 20;
@@ -109,7 +113,7 @@
             // 
             this.nameTextBox.Location = new System.Drawing.Point(177, 24);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(261, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(356, 20);
             this.nameTextBox.TabIndex = 36;
             this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
@@ -142,16 +146,18 @@
             // 
             // cardControlPanel
             // 
+            this.cardControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.cardControlPanel.Location = new System.Drawing.Point(13, 52);
             this.cardControlPanel.Name = "cardControlPanel";
-            this.cardControlPanel.Size = new System.Drawing.Size(425, 330);
+            this.cardControlPanel.Size = new System.Drawing.Size(520, 330);
             this.cardControlPanel.TabIndex = 40;
             // 
             // CardBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 434);
+            this.ClientSize = new System.Drawing.Size(842, 434);
             this.Controls.Add(this.cardControlPanel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.typeComboBox);
@@ -163,7 +169,7 @@
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.previewPicture);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(719, 424);
+            this.MinimumSize = new System.Drawing.Size(858, 473);
             this.Name = "CardBuilder";
             this.Text = "Card Builder";
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();

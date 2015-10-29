@@ -1,4 +1,4 @@
-﻿namespace CheesecakeCardBuilder.Builder.Unit {
+﻿namespace CheesecakeCardBuilder.Builders.Unit {
     partial class UnitCardControl {
         /// <summary> 
         /// Required designer variable.
@@ -25,10 +25,6 @@
         private void InitializeComponent() {
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.descriptionPanel2 = new System.Windows.Forms.Panel();
-            this.descriptionComboBox2 = new System.Windows.Forms.ComboBox();
-            this.descriptionPanel = new System.Windows.Forms.Panel();
-            this.descriptionComboBox = new System.Windows.Forms.ComboBox();
             this.resTextbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,12 +37,13 @@
             this.defTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.atkTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // typeComboBox
             // 
             this.typeComboBox.FormattingEnabled = true;
-            this.typeComboBox.Location = new System.Drawing.Point(177, 27);
+            this.typeComboBox.Location = new System.Drawing.Point(259, 27);
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(235, 21);
             this.typeComboBox.TabIndex = 39;
@@ -55,43 +52,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(177, 11);
+            this.label8.Location = new System.Drawing.Point(259, 11);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 13);
             this.label8.TabIndex = 38;
             this.label8.Text = "Unit Type";
-            // 
-            // descriptionPanel2
-            // 
-            this.descriptionPanel2.Location = new System.Drawing.Point(12, 240);
-            this.descriptionPanel2.Name = "descriptionPanel2";
-            this.descriptionPanel2.Size = new System.Drawing.Size(400, 80);
-            this.descriptionPanel2.TabIndex = 37;
-            // 
-            // descriptionComboBox2
-            // 
-            this.descriptionComboBox2.FormattingEnabled = true;
-            this.descriptionComboBox2.Location = new System.Drawing.Point(12, 212);
-            this.descriptionComboBox2.Name = "descriptionComboBox2";
-            this.descriptionComboBox2.Size = new System.Drawing.Size(143, 21);
-            this.descriptionComboBox2.TabIndex = 36;
-            this.descriptionComboBox2.SelectedIndexChanged += new System.EventHandler(this.descriptionComboBox_SelectedValueChanged);
-            // 
-            // descriptionPanel
-            // 
-            this.descriptionPanel.Location = new System.Drawing.Point(12, 126);
-            this.descriptionPanel.Name = "descriptionPanel";
-            this.descriptionPanel.Size = new System.Drawing.Size(400, 80);
-            this.descriptionPanel.TabIndex = 34;
-            // 
-            // descriptionComboBox
-            // 
-            this.descriptionComboBox.FormattingEnabled = true;
-            this.descriptionComboBox.Location = new System.Drawing.Point(12, 98);
-            this.descriptionComboBox.Name = "descriptionComboBox";
-            this.descriptionComboBox.Size = new System.Drawing.Size(143, 21);
-            this.descriptionComboBox.TabIndex = 31;
-            this.descriptionComboBox.SelectedIndexChanged += new System.EventHandler(this.descriptionComboBox_SelectedValueChanged);
             // 
             // resTextbox
             // 
@@ -195,16 +160,28 @@
             this.atkTextBox.TabIndex = 23;
             this.atkTextBox.TextChanged += new System.EventHandler(this.hpTextbox_TextChanged);
             // 
+            // descriptionsPanel
+            // 
+            this.descriptionsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.descriptionsPanel.AutoScroll = true;
+            this.descriptionsPanel.AutoSize = true;
+            this.descriptionsPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.descriptionsPanel.Location = new System.Drawing.Point(4, 98);
+            this.descriptionsPanel.Name = "descriptionsPanel";
+            this.descriptionsPanel.Size = new System.Drawing.Size(515, 230);
+            this.descriptionsPanel.TabIndex = 40;
+            this.descriptionsPanel.WrapContents = false;
+            // 
             // UnitCardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.Controls.Add(this.descriptionsPanel);
             this.Controls.Add(this.typeComboBox);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.descriptionPanel2);
-            this.Controls.Add(this.descriptionComboBox2);
-            this.Controls.Add(this.descriptionPanel);
-            this.Controls.Add(this.descriptionComboBox);
             this.Controls.Add(this.resTextbox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
@@ -218,7 +195,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.atkTextBox);
             this.Name = "UnitCardControl";
-            this.Size = new System.Drawing.Size(425, 330);
+            this.Size = new System.Drawing.Size(520, 330);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,10 +205,6 @@
 
         private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel descriptionPanel2;
-        private System.Windows.Forms.ComboBox descriptionComboBox2;
-        private System.Windows.Forms.Panel descriptionPanel;
-        private System.Windows.Forms.ComboBox descriptionComboBox;
         private System.Windows.Forms.TextBox resTextbox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -244,5 +217,6 @@
         private System.Windows.Forms.TextBox defTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox atkTextBox;
+        private System.Windows.Forms.FlowLayoutPanel descriptionsPanel;
     }
 }

@@ -14,32 +14,17 @@ namespace CheesecakeCardBuilder.Renderer.CardParts.Stat {
         private static readonly Point POSITION = new Point(655, 95);
         private static readonly Point ICONPOSITION = new Point(604, 82);
         private ProjectConfig config;
-        private UnitCard card;
-        private CardTextRenderer renderer;
-        private BrushChangerByUnitType brushChanger;
-        private ByTypeHandler<UnitType, ImageRenderer> iconRenderer;
+        private Card card;
+        private IconTextRenderer renderer;
 
-        public ResStatRenderer(ProjectConfig config, UnitCard card) {
+        public ResStatRenderer(ProjectConfig config, Card card, string iconFile) {
             this.config = config;
             this.card = card;
-            this.iconRenderer = new ByTypeHandler<UnitType, ImageRenderer>(new ImageRenderer(new Bitmap(config.iconResFile), ICONPOSITION));
-            this.iconRenderer.Add(UnitType.Advanced, new ImageRenderer(new Bitmap(config.iconRes2File), ICONPOSITION));
-            this.iconRenderer.Add(UnitType.Expert, new ImageRenderer(new Bitmap(config.iconRes3File), ICONPOSITION));
-            this.iconRenderer.Add(UnitType.Elite, new ImageRenderer(new Bitmap(config.iconRes4File), ICONPOSITION));
-            this.iconRenderer.Add(UnitType.Master, new ImageRenderer(new Bitmap(config.iconRes5File), ICONPOSITION));
-            this.renderer = new CardTextRenderer() { brush = new SolidBrush(Color.Black), font = config.topStatsFont, position = POSITION };
-            this.renderer.addDefaultEffects();
-            this.brushChanger = new BrushChangerByUnitType(card);
-            this.brushChanger.Add(UnitType.Standard, new SolidBrush(Color.Black));
-            this.brushChanger.Add(UnitType.Advanced, new SolidBrush(Color.Turquoise));
-            this.brushChanger.Add(UnitType.Expert, new SolidBrush(Color.LightGreen));
-            this.brushChanger.Add(UnitType.Elite, new SolidBrush(Color.FromArgb(255, 252, 153, 49)));
-            this.brushChanger.Add(UnitType.Master, new SolidBrush(Color.FromArgb(255, 154, 51, 254)));
+            this.renderer = new IconTextRenderer(CardPosition.Resources, card, config.topStatsFont, iconFile);
+            this.renderer.renderer.addDefaultEffects();
         }
 
         public void draw(Graphics graphics) {
-            brushChanger.update(renderer);
-            iconRenderer.Get(card.unitType).draw(graphics);
             renderer.draw(graphics, card.res);
         }
     }

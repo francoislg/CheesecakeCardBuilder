@@ -1,13 +1,14 @@
 ﻿
-namespace CheesecakeCardBuilder.Renderer.CardParts {
-    using Structure;
+namespace CheesecakeCardBuilder.Renderer.CardParts.Structure {
+    using CheesecakeCardBuilder.Structure;
     using Config;
     using System;
     using CardParts;
     using CardParts.Stat;
+    using Renderer.CardParts.Structure;
 
     public enum StructurePartType {
-        
+        Stats, Res
     }
 
     public class StructureCardPartRendererFactory : CardPartRendererFactory {
@@ -20,6 +21,10 @@ namespace CheesecakeCardBuilder.Renderer.CardParts {
 
         public CardPartRenderer create(StructurePartType type) {
             switch (type) {
+                case StructurePartType.Stats:
+                    return new StructureStatRendererByType(config, structureCard);
+                case StructurePartType.Res:
+                    return new ResStatRenderer(config, structureCard, config.iconGreenResFile);
                 default:
                     throw new NotSupportedException();
             }
