@@ -22,10 +22,13 @@ namespace CheesecakeCardBuilder.Builders {
             }
         }
         public Card selectedCard { get; private set; }
+        private List<string> tags;
 
         public CardLoader(CardRepository repository) {
             InitializeComponent();
             forceResize();
+            tags = new List<string>();
+            UpdateTags();
             typeLoaders.Add("Units", new AnyTypeLoader<UnitCard>(repository.getAllUnitCards(), this));
             typeLoaders.Add("Structures", new AnyTypeLoader<StructureCard>(repository.getAllStructureCards(), this));
             typeLoaders.Add("Casters", new AnyTypeLoader<CasterCard>(repository.getAllCasterCards(), this));
@@ -57,19 +60,41 @@ namespace CheesecakeCardBuilder.Builders {
             }
         }
 
-        private void filterWithTag(string tag)
+        private void ApplyGlobalFilter()
         {
             foreach(TypeLoader typeLoader in typeLoaders.Values)
             {
-                typeLoader.ApplyTag(tag);
+                typeLoader.ApplyTags(tags);
             }
+        }
+
+        private void UpdateTags()
+        {
+            tagsListbox.Items.Clear();
+            tagsListbox.Items.AddRange(tags.ToArray());
+            ApplyGlobalFilter();
         }
 
         private void textboxTag_KeyUp(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
+                string tag = textboxTag.Text.ToLower();
+                tags.Add(tag);
+                UpdateTags();
+                textboxTag.Text = "";
+            }
+        }
 
+        private void tagsListbox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete)
+            {
+                foreach(var item in tagsListbox.SelectedItems)
+                {
+                    tags.Remove(item.ToString());
+                }
+                UpdateTags();
             }
         }
     }

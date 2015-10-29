@@ -31,7 +31,6 @@ namespace CheesecakeCardBuilder.Builders {
 
         private void ApplyFilter()
         {
-            listBox.Items.Clear();
             addItems(
                 listCards
                     .Where(x => x.name.ToLower().Contains(searchBox.Text.ToLower()))
@@ -49,10 +48,11 @@ namespace CheesecakeCardBuilder.Builders {
             cardLoader.finish((T)listBox.SelectedItem);
         }
 
-        public void ApplyTag(string tag)
+        public void ApplyTags(List<string> newTags)
         {
             tags.Clear();
-            tags.Add(tag);
+            tags.AddRange(newTags);
+            ApplyFilter();
         }
     }
 }
