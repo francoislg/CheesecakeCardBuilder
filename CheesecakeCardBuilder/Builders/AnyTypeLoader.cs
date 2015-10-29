@@ -12,9 +12,11 @@ namespace CheesecakeCardBuilder.Builders {
     public partial class AnyTypeLoader<T> : UserControl, TypeLoader where T : Card, new() {
         private List<T> listCards;
         private CardLoader cardLoader;
+        private List<string> tags;
         public AnyTypeLoader(List<T> list, CardLoader cardLoader) {
             this.listCards = list;
             this.cardLoader = cardLoader;
+            this.tags = new List<string>();
             InitializeComponent();
         }
 
@@ -24,9 +26,17 @@ namespace CheesecakeCardBuilder.Builders {
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e) {
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
             listBox.Items.Clear();
             addItems(
-                listCards.Where(x => x.name.ToLower().Contains(searchBox.Text.ToLower())).ToList<T>()
+                listCards
+                    .Where(x => x.name.ToLower().Contains(searchBox.Text.ToLower()))
+                    .Where(x => tags.All(tagToFind => x.tags.Contains(tagToFind)))
+                    .ToList<T>()
             );
         }
 
@@ -37,6 +47,12 @@ namespace CheesecakeCardBuilder.Builders {
 
         private void listBox_MouseDoubleClick(object sender, MouseEventArgs e) {
             cardLoader.finish((T)listBox.SelectedItem);
+        }
+
+        public void ApplyTag(string tag)
+        {
+            tags.Clear();
+            tags.Add(tag);
         }
     }
 }

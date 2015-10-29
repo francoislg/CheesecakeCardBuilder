@@ -56,5 +56,21 @@ namespace CheesecakeCardBuilder.Builders {
                 control.Size = new Size(loadTabs.Size.Width - 50, loadTabs.Size.Height - 50);
             }
         }
+
+        private void filterWithTag(string tag)
+        {
+            foreach(TypeLoader typeLoader in typeLoaders.Values)
+            {
+                typeLoader.ApplyTag(tag);
+            }
+        }
+
+        private void textboxTag_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+
+            }
+        }
     }
 }

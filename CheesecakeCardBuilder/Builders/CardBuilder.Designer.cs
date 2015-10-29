@@ -36,6 +36,9 @@
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cardControlPanel = new System.Windows.Forms.Panel();
+            this.tagTextbox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tagsListbox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +49,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.previewPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.previewPicture.InitialImage = null;
-            this.previewPicture.Location = new System.Drawing.Point(541, 12);
+            this.previewPicture.Location = new System.Drawing.Point(658, 12);
             this.previewPicture.Name = "previewPicture";
             this.previewPicture.Size = new System.Drawing.Size(289, 411);
             this.previewPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -56,7 +59,7 @@
             // exportButton
             // 
             this.exportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.exportButton.Location = new System.Drawing.Point(458, 399);
+            this.exportButton.Location = new System.Drawing.Point(577, 399);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(75, 23);
             this.exportButton.TabIndex = 20;
@@ -90,7 +93,7 @@
             // saveButton
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.saveButton.Location = new System.Drawing.Point(377, 399);
+            this.saveButton.Location = new System.Drawing.Point(496, 399);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 20;
@@ -101,7 +104,7 @@
             // loadButton
             // 
             this.loadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.loadButton.Location = new System.Drawing.Point(296, 400);
+            this.loadButton.Location = new System.Drawing.Point(415, 400);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(75, 23);
             this.loadButton.TabIndex = 20;
@@ -153,11 +156,40 @@
             this.cardControlPanel.Size = new System.Drawing.Size(520, 330);
             this.cardControlPanel.TabIndex = 40;
             // 
+            // tagTextbox
+            // 
+            this.tagTextbox.Location = new System.Drawing.Point(539, 25);
+            this.tagTextbox.Name = "tagTextbox";
+            this.tagTextbox.Size = new System.Drawing.Size(113, 20);
+            this.tagTextbox.TabIndex = 41;
+            this.tagTextbox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tagTextbox_KeyUp);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(536, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "Tags";
+            // 
+            // tagsListbox
+            // 
+            this.tagsListbox.FormattingEnabled = true;
+            this.tagsListbox.Location = new System.Drawing.Point(540, 52);
+            this.tagsListbox.Name = "tagsListbox";
+            this.tagsListbox.Size = new System.Drawing.Size(112, 329);
+            this.tagsListbox.TabIndex = 43;
+            this.tagsListbox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tagsListbox_KeyUp);
+            // 
             // CardBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 434);
+            this.ClientSize = new System.Drawing.Size(959, 435);
+            this.Controls.Add(this.tagsListbox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tagTextbox);
             this.Controls.Add(this.cardControlPanel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.typeComboBox);
@@ -192,6 +224,9 @@
         private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel cardControlPanel;
+        private System.Windows.Forms.TextBox tagTextbox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox tagsListbox;
     }
 }
 

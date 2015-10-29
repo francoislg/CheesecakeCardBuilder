@@ -12,5 +12,6 @@ namespace CheesecakeCardBuilder {
         bool rare { get; set; }
         string type { get; }
         CardDescription[] descriptions { get; set; }
+        List<string> tags { get; set; }
     }
 }

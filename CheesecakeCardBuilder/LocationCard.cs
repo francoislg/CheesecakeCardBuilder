@@ -20,6 +20,7 @@ namespace CheesecakeCardBuilder {
         public String lifespan { get; set; }
         public String artFile { get; set; }
         public CardDescription[] descriptions { get; set; }
+        public List<string> tags { get; set; }
         public string type {
             get {
                 return "Location";
@@ -32,6 +33,7 @@ namespace CheesecakeCardBuilder {
             lifespan = "";
             rare = false;
             descriptions = new CardDescription[] { new CardDescription() };
+            tags = new List<string>();
         }
     }
 }

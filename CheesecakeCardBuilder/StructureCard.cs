@@ -17,6 +17,7 @@ namespace CheesecakeCardBuilder {
         public String storage { get; set; }
         public bool rare { get; set; }
         public CardDescription[] descriptions { get; set; }
+        public List<string> tags { get; set; }
         public StructureType structureType { get; set; }
         public string type {
             get {
@@ -32,6 +33,7 @@ namespace CheesecakeCardBuilder {
             storage = "";
             rare = false;
             descriptions = new CardDescription[] { new CardDescription() };
+            tags = new List<string>();
             structureType = StructureType.Production;
         }
     }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CheesecakeCardBuilder.Description{
-    class EmptyCardDescription : CardDescription {
+﻿namespace CheesecakeCardBuilder.Description{
+    public class EmptyCardDescription : CardDescription {
     }
 }

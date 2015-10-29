@@ -66,6 +66,7 @@ namespace CheesecakeCardBuilder.Builders {
             currentCardControl.loadCard(newCard);
             this.cardRenderer = cardBuilderConfig.getRenderer(newCard);
             this.currentCard = newCard;
+            UpdateTags();
             activateUpdates();
             updateCard();
         }
@@ -82,6 +83,12 @@ namespace CheesecakeCardBuilder.Builders {
 
         private void activateUpdates() {
             updateActivated = true;
+        }
+
+        private void UpdateTags()
+        {
+            tagsListbox.Items.Clear();
+            tagsListbox.Items.AddRange(currentCard.tags.ToArray());
         }
 
         private void exportButton_Click(object sender, EventArgs e) {
@@ -134,6 +141,31 @@ namespace CheesecakeCardBuilder.Builders {
             if (updateActivated) {
                 currentCard.name = nameTextBox.Text;
                 updateCard();
+            }
+        }
+
+        private void tagTextbox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string tag = tagTextbox.Text.ToLower();
+                if (!currentCard.tags.Contains(tag))
+                {
+                    currentCard.tags.Add(tag);
+                    UpdateTags();
+                }
+            }
+        }
+
+        private void tagsListbox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete)
+            {
+                foreach(var item in tagsListbox.SelectedItems)
+                {
+                    currentCard.tags.Remove(item.ToString());
+                }
+                UpdateTags();
             }
         }
     }

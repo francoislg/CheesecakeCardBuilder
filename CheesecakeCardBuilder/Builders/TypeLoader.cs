@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace CheesecakeCardBuilder.Builders {
     public interface TypeLoader {
-        
+        void ApplyTag(string tag);
     }
 }

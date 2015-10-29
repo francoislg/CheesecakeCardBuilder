@@ -17,6 +17,7 @@ using LiteDB;
         public bool rare { get; set; }
         public GearType gearType { get; set; }
         public CardDescription[] descriptions { get; set; }
+        public List<string> tags { get; set; }
         public string type {
             get {
                 return "Gear";
@@ -30,6 +31,7 @@ using LiteDB;
             res = "";
             rare = false;
             descriptions = new CardDescription[] { new CardDescription() };
+            tags = new List<string>();
         }
     }
 }

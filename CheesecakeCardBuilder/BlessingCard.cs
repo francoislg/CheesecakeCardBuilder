@@ -13,6 +13,7 @@ namespace CheesecakeCardBuilder {
         public String artFile { get; set; }
         public bool rare { get; set; }
         public CardDescription[] descriptions { get; set; }
+        public List<string> tags { get; set; }
         public string type {
             get {
                 return "Blessing";
@@ -24,6 +25,7 @@ namespace CheesecakeCardBuilder {
             res = "";
             rare = false;
             descriptions = new CardDescription[] { new CardDescription() };
+            tags = new List<string>();
         }
     }
 }

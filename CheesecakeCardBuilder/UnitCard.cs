@@ -28,6 +28,7 @@ namespace CheesecakeCardBuilder {
         public UnitType unitType { get; set; }
         public String artFile { get; set; }
         public CardDescription[] descriptions { get; set; }
+        public List<string> tags { get; set; }
         public string type {
             get {
                 return "Unit";
@@ -44,6 +45,7 @@ namespace CheesecakeCardBuilder {
             acc = "";
             unitType = UnitType.Standard;
             descriptions = new CardDescription[] { new CardDescription(), new CardDescription() };
+            tags = new List<string>();
         }
     }
 }
