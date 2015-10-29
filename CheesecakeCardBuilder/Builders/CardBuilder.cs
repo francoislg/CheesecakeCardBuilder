@@ -149,6 +149,7 @@ namespace CheesecakeCardBuilder.Builders {
             if (e.KeyCode == Keys.Enter)
             {
                 string tag = tagTextbox.Text.ToLower();
+                tagTextbox.Text = "";
                 if (!currentCard.tags.Contains(tag))
                 {
                     currentCard.tags.Add(tag);
